@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Condicionales</title>
+</head>
+<body>
+    <script>
+    //if: codigo que se cumple si se cumple su condición
+
+    var nota=8;
+
+    if(nota>=5){
+        alert("has aprobado")
+    }
+
+    //else: codigo que se cumple si no se cunple la condición if
+
+    var nota2 = 3;
+
+    if(nota2 >=5){
+        alert("has aprobado")
+    } else {
+        alert("No has aprobado")
+    }
+
+    //else if: especifica nueva condicion si el primer if es falso
+
+    var nota3 =9;
+
+    if(nota3<5){
+        alert("Has reprobado")
+    } else if(nota3>5 && nota3<=8) {
+        alert("Has aprobado")
+    } else {
+        alert("Excelente")
+    }
+
+    //switch: se utiliza para validar condiciones, la condicion se evalua solo una vez, 
+
+    var nota4 = 0;
+    var mensaje = "";
+
+    switch(nota4){
+        case 0: 
+        case 1:
+        case 2:
+        mensaje = "Error fatal";
+        break;
+
+        case 3:
+        case 4:
+        mensaje = "Insatisfactorio";
+        break;
+
+        case 5:
+        case 6:
+        mensaje = "Aceptable";
+        break;
+
+        case 7:
+        case 8:
+        mensaje = "Sobresaliente";
+        break;
+
+        case 9:
+        mensaje = "Muy bien";
+        break;
+
+        case 10:
+        mensaje = "Excelente";
+        break;
+
+        default:
+        mensaje = "Error"
+    }
+    alert(mensaje);
+    </script>
+</body>
+</html>

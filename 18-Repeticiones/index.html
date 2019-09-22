@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Repeticiones</title>
+</head>
+<body>
+    <script>
+    //Bucle for: ejecuta un codigo una determinada cantidad de veces.
+
+    /*
+    for (sentencia1; sentencia2; sentencia3){
+        codigo que se repite
+    }
+
+    sentencia1: se ejecuta antes del código
+    sentencia2: condicion por que el codigo se va a repetir
+    sentencia3: despues de que acabo el bloque de codigo que se repite
+    */
+
+    var i;
+    for(i=3; i<5; i++){
+        //alert(i);
+    }
+
+      //variaciones: 1. si omitimos sentencia1 hay que inicializarla antes 
+      var j=1;
+      for( ;j<=5; j++){
+        //alert("J: " + j);
+    }
+
+    //2.si omitimos la segunda sentencia se usa el break
+    var k;
+    for(k=1; ;k++){
+       // alert(k)
+        if(k==5){
+            break;
+        }
+    }
+
+    //3. si omitimos sentencia tres debemos incrementar el valor de la variable dentro del bucle
+    var l;
+    for(l=3; l<5; ){
+      //  alert("L " + l);
+        l++;
+    }
+
+    //incrementar dos valores dentro del mismo bucle for 
+
+    var m,n;
+    for(m=1, n=10; m<=10, n>=1; m++, n--){
+        //alert("m: " +m + " n: " +n);
+    }
+
+    for(m=1, n=2; m<=10, n>=1; m++, n--){
+        alert("m: " +m + " n: " +n);
+    }
+
+
+    //Bucle for in:
+    </script>
+</body>
+</html>

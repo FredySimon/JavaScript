@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Variables</title>
+</head>
+<body>
+    <p id="parrafo1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, repudiandae cumque recusandae beatae culpa velit nobis laudantium laboriosam error. Et tempora non id, voluptatibus ut laborum ipsam ipsum quisquam. Itaque.</p>
+    <p id="parrafo2"></p>
+    <script>
+        /*variables: unicos, descriptivos, empiezan con $, _, letra, pueden contener cadenas ("", ''), numeros
+        */  
+       var nombre = "Ada"; 
+       document.getElementById("parrafo1").innerHTML = nombre; 
+
+       var pais, nacimiento;
+       pais="reino unido";
+       nacimiento = 1815;
+       var idioma="sd", color='rojo';
+       var nombreApellido = "Ada" + " " + "Lourdes";
+       var fallecimiento = nacimiento + 37;
+
+       document.getElementById("parrafo2").innerHTML = nombreApellido + " nacio en " + pais + " en " + nacimiento + " y fallecio en "+ fallecimiento;
+    </script>
+</body>
+</html>
