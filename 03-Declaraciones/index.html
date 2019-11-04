@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Declaraciones</title>
+</head>
+
+<body>
+    <h1>Declaraciones</h1>
+    <hr>
+
+    <!--Un programa de JavaScript es una lista de declaraciones que debe ejecutar una computadora. Las declaraciones de JavaScript están separadas por punto y coma. Cuando están separados por punto y coma, se permiten múltiples declaraciones en una línea. Si una declaración de JavaScript no cabe en una línea, el mejor lugar para romperla es después de un operador.-->
+    <p id="demo"></p>
+    <script>
+        var x = 5; y = 6; z = x + y;
+        document.getElementById("demo").innerHTML = "El valor de z es" + z + ".";
+    </script>
+    <hr>
+
+    <!--Los bloques de código JavaScript se escriben entre {y}-->
+    <button type="button" onclick="myFunction()">Click</button>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+        function myFunction() {
+            document.getElementById("demo1").innerHTML = "¡Hola!";
+            document.getElementById("demo2").innerHTML = "Adios!";
+        }
+    </script>
+    <hr>
+
+    <!--Las declaraciones de JavaScript a menudo comienzan con una palabra clave para identificar la acción de JavaScript que se realizará.-->
+</body>
+
+</html>

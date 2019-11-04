@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Errores de JS: Lanzar e intentar atrapar</title>
+</head>
+
+<body>
+    <h1>Errores</h1>
+    <hr>
+
+    <!--La trydeclaración le permite probar un bloque de código en busca de errores.-->
+
+    <!--La catchdeclaración le permite definir un bloque de código que se ejecutará, si se produce un error en el bloque try.-->
+
+    <!--La throwdeclaración le permite crear errores personalizados. Técnicamente puedes lanzar una excepción (lanzar un error). La excepción puede ser un JavaScript String, a Number, a Booleano an Object. -->
+
+    <!--La finallydeclaración le permite ejecutar código, después de intentar y atrapar, independientemente del resultado.-->
+
+    <!--Cuando ocurre un error, JavaScript normalmente se detendrá y generará un mensaje de error. El término técnico para esto es: JavaScript arrojará una excepción (arrojará un error). JavaScript creará un objeto Error con dos propiedades: nombre y mensaje .-->
+
+    <p id="demo"></p>
+    <script>
+        try {
+            adddlert("Bienvenido.")
+        }
+        catch (err) {
+            document.getElementById("demo").innerHTML = err.message + " - " + err.name;
+        }
+    </script>
+    <hr>
+
+    <!--Si lo usa throwjunto con tryy catch, puede controlar el flujo del programa y generar mensajes de error personalizados. Este ejemplo examina la entrada. Si el valor es incorrecto, se produce una excepción (err). La excepción (captura) se detecta mediante la instrucción catch y se muestra un mensaje de error personalizado.-->
+    <p>Ingrese un número entre 5 y 10:</p>
+    <input type="text" id="demo1">
+    <button type="button" onclick="funcion1()">Click</button>
+    <p id="demo2"></p>
+    <script>
+        function funcion1() {
+            document.getElementById("demo2").innerHTML = ""
+            var x = document.getElementById("demo1").value;
+            try {
+                if (x == "") throw "vacio.";
+                if (isNaN(x)) throw "no es un numero.";
+                x = Number(x);
+                if (x < 5) throw "demasiado bajo."
+                if (x > 10) throw "demasiado alto."
+            }
+            catch (err) {
+                document.getElementById("demo2").innerHTML = "Valor " + err;
+            }
+        }
+    </script>
+    <hr>
+
+    <!--La finallydeclaración le permite ejecutar código, después de intentar y atrapar, independientemente del resultado-->
+    <p>Ingrese un número entre 5 y 10:</p>
+    <input type="text" id="demo3">
+    <button type="button" onclick="funcion2()">Click</button>
+    <p id="demo4"></p>
+    <script>
+        function funcion2() {
+            document.getElementById("demo4").innerHTML = ""
+            var x = document.getElementById("demo3").value;
+            try {
+                if (x == "") throw "vacio.";
+                if (isNaN(x)) throw "no es un numero.";
+                x = Number(x);
+                if (x < 5) throw "demasiado bajo."
+                if (x > 10) throw "demasiado alto."
+            }
+            catch (err) {
+                document.getElementById("demo4").innerHTML = "Valor " + err;
+            }
+            finally {
+                document.getElementById("demo3").value = "";
+            }
+        }
+    </script>
+    <hr>
+
+    <!--La propiedad de nombre de error puede devolver seis valores diferentes: -->
+
+    <!--EvalError: Se ha producido un error en la función eval (). Las versiones más recientes de JavaScript no arrojan EvalError.-->
+
+    <!--RangeError: Se ha producido un número "fuera de rango"-->
+    <p id="demo5"></p>
+    <script>
+        var num = 1;
+        try {
+            num.toPrecision(500);
+        }
+        catch (err) {
+            document.getElementById("demo5").innerHTML = err.name + " - " + err.message;
+        }
+    </script>
+    <hr>
+
+    <!--Error de referencia: Se ha producido una referencia ilegal, una variable que no ha sido declarada, -->
+    <p id="demo6"></p>
+    <script>
+        var a;
+        try {
+            a = b + 1;
+        }
+        catch (err) {
+            document.getElementById("demo6").innerHTML = err.name + " - " + err.message;
+        }
+    </script>
+    <hr>
+
+    <!--Error de sintaxis: Se ha producido un error de sintaxis. si intenta evaluar el código con un error de sintaxis.-->
+    <p id="demo7"></p>
+    <script>
+        try {
+            eval("aler('Hello)");
+        }
+        catch (err) {
+            document.getElementById("demo7").innerHTML = err.name + " - " + err.message;
+        }
+    </script>
+    <hr>
+
+    <!--Error de tecleado: Ha ocurrido un error de tipo. si usa un valor que está fuera del rango de tipos esperados-->
+    <p id="demo8"></p>
+    <script>
+        try {
+            num.toUpperCase();
+        }
+        catch (err) {
+            document.getElementById("demo8").innerHTML = err.name + " - " + err.message;
+        }
+    </script>
+    <hr>
+
+    <!--URIError: Se ha producido un error en encodeURI (). si usa caracteres ilegales en una función URI-->
+    <p id="demo9"></p>
+    <script>
+        try {
+            decodeURI("%%%");
+        }
+        catch (err) {
+            document.getElementById("demo9").innerHTML = err.name + " - " + err.message;
+        }
+    </script>
+    <hr>
+
+    <h1>Errores Comunes</h1>
+    <hr>
+
+    <!--Los programas de JavaScript pueden generar resultados inesperados si un programador usa accidentalmente un operador de asignación ( =), en lugar de un operador de comparación ( ==) en una instrucción if. Una asignación siempre devuelve el valor de la asignación.-->
+    <!--Todos los números en JavaScript se almacenan como números de coma flotante de 64 bits-->
+    <!-- romper una declaración en el medio de una cadena no funcionará. Debe usar una "barra diagonal inversa" si debe romper una declaración en una cadena-->
+    <p id="demo10"></p>
+    <script>
+        var c = 0;
+        var e = 0.1;
+        var f = 0.2;
+        var g = e + f;
+        document.getElementById("demo10").innerHTML = Boolean(c == 10) + " - " + Boolean(c = 10) + " - " + Boolean(c = 0) + "<br>" + g + "<br>" + "Hola \
+        Mundo!";
+    </script>
+    <hr>
+
+    <!--Es un error común olvidar que las switch declaraciones usan una comparación estricta-->
+    <script>
+        var d = 10;
+        switch (d) {
+            case "10": alert("Hola");
+        }
+    </script>
+
+    <!--Debido a un punto y coma fuera de lugar, este bloque de código se ejecutará independientemente del valor de x.-->
+    <p id="demo11"></p>
+    <script>
+        var h = 5;
+        if(h == 19);
+        {
+            document.getElementById("demo11").innerHTML="Hola";
+        }
+    </script>
+    <hr>
+
+    <!--Si una declaración está incompleta JavaScript intentará completar la declaración leyendo la siguiente línea. return JavaScript lo cerrará automáticamente, Nunca rompa una declaración de devolución.-->
+
+    <!--En JavaScript, los objetos usan índices con nombre. Si utiliza un índice con nombre, al acceder a una matriz, JavaScript redefinirá la matriz en un objeto estándar. Después de la redefinición automática, los métodos de matriz y las propiedades producirán resultados indefinidos o incorrectos-->
+
+    <!--JSON no permite comas finales.-->
+
+    <!--Puede probar si existe un objeto probando si el tipo es undefined. Pero no puede probar si un objeto es null, porque esto arrojará un error si el objeto es undefined-->
+    <p id="demo12"></p>
+    <script>
+    document.getElementById("demo12").innerHTML=typeof myObj === "undefined";
+    </script>
+    <hr>
+
+    <!--Debido a esto, debe realizar una prueba de no undefined antes de poder realizar una prueba de no null-->
+    <p id="demo13"></p>
+    <script>
+    document.getElementById("demo13").innerHTML=typeof myObj !== "undefined" && myObj !== null;
+    </script>
+    <hr>
+
+</body>
+
+</html>

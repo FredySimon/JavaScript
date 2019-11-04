@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objetos</title>
+</head>
+
+<body>
+    <!--Objeto: propiedades: se definen en modo nombre:valor, Métodos: acciones que se pueden ejecutar a un objeto-->
+    <h1>Objetos</h1>
+    <hr>
+
+    <!--objetos nativos: no dependen del navegador son :constructores integrados y Data. -->
+    <!--constructores integrados: 1. String, 2.Number, 3.Boolean, 4. Array, 5. RegExp, 6.Function, 7.Date, 8.Math, 9.Object-->
+    <script>
+        var x1 = "asdasd";
+        var x2 = 456;
+        var x3 = true;
+        var x4 = ["asd", "asd", "asdasd"];
+        var x5 = /{}/; //para validar correos electronicos
+        var x6 = function () { };
+        var x7 = new Date();
+        var x8;
+        var x9 = { nombre: "Fredy", apellido: "Simón", nacimiento: 2000 };
+    </script>
+
+    <!--objetos de alto nivel: dependen del navegador son : window, screen, navigator, location, history, document-->
+
+    <!--instancair una cadena y concatenar una cadena-->
+    <p id="demo"></p>
+    <script>
+        var draw = 'Desarrollo de aplicaciones web';
+        var dam = "Desarrollo de aplicaciones multiplataforma";
+        var asir = "Administración de 'Sistemas Informáticos' en Red";
+        var smr = "Sistemas \"Microinformáticos\" y Redes";
+        var ciclos = '';
+        ciclos += "Hay 3 ciclos de Grado Superior: \n";
+        ciclos += draw + ", " + dam + " y " + asir + "\n";
+        ciclos += " y 1 ciclo de Grado Medio: \n";
+        ciclos += smr;
+        document.getElementById("demo").innerHTML=ciclos;
+    </script>
+    <hr>
+    
+    <!--definir objeto: Los espacios y los saltos de línea no son importantes. Una definición de objeto puede abarcar varias líneas. Propiedad del objeto: El nombre: los pares de valores en los objetos JavaScript se denominan propiedades. Puede acceder a las propiedades del objeto de dos maneras-->
+    <p id="demo1"></p>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue"
+        };
+        document.getElementById("demo1").innerHTML = person.firstName + " " + person["lastName"];
+    </script>
+    <hr>
+
+      <!--Todos los tipos de datos de JavaScript tienen un valueOf()y un toString()método.-->
+
+    <!---->
+
+</body>
+
+</html>

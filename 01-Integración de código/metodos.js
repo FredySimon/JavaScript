@@ -1,3 +1,3 @@
-function holamundo() {
+function holaMundo() {
     alert("Hola, mundo");
 }

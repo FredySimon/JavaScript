@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ECMAScript - JavaScript</title>
+</head>
+
+<body>
+    <h1>ECMAScript 5 - JavaScript 5</h1>
+    <hr>
+    <!--ECMAScript 5 también se conoce como ES5 y ECMAScript 2009. Este capítulo presenta algunas de las características más importantes de ES5.-->
+
+    <!--"use strict" define que el código JavaScript debe ejecutarse en "modo estricto".-->
+
+    <!--String.trim() elimina el espacio en blanco de ambos lados de una cadena.-->
+
+    <!--El isArray()método verifica si un objeto es una matriz.-->
+
+    <!--El forEach()método llama a una función una vez para cada elemento de la matriz.-->
+
+    <!--El map()método crea una nueva matriz al realizar una función en cada elemento de la matriz.-->
+
+    <!--El filter()método crea una nueva matriz con elementos de matriz que pasa una prueba.-->
+
+    <!--El reduce()método ejecuta una función en cada elemento de la matriz para producir (reducirlo) un solo valor. funciona de izquierda a derecha en la matriz. no reduce la matriz original. El reduce()método puede aceptar un valor inicial-->
+
+    <!--El reduceRight()método es igual al reduce() metodo perod de derecha a izquierda-->
+
+    <!--El every()método verifica si todos los valores de la matriz pasan una prueba.-->
+
+    <!--El some()método verifica si algunos valores de matriz pasan una prueba.-->
+
+    <!--El indexOf()método busca en una matriz un valor de elemento y devuelve su posición. Array.indexOf() devuelve -1 si no se encuentra el artículo. Si el elemento está presente más de una vez, devuelve la posición de la primera aparición.-->
+
+    <!--Array.lastIndexOf() devuelve la posición de la última aparición del elemento especificado.-->
+
+    <!--Un uso común de JSON es recibir datos de un servidor web. La función JavaScript JSON.parse()se usa para convertir el texto en un objeto JavaScript.-->
+
+    <!--Un uso común de JSON es enviar datos a un servidor web. Al enviar datos a un servidor web, los datos deben ser una cadena. Use la función de JavaScript JSON.stringify()para convertirlo en una cadena.-->
+
+    <!--Date.now() devuelve el número de milisegundos desde la fecha cero. Date.now()devuelve lo mismo que getTime () realizado en un Dateobjeto-->
+
+    <!--Captadores y Establecedores de Propiedades: ES5 le permite definir métodos de objeto con una sintaxis que parece obtener o establecer una propiedad.-->
+    <p id="demo1"></p>
+    <script>
+        var objeto1 = {nombre:"Fredy", edad:19, ciudad:"Guatemala"};
+        var miJSON = JSON.stringify(objeto1);
+        var objeto2 = {nombre:"Fredy", apellido:"Simón", edad:19, ciudad:"Guatemala", get nombreCompleto(){return this.nombre + " " + this.apellido;}};
+        document.getElementById("demo1").innerHTML=miJSON + "<br>" + Date.now() + " - " + new Date().getTime() + "<br>" + objeto2.nombreCompleto;
+    </script>
+    <hr>
+
+    <!--Nuevos métodos de propiedad de objeto: Object.defineProperty() es un nuevo método Object en ES5. Le permite definir una propiedad de objeto y / o cambiar el valor y / o metadatos de una propiedad.-->
+    <p id="demo2"></p>
+    <script>
+        var persona = {nompre:"Josué", apellido:"Raymundo", idioma:"No"};
+        Object.defineProperty(persona, "idioma", {
+            value:"Español",
+            writable: true,
+            enumerable: true,
+            configurable: true
+        });
+        var texto1 = "";
+        for (var x in persona){
+            texto1 += persona[x] + ". <br>";
+        }
+        document.getElementById("demo2").innerHTML=texto1;
+    </script>
+    <hr>
+
+    <!--ocultar propiedades de la enumeración-->
+    <p id="demo3"></p>
+    <script>
+    var persona1  = {nompre:"Josué", apellido:"Raymundo", idioma:"No"};
+    Object.defineProperty(persona1, "idioma", {
+        enumerable: false
+    });
+    var texto2 = "";
+    for (var x in persona1){
+        texto2 += persona1[x] + ". <br>";
+    }
+    document.getElementById("demo3").innerHTML=texto2;
+    </script>
+    <hr>
+
+     <!--El charAt()método devuelve el carácter en un índice (posición) especificado en una cadena-->
+
+      <!--ECMAScript 5 (2009) permite el acceso a la propiedad [] en cadenas. No funciona en Internet Explorer 7 o anterior. Es de solo lectura. str [0] = "A" no da ningún error (¡pero no funciona!)-->
+
+      <!--ECMAScript 5 permite las comas finales en las definiciones de objetos y matrices. Internet Explorer 8 se bloqueará. JSON no permite comas finales.-->
+    
+      <!-- romper una declaración en el medio de una cadena no funcionará. Debe usar una "barra diagonal inversa" si debe romper una declaración en una cadena. Una forma más segura de dividir un literal de cadena es utilizar la suma de cadenas-->
+
+    <!--Palabras reservadas como nombres de propiedad palabras reservadas-->
+
+    <h1>ECMAScript 6 - JavaScript 2015</h1>
+    <hr>
+
+    <!--ES6 introdujo clases. -->
+
+    <!--La letdeclaración le permite declarar una variable con alcance de bloque.-->
+
+    <!--La constdeclaración le permite declarar una constante (una variable de JavaScript con un valor constante). Las constantes son similares a las variables let, excepto que el valor no se puede cambiar.-->
+
+    <!--Las funciones de flecha permiten una sintaxis corta para escribir expresiones de funciones. No necesita la functionpalabra clave, la returnpalabra clave y las llaves. Deben definirse antes de usarse.-->
+
+    <!--ES6 permite que los parámetros de la función tengan valores predeterminados.-->
+
+    <!--El find()método devuelve el valor del primer elemento de matriz que pasa una función de prueba.-->
+
+     <!--El findIndex()método devuelve el índice del primer elemento de la matriz que pasa a una función de prueba.-->
+
+    <!--ES6 agregó las siguientes propiedades al objeto Number:-->
+
+    <!--EPSILON, MIN_SAFE_INTEGER, MAX_SAFE_INTEGER-->
+
+    <!--El Number.isInteger()método devuelve true si el argumento es un entero.-->
+
+    <!--Un entero seguro es un entero que se puede representar exactamente como un número de doble precisión. El Number.isSafeInteger()método devuelve truesi el argumento es un entero seguro. Los enteros seguros son todos enteros desde - (2 53 - 1) hasta + (2 53 - 1). Esto es seguro: 9007199254740991. Esto no es seguro: 9007199254740992.-->
+
+    <!--El isFinite()método global devuelve falsesi el argumento es Infinityo NaN. De lo contrario, devuelve true-->
+    <p id="demo4"></p>
+    <script>
+    const a = (x, y) => x * y;
+    function funcion(x, y=10){
+        return x + y;
+    }
+    document.getElementById("demo4").innerHTML=a(5, 5) + "<br>" + funcion(5) + "<br>" + Number.EPSILON + "<br>" + Number.MIN_SAFE_INTEGER + "<br>" + Number.MAX_SAFE_INTEGER + "<br>" + Number.isInteger(10) + "<br>" + Number.isInteger(10.5) + "<br>" + Number.isSafeInteger(10) + "<br>" + Number.isSafeInteger(12345678901234567890) + "<br>" + isFinite(10/0) + "<br>" + isFinite(10);
+    </script>
+    <hr>
+
+    <!--El isNaN()método global devuelve truesi el argumento es NaN. De lo contrario, devuelve false-->
+    <p id="demo6"></p>
+    <script>
+    document.getElementById("demo6").innerHTML=isNaN("Hola") + "<br>" + isNaN(10);
+    </script>
+    <hr>
+    
+    <!--El operador de exponenciación ( **) eleva el primer operando a la potencia del segundo operando. x ** yproduce el mismo resultado que Math.pow(x,y)-->
+    <p id="demo7"></p>
+    <script>
+    document.getElementById("demo7").innerHTML= 5 ** 2 + "<br>" + Math.pow(5, 2);
+    </script>
+    <hr>
+
+    <!---->
+</body>
+
+</html>

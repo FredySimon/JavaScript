@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fechas</title>
+</head>
+<body>
+    <h1>Fechas</h1>
+    <hr>
+
+    <!--Fecha y hora por separado: año(0000), mes(0-11), día:date(1-31), horas(0-23), minutos(0-59), segundos(0-59), milisegundos(0-999), time:Obtenga el tiempo (milisegundos desde el 1 de enero de 1970),  day:Obtenga el día de la semana como un número (0-6), Date.now: Consigue el tiempo.-->
+    <p id="demo"></p>
+    <script>
+    var a = new Date();
+    var b = a.getMonth() + 1;
+    document.getElementById("demo").innerHTML= "Fecha:" + a.getFullYear() + "/" + b + "/" + a.getDate() + " Hora: " + a.getHours() + ":" + a.getMinutes() + ":" + a.getSeconds() + ":" + a.getMilliseconds() + " - " + a.getTime() + " - " + a.getDay() + " - ";
+    </script>
+    <hr>
+
+    <!--Fecha completa. -->
+    <!--fecha y hora especificadas.-->
+    <!--No puedes omitir el mes. Si proporciona solo un parámetro, se tratará como milisegundos.-->
+    <!--Siglo anterior: si pone el año con menos de 4 digitos lo tomara como 1900 algo-->
+    <!--new Date(dateString)crea un nuevo objeto de fecha a partir de una cadena de fecha-->
+    <!--El tiempo cero es el 1 de enero de 1970 a las 00:00:00 UTC. Un día (24 horas) es 86 400 000 milisegundos.-->
+    <!--El 1 de enero de 1970 menos 100 000 000 000 milisegundos es aproximadamente el 31 de octubre de 1966-->
+    <!--El toUTCString()método convierte una fecha en una cadena UTC (un estándar de visualización de fecha).-->
+     <!--El toDateString()método convierte una fecha a un formato más legible.-->
+     <!--ISO 8601 es el estándar internacional para la representación de fechas y horas.La sintaxis ISO 8601 (AAAA-MM-DD) también es el formato de fecha JavaScript preferido. Dependiendo de su zona horaria, el resultado variará entre el 24 y el 25 de marzo.-->
+    <!--Las fechas ISO se pueden escribir sin especificar el día. Las zonas horarias variarán el resultado entre el 28 de febrero y el 01 de marzo.-->
+    <!--Las fechas ISO se pueden escribir sin mes y día. Las zonas horarias variarán el resultado entre el 31 de diciembre de 2014 y el 01 de enero de 2015.-->
+     <!--Las fechas ISO se pueden escribir con horas, minutos y segundos adicionales. La fecha y la hora se separan con una T mayúscula, La hora UTC se define con una letra mayúscula Z. Si desea modificar el tiempo relativo a UTC, elimine la Z y agregue + HH: MM o -HH: MM en su lugar. UTC (hora universal coordinada) es lo mismo que GMT (hora media de Greenwich).-->
+     <!--Las fechas cortas se escriben con una sintaxis "MM / DD / AAAA".-->
+     <!--En algunos navegadores, meses o días sin ceros a la izquierda pueden producir un error. El comportamiento de "AAAA / MM / DD" no está definido. El comportamiento de "DD-MM-AAAA" tampoco está definido. Algunos navegadores intentarán adivinar el formato. Algunos devolverán NaN.-->
+    <!--Las fechas largas se suelen escribir con una sintaxis "MMM DD AAAA" como esta. Mes y día pueden ser en cualquier orden. Y, el mes se puede escribir completo o abreviado. Las comas son ignoradas. Los nombres no distinguen entre mayúsculas y minúsculas-->
+    <!--Si tiene una cadena de fecha válida, puede usar el Date.parse()método para convertirla a milisegundos. Date.parse() devuelve el número de milisegundos entre la fecha y el 1 de enero de 1970.-->
+    <!--Luego puede usar el número de milisegundos para convertirlo en un objeto de fecha-->
+    <p id="demo1"></p>
+    <script>
+    var c = new Date(2018, 11, 24, 10, 33, 30, 0);
+    var d = new Date(2018);
+    var e = new Date(9, 11, 24);
+    var f = new Date("Octubre 13, 2014 11:13:00");
+    var g = new Date(0);
+    var h = new Date(-100000000000);
+    var i = new Date("2015-03-25");
+    var j = new Date("2015-03");
+    var k = new Date("2015");
+    var l = new Date("2015-03-25T12:00:00-06:00");
+    var m = new Date("03/25/2015");
+    var n = new Date("Mar 25 2015");
+    var o = Date.parse("March, 21, 2012");
+    var p = new Date(o);
+    document.getElementById("demo1").innerHTML=a + "<br>" + c + "<br>" + d + "<br>" + e + "<br>" + f + "<br>" + g + "<br>" + new Date(86400000) + "<br>" + h + "<br>" + "UTC: " + a.toUTCString() + "<br>" + a.toDateString() + "<br>" + i + "<br>" + j + "<br>" + k + "<br>" + l + "<br>" + m + "<br>" + n + "<br>" + o + "<br>" + p;
+    </script>
+    <hr>
+
+     <!--Para obtener mese:Puede usar una matriz de nombres y getMonth()devolver el mes como nombre -->
+     <p id="demo2"></p>
+     <script>
+     var q = new Date();
+     var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+     document.getElementById("demo2").innerHTML=meses[q.getMonth()];
+     </script>
+     <hr>
+
+     <!--Puede usar una matriz de nombres y getDay()devolver el día de la semana como un nombre:-->
+    <p id="demo3"></p>
+    <script>
+    var dias = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    document.getElementById("demo3").innerHTML=dias[q.getDay()]; 
+    </script>
+    <hr>
+
+    <!--getTime(): se puede usar para convertir fechas en números.-->
+    <p id="demo4"></p>
+    <script>
+    document.getElementById("demo4").innerHTML=q.getTime();
+    </script>
+    <hr>
+
+    <!--El setFullYear()método establece el año de un objeto de fecha. puede establecer opcionalmente mes y día-->
+    <!--El setMonth()método establece el mes de un objeto de fecha (0-11)-->
+    <!--El setDate()método establece el día de un objeto de fecha (1-31)-->
+    <!--El setDate()método también se puede usar para agregar días a una fecha-->
+    <!--El setHours()método establece las horas de un objeto de fecha (0-23)-->
+    <!--El setMinutes()método establece los minutos de un objeto de fecha (0-59)-->
+    <!--El setSeconds()método establece los segundos de un objeto de fecha (0-59)-->
+    <p id="demo5"></p>
+    <script>
+    var r = new Date();
+    r.setFullYear(2020, 0, 0);
+    var s = new Date();
+    s.setMonth(11);
+    var t = new Date();
+    t.setDate(15);
+    var u = new Date();
+    u.setDate(u.getDate() + 1);
+    var v = new Date();
+    v.setHours(22);
+    var w = new Date();
+    w.setMinutes(30);
+    var x = new Date();
+    x.setSeconds(30);
+    document.getElementById("demo5").innerHTML=r + "<br>" + s + "<br>" + t + "<br>" + u + "<br>" + v + "<br>" + w + "<br>" + x;
+    </script>
+    <hr>
+
+    <!--Las fechas se pueden comparar fácilmente.-->
+    <p id="demo6"></p>
+    <script>
+    var hoy = new Date();
+    var algunDia = new Date();
+    algunDia.setFullYear(2100, 0, 14);
+    var texto = '';
+
+    if(algunDia > hoy){
+        texto= "Hoy es antes del 14 de enero de 2100.";
+    } else {
+        texto= "Hoy es después del 14 de enero de 2100.";
+    };
+    document.getElementById("demo6").innerHTML=texto;
+    </script>
+    <hr>
+   
+
+    <!---->
+
+</body>
+</html>

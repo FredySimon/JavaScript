@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Uso estricto</title>
+</head>
+
+<body>
+    <h1>Uso estricto</h1>
+    <hr>
+    
+    <!--"use strict"; Define que el código JavaScript debe ejecutarse en "modo estricto".-->
+
+    <!--La "use strict"directiva era nueva en ECMAScript versión 5. No es una declaración, sino una expresión literal, ignorada por versiones anteriores de JavaScript. El propósito de "use strict"es indicar que el código debe ejecutarse en "modo estricto". Con el modo estricto, no puede, por ejemplo, usar variables no declaradas. Todos los navegadores modernos admiten "uso estricto", excepto Internet Explorer 9 y versiones inferiores.-->
+
+    <!--Puede usar el modo estricto en todos sus programas. Le ayuda a escribir código más limpio, como evitar que use variables no declaradas. "use strict" es solo una cadena, por lo que IE 9 no arrojará un error incluso si no lo entiende.-->
+
+    <!--El modo estricto se declara agregando "use estricto"; al comienzo de un script o una función. Declarado al comienzo de un script, tiene un alcance global (todo el código en el script se ejecutará en modo estricto)-->
+    <script>
+        "use strict";
+        x = 3.14;
+    </script>
+
+    <script>
+        "use strict";
+        funcion();
+        function funcion() {
+            y = 3.14;
+        }
+    </script>
+
+    <!--Declarado dentro de una función, tiene alcance local (solo el código dentro de la función está en modo estricto):-->
+    <script>
+        a = 454;
+        funcion1();
+        function funcion1() {
+            "use strict";
+            y = 3.14;
+        }
+    </script>
+
+    <!--El modo estricto facilita la escritura de JavaScript "seguro". El modo estricto cambia la "sintaxis incorrecta" previamente aceptada en errores reales. Como ejemplo, en JavaScript normal, escribir mal un nombre de variable crea una nueva variable global. En modo estricto, esto arrojará un error, haciendo imposible crear accidentalmente una variable global. En JavaScript normal, un desarrollador no recibirá ningún comentario de error al asignar valores a propiedades no editables. En modo estricto, cualquier asignación a una propiedad no editable, una propiedad de obtención, una propiedad no existente, una variable no existente o un objeto no existente, arrojará un error.-->
+
+    <!--Usar un objeto, sin declararlo, no está permitido:-->
+    <script>
+        "use strict";
+        b = { nombre: "Fredy", edad: 10 };
+    </script>
+
+    <!--No se permite eliminar una variable (u objeto).-->
+    <script>
+        "use strict";
+        var c = 3.14;
+        delete c;
+    </script>
+
+    <!--No se permite eliminar una función.-->
+    <script>
+        "use strict";
+        function funcion2(x, y) { };
+        delete funcion2;
+    </script>
+
+    <!--Duplicar un nombre de parámetro no está permitido:-->
+    <script>
+        "use strict";
+        function funcion3(a, a) {}
+    </script>
+
+    <!--No se permiten literales numéricos octales-->
+    <script>
+        "use strict";
+        var d = 010;
+    </script>
+
+    <!--Los caracteres de escape octal no están permitidos.-->
+    <script>
+    "use strict";
+    var e = "\010";
+    </script>
+
+    <!--Escribir en una propiedad de solo lectura no está permitido.-->
+    <script>
+    "use strict";
+    var objeto = {};
+    Object.defineProperty(objeto, "x", {value:0, writable:false});
+    objeto.x=520;
+    </script>
+
+    <!--Escribir en una propiedad de solo obtención no está permitido.-->
+    <script>
+        "use strict";
+        var objeto1 = {get x() {return 0}};
+        objeto1.x=354;
+    </script>
+
+    <!--No se permite eliminar una propiedad no recuperable-->
+    <script>
+        "use strict";
+        delete Object.prototype;
+    </script>
+
+    <!--La palabra eval no se puede usar como variable-->
+    <script>
+        "use strict";
+        var eval = 314;
+    </script>
+
+    <!--La palabra arguments no se puede usar como variable-->
+    <script>
+        "use strict";
+        var arguments = 258;
+    </script>
+
+    <!--La with declaración no está permitida.-->
+    <script>
+        "use strict";
+        with (Math){x=cos(2)};
+    </script>
+
+    <!--Por razones de seguridad, eval()no está permitido crear variables en el ámbito desde el que se llamó-->
+    <script>
+    "use strict";
+    eval("var f = 2");
+    alert(f);
+    </script>
+
+    <!--La thispalabra clave en funciones se comporta de manera diferente en modo estricto. La thispalabra clave se refiere al objeto que llamó a la función. Si no se especifica el objeto, las funciones en modo estricto volverán undefinedy las funciones en modo normal devolverán el objeto global-->
+    <script>
+    "use strict";
+    function  funcion4() {
+        alert(this);
+    }
+    funcion4();
+    </script>
+
+    <!--Las palabras clave reservadas para futuras versiones de JavaScript NO se pueden usar como nombres de variables en modo estricto.Estos son:
+    implements
+    interface
+    let
+    package
+    private
+    protected
+    public
+    static
+    yield-->
+    <script>
+    "use strict";
+    var public = 1500;
+    </script>
+
+    <!--La directiva "usar estricto" solo se reconoce al comienzo de un script o una función.-->
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Booleanos</title>
+</head>
+<body>
+    <h1>Booleanos</h1>
+    <hr>
+    
+    <!--Un booleano de JavaScript representa uno de dos valores: verdadero o falso .-->
+    <button onclick="funcion1()">Click</button>
+    <p id="demo"></p>
+    <script>
+    function funcion1(){
+        document.getElementById("demo").innerHTML=Boolean(10>9);
+    }
+    </script>
+    <hr>
+
+    <!--El valor booleano de una expresión es la base de todas las comparaciones y condiciones de JavaScript.-->
+    <p id="demo1"></p>
+    <script>
+    var a = Boolean(100);
+    var b = Boolean(3.14);
+    var c = Boolean(-15);
+    var d = Boolean("Hello");
+    var e = Boolean('false');
+    var f = Boolean(1+7+3.14);
+        document.getElementById("demo1").innerHTML= a + "<br>" + b + "<br>" + c + "<br>" + d + "<br>" + e +  "<br>" + f;
+    </script>
+    <hr>
+
+    <!--El valor booleano de 0 (cero) es falso. El valor booleano de -0 (menos cero) es falso. El valor booleano de "" (cadena vacía) es falso. El valor booleano de undefined es falso. El valor booleano de nulo es falso. El valor booleano de falso es falso. El valor booleano de NaN es falso. -->
+    <p id="demo2"></p>
+    <script>
+    document.getElementById("demo2").innerHTML=Boolean(0) + "<br>" + Boolean(-0) + "<br>" + Boolean("") + "<br>" + Boolean() + "<br>" + Boolean(null) + "<br>" + Boolean(false) + "<br>" + Boolean(NaN) ;
+    </script>
+    <hr>
+
+    <!--Tenga en cuenta la diferencia entre (x == y) y (x === y). Comparar dos objetos JavaScript siempre devolverá falso.-->
+</body>
+</html>

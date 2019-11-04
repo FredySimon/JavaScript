@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rendimiento de JavaScript</title>
+</head>
+
+<body>
+    <h1>Rendimiento</h1>
+    <hr>
+    
+    <!--Las declaraciones o asignaciones que se pueden colocar fuera del ciclo harán que el ciclo se ejecute más rápido.-->
+    <p id="demo"></p>
+    <script>
+        var a;
+        var texto = '';
+        var matriz = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+        var b = matriz.length;
+        for (a = 0; a < b; a++) {
+            texto += matriz[a] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = texto;
+    </script>
+    <hr>
+
+    <!--Acceder al HTML DOM es muy lento, en comparación con otras declaraciones de JavaScript. Si espera acceder a un elemento DOM varias veces, acceda a él una vez y úselo como una variable local-->
+    <p id="demo1"></p>
+    <script>
+        var objeto;
+        objeto = document.getElementById("demo1")
+        objeto.innerHTML = "HOLA.";
+    </script>
+    <hr>
+
+    <!--Mantenga el número de elementos en el HTML DOM pequeño. Esto siempre mejorará la carga de la página y acelerará la representación (visualización de la página), especialmente en dispositivos más pequeños. Cada intento de buscar el DOM (como getElementsByTagName) se beneficiará de un DOM más pequeño.-->
+
+    <!--No cree nuevas variables si no planea guardar valores.-->
+    <script>
+        var nombreCompleto = nombre + " " + apellido;
+        document.getElementById("ejemplo").innerHTML = nombreCompleto;
+        document.getElementById("ejemplo").innerHTML = nombre + " " + apellido;
+    </script>
+
+    <!--Poner sus scripts en la parte inferior del cuerpo de la página permite que el navegador cargue la página primero. Mientras se descarga un script, el navegador no iniciará ninguna otra descarga. Además, toda la actividad de análisis y representación puede estar bloqueada. La especificación HTTP define que los navegadores no deben descargar más de dos componentes en paralelo.-->
+
+    <!--Una alternativa es usar defer="true"en la etiqueta del script. El atributo de aplazamiento especifica que el script debe ejecutarse después de que la página haya finalizado el análisis, pero solo funciona para scripts externos. Si es posible, puede agregar su script a la página por código, después de que la página se haya cargado-->
+    <script>
+        window.onload = function () {
+            var elemento = document.createElement("script");
+            elemento.src = "myScript.js"; //da error por que no hay archivo con ese nombre
+            document.body.appendChild(elemento);
+        };
+    </script>
+
+    <!--Evita usar la withpalabra clave. Tiene un efecto negativo en la velocidad. También satura los ámbitos de JavaScript. La withpalabra clave no está permitida en modo estricto.-->
+   
+</body>
+
+</html>

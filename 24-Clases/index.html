@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clases</title>
+</head>
+
+<body>
+    <h1>Clases</h1>
+    <hr>
+
+    <!--Una clase es un tipo de función, pero en lugar de usar la palabra clave functionpara iniciarla, usamos la palabra clave classy las propiedades se asignan dentro de un constructor()método. El método del constructor se llama automáticamente cuando se inicializa el objeto.-->
+    <!--El método constructor es especial, es donde se inicializan las propiedades, se llama automáticamente cuando se inicia una clase y debe tener el nombre exacto "constructor", de hecho, si no tiene un método constructor, JavaScript agregará Un método de constructor invisible y vacío. cualquier parámetro iría dentro de los paréntesis. -->
+    <!--Los métodos estáticos se definen en la clase misma y no en el prototipo. Eso significa que no puede llamar a un método estático en el objeto (mycar), sino en la clase (Car). Si desea utilizar el objeto mycar dentro del método estático, puede enviarlo como parámetro-->
+    <!--Para crear una herencia de clase, use la extends palabra clave. Una clase creada con una herencia de clase hereda todos los métodos de otra clase. El super()método se refiere a la clase padre. Al llamar al super()método en el método constructor, llamamos al método constructor del padre y tenemos acceso a las propiedades y métodos del padre.-->
+    <p id="demo"></p>
+    <script>
+        class carro {
+            constructor(marca) {
+                this.nombreCarro = marca;
+            }
+        }
+        miCarro = new carro("Ford");
+        class carro1 {
+            constructor(marca) {
+                this.nombreCarro = marca;
+            }
+            presentar(x) {
+                return x + this.nombreCarro;
+            }
+        }
+        miCarro1 = new carro1("Audi");
+        class carro2 {
+            constructor(marca) {
+                this.nombreCarro = marca;
+            }
+            static hola(x) {
+                return "Hola! " + x.nombreCarro;
+            }
+        }
+        miCarro2 = new carro2("Ford");
+        class carro3 {
+            constructor(marca) {
+                this.nombreCarro = marca;
+            }
+            presentar() {
+                return "Yo tengo un " + this.nombreCarro;
+            }
+        }
+        class Modelo extends carro3 {
+            constructor(marca, modelo) {
+                super(marca);
+                this.modeloCarro = modelo;
+            }
+            mostrar() {
+                return this.presentar() + ', es un ' + this.modeloCarro;
+            }
+        }
+        miCarro3 = new Modelo("Ford", "Mustang");
+        document.getElementById("demo").innerHTML = miCarro.nombreCarro + "<br>" + miCarro1.presentar("Yo tengo un ") + "<br>" + carro2.hola(miCarro2) + "<br>" + miCarro3.mostrar();
+    </script>
+    <hr>
+
+    <!--Las clases también le permiten usar captadores y establecedores. Puede ser inteligente usar getters y setters para sus propiedades, especialmente si desea hacer algo especial con el valor antes de devolverlos o antes de configurarlos. Para agregar captadores y establecedores en la clase, use las palabras clave gety set. incluso si el captador es un método, no usa paréntesis cuando desea obtener el valor de la propiedad. El nombre del método getter / setter no puede ser el mismo que el nombre de la propiedad. Muchos programadores usan un carácter de subrayado _ antes del nombre de la propiedad para separar el captador / definidor de la propiedad real-->
+    <p id="demo4"></p>
+    <script>
+        class carro4 {
+            constructor(marca) {
+                this.nombreCarro = marca;
+            }
+            get carroNombre() {
+                return this.nombreCarro;
+            }
+            set carroNombre(x) {
+                this.nombreCarro = x;
+            }
+        }
+        miCarro4 = new carro4("BMW");
+        //miCarro4.carroNombre = "Volvo"; //set
+        document.getElementById("demo4").innerHTML = miCarro4.carroNombre;
+    </script>
+    <hr>
+
+    <!--A diferencia de las funciones y otras declaraciones de JavaScript, las declaraciones de clase no se izan. Eso significa que debe declarar una clase antes de poder usarla.-->
+
+    <!--La sintaxis en las clases debe escribirse en "modo estricto". Recibirá un error si no sigue las reglas del "modo estricto". En "modo estricto" obtendrá un error si utiliza una variable sin declararla. -->
+    <script>
+        class cualquiera {
+            constructor(para) {
+                i = 0;
+                this.asd = para;
+            }
+        }
+        var otra = new cualquiera("sadsda");
+    </script>
+
+    <!---->
+   
+
+
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Numeros</title>
+</head>
+
+<body>
+    <h1>Números</h1>
+    <hr>
+
+    <!--Los números extra grandes o extra pequeños se pueden escribir con notación científica (exponente). Los enteros (números sin notación de punto o exponente) tienen una precisión de hasta 15 dígitos. El número máximo de decimales es 17, pero la aritmética de coma flotante no siempre es 100% precisa, Para resolver esto ayuda a multiplicar y dividir. JavaScript intentará convertir cadenas en números en todas las operaciones numéricas.-->
+    <p id="demo"></p>
+    <script>
+        var a = 123e5 + " - " + 123e-5;
+        var b = 999999999999999 + " - " + 9999999999999999;
+        var c = 0.2 + 0.1;
+        var d = (0.2 * 10 + 0.1 * 10) / 10;
+        var e = "100" / "10";
+        document.getElementById("demo").innerHTML = a + "<br>" + b + "<br>" + c + "<br>" + d + "<br>" + e;
+    </script>
+    <hr>
+
+    <!--NaN es una palabra reservada de JavaScript que indica que un número no es un número legal. Intentar hacer aritmética con una cadena no numérica dará como resultado NaN(No es un número). Puede usar la función global de JavaScript isNaN()para averiguar si un valor es un número. Mirar hacia fuera para NaN. Si lo usa NaNen una operación matemática, el resultado también será NaN. O el resultado podría ser una concatenación. NaNes un número: typeof NaNdevuelve number-->
+    <p id="demo1"></p>
+    <script>
+        var f = 100 / "Apple";
+        document.getElementById("demo1").innerHTML = f + " - " + isNaN(f) + " - " + typeof NaN + "<br>" + Number.NaN;
+    </script>
+    <hr>
+
+    <!--Infinity(o -Infinity) es el valor que JavaScript devolverá si calcula un número fuera del número más grande posible. La división por 0 (cero) también genera Infinity. typeof Infinitydevuelve number-->
+    <p id="demo2"></p>
+    <script>
+        var myNumber = 2;
+        var txt = "";
+        while (myNumber != Infinity) {
+            myNumber = myNumber * myNumber;
+            txt = txt + myNumber + "<br>";
+        }
+        var g = (2 / 0) + " \\ " + (-2 / 0);
+        document.getElementById("demo2").innerHTML = txt + g + "<br>" + typeof Infinity;
+    </script>
+    <hr>
+
+    <!--JavaScript interpreta las constantes numéricas como hexadecimales si van precedidas de 0x-->
+    <p id="demo3"></p>
+    <script>
+        var h = 0xFF;
+        document.getElementById("demo3").innerHTML = "0xFF = " + h;
+    </script>
+    <hr>
+
+    <!--El toString()método devuelve un número como una cadena. Nunca escriba un número con un cero a la izquierda (como 07). Algunas versiones de JavaScript interpretan los números como octales si están escritos con un cero a la izquierda. Por defecto, JavaScript muestra los números como decimales base 10. Pero puede usar el toString()método para generar números de la base 2 a la base 36.  Hexadecimal es la base 16. Decimal es base 10. Octal es la base 8. Binario es base 2.-->
+    <p id="demo4"></p>
+    <script>
+        var myNumber = 32;
+        document.getElementById("demo4").innerHTML = myNumber.toString() + " = Decimal: " + myNumber.toString(10) + ", Hexadecimal: " + myNumber.toString(16) + ", Octal: " + myNumber.toString(8) + ", Binary: " + myNumber.toString(2) + "<br>" + (123).toString() + "<br>" + (1000 + 234).toString(); 
+    </script>
+    <hr>
+
+    <!--toExponential() devuelve una cadena, con un número redondeado y escrito usando notación exponencial. Un parámetro define el número de caracteres detrás del punto decimal. El parámetro es opcional. Si no lo especifica, JavaScript no redondeará el número.-->
+    <p id="demo5"></p>
+    <script>
+        var i = 9.656;
+        document.getElementById("demo5").innerHTML = i.toExponential() + "<br>" + i.toExponential(2) + "<br>" + i.toExponential(4) + "<br>" + i.toExponential(6); 
+    </script>
+    <hr>
+
+    <!--toFixed() devuelve una cadena, con el número escrito con un número específico de decimales. toFixed(2) Es perfecto para trabajar con dinero.-->
+    <p id="demo6"></p>
+    <script>
+        document.getElementById("demo6").innerHTML = i.toFixed(0) + "<br>" + i.toFixed(2) + "<br>" + i.toFixed(4) + "<br>" + i.toFixed(6);
+    </script>
+    <hr>
+
+    <!--toPrecision() devuelve una cadena, con un número escrito con una longitud especificada-->
+    <p id="demo7"></p>
+    <script>
+        document.getElementById("demo7").innerHTML = i.toPrecision() + "<br>" + i.toPrecision(2) + "<br>" + i.toPrecision(4) + "<br>" + i.toPrecision(6);
+    </script>
+    <hr>
+
+    <!--valueOf() devuelve un número como un número.-->
+    <p id="demo8"></p>
+    <script>
+        var j = 123;
+        document.getElementById("demo8").innerHTML = j.valueOf() + "<br>" + (123).valueOf() + "<br>" + (100 + 23).valueOf();
+    </script>
+    <hr>
+
+    <!--Convertir variables a números: Existen 3 métodos de JavaScript que se pueden usar para convertir variables en números. Estos métodos no son métodos numéricos , sino métodos globales de JavaScript.-->
+
+    <!--El Number()metodo: se puede usar para convertir variables de JavaScript en números. Si el número no se puede convertir, NaNse devuelve. Number() También puede convertir una fecha en un número, devuelve el número de milisegundos desde la fecha.-->
+    <p id="demo9"></p>
+    <script>
+        var k = new Date("2017-09-30");
+        document.getElementById("demo9").innerHTML = Number(true) + "<br>" + Number(false) + "<br>" + Number("10") + "<br>" + Number("  10") + "<br>" + Number("10    ") + "<br>" + Number("10.33") + "<br>" + Number("10,33") + "<br>" + Number("10 33") + "<br>" + Number("john") + "<br>" + Number(k); 
+    </script>
+    <hr>
+
+    <!--El parseInt()metodo: analiza una cadena y devuelve un número entero. Se permiten espacios. Solo se devuelve el primer número. Si el número no se puede convertir, NaNse devuelve-->
+    <p id="demo10"></p>
+    <script>
+        document.getElementById("demo10").innerHTML = parseInt("10") + "<br>" + parseInt("10.33") + "<br>" + parseInt("10 6") + "<br>" + parseInt("10 years") + "<br>" + parseInt("years 10"); 
+    </script>
+    <hr>
+
+    <!--El parseFloat()metodo: analiza una cadena y devuelve un número. Se permiten espacios. Solo se devuelve el primer número Si el número no se puede convertir, NaNse devuelve (No es un número).-->
+    <p id="demo11"></p>
+    <script>
+        document.getElementById("demo11").innerHTML = parseFloat("10") + "<br>" + parseFloat("10.33") + "<br>" + parseFloat("10 6") + "<br>" + parseFloat("10 years") + "<br>" + parseFloat("years 10");    
+    </script>
+    <hr>
+
+    <!--Propiedades numéricas-->
+    <!--MAX_VALUE: devuelve el mayor número posible en JavaScript.-->
+    <p id="demo12"></p>
+    <script>
+        document.getElementById("demo12").innerHTML = Number.MAX_VALUE;
+    </script>
+    <hr>
+
+    <!--MIN_VALUE: devuelve el número más bajo posible en JavaScript.-->
+    <p id="demo13"></p>
+    <script>
+        document.getElementById("demo13").innerHTML = Number.MIN_VALUE;
+    </script>
+    <hr>
+
+    <!--POSITIVE_INFINITY y NEGATIVE_INFINITY: se devuelven en desbordamiento. -->
+    <p id="demo14"></p>
+    <script>
+        document.getElementById("demo14").innerHTML = Number.POSITIVE_INFINITY + "<br>" + Number.NEGATIVE_INFINITY;
+    </script>
+    <hr>
+
+    <!--Las propiedades numéricas no se pueden usar en variables.-->
+    <p id="demo15"></p>
+    <script>
+        var l = 6;
+        document.getElementById("demo15").innerHTML = l.MAX_VALUE;
+    </script>
+    <hr>
+
+    <h1>Objeto Matemático</h1>
+    <hr>
+    <!--El objeto JavaScript Math te permite realizar tareas matemáticas en números.-->
+    <!--Math.round(x) devuelve el valor de x redondeado a su entero más cercano-->
+    <!--Math.pow(x, y) devuelve el valor de x a la potencia de y-->
+    <!--Math.sqrt(x) devuelve la raíz cuadrada de x-->
+    <!--Math.abs(x) devuelve el valor absoluto (positivo) de x-->
+    <!--Math.ceil(x)devuelve el valor de x redondeado hasta a su número entero más próximo-->
+    <!--Math.floor(x)devuelve el valor de x redondeado hacia abajo a su número entero más próximo-->
+     <!--Math.sin(x) devuelve el seno (un valor entre -1 y 1) del ángulo x (dado en radianes). Si desea utilizar grados en lugar de radianes, debe convertir los grados en radianes. Ángulo en radianes = ángulo en grados x PI / 180.-->
+     <!--Math.cos(x) devuelve el coseno (un valor entre -1 y 1) del ángulo x (dado en radianes).-->
+      <!--Math.min()y Math.max()se puede usar para encontrar el valor más bajo o más alto en una lista de argumentos:-->
+      <!--JavaScript proporciona 8 constantes matemáticas a las que se puede acceder con el objeto Math
+         //Math.E:devuelve el número de Euler
+         //Math.PI:devuelve pi
+         //SQRT2:devuelve la raíz cuadrada de 2
+        //Math.SQRT1_2:devuelve la raíz cuadrada de 1/2
+        //Math.LN2:devuelve el logaritmo natural de 2
+        //Math.LN10:devuelve el logaritmo natural de 10
+        //Math.LOG2E:devuelve el logaritmo de base 2 de E
+        //Math.LOG10E:devuelve el logaritmo de base 10 de E-->
+        <!--Math.random() devuelve un número aleatorio entre 0 (inclusive) y 1 (exclusivo)-->
+        <!--acos(x), asin(x), atan(x): Devuelve el arcocoseno, arcoseno, arcotangente de x, en radianes, tan-como un valor numérico entre -PI / 2 y PI / 2 radianes-->
+        <!--atan2(y,x):Devuelve el arcotangente del cociente de sus argumentos.-->
+        <!--Devuelve el valor de Ex-->
+        <!--tan(x): Devuelve la tangente de un ángulo.-->
+    <p id="demo16"></p>
+    <script>
+        document.getElementById("demo16").innerHTML = Math.PI + "<br>" + Math.round(4.4) + "<br>" + Math.pow(8, 2) + "<br>" + Math.sqrt(64) + "<br>" + Math.abs(-4.4) + "<br>" + Math.ceil(4.1) + "<br>" + Math.floor(4.9) + "<br>" + "El seno de 90 grados es " + Math.sin(90 * Math.PI / 180) + "<br>" + "El coseno de 0 grados es " + Math.cos(0 * Math.PI / 180) + "<br>" + Math.min(0, 150, 30, 20, -8, -200) + "<br>" + Math.max(0, 150, 30, 20, -8, -200) + "<br>" + Math.E + "<br>" + Math.PI + "<br>" + Math.SQRT2 + "<br>" + Math.SQRT1_2 + "<br>" + Math.LN2 + "<br>" + Math.LN10 + "<br>" + Math.LOG2E + "<br>" + Math.LOG10E + "<br>" + Math.random() + "<br>" + Math.acos(0.5) + "<br>" + Math.asin(1) + "<br>" + Math.atan(-0.5) + "<br>" + Math.atan2(1, 0.5) + "<br>" + Math.exp(2) + "<br>" + "La tangente de 45 grados es: " + Math.tan(45 * Math.PI / 180);
+    </script>
+    <hr>
+
+    <h1>Aleatorio</h1>
+    <hr>
+
+     <!--Math.random()usado con Math.floor()puede usarse para devolver enteros aleatorios.-->
+     <p id="demo17"></p>
+     <script>
+     document.getElementById("demo17").innerHTML=Math.floor(Math.random() * 10) + 1;
+     </script>
+     <hr>
+
+     <!--Esta función de JavaScript siempre devuelve un número aleatorio entre min (incluido) y max (excluido):-->
+    <button id="demo18" onclick="document.getElementById('demo18').innerHTML=funcion1(0,10)">Click</button>
+    <script>
+    function funcion1(min, max){
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+    </script>
+    <hr>
+
+    <!--Esta función de JavaScript siempre devuelve un número aleatorio entre min y max (ambos incluidos):-->
+    <button id="demo19" onclick="document.getElementById('demo19').innerHTML=funcion2(1, 10)">Click</button>
+    <script>
+    function funcion2(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    </script>
+    <hr>
+
+    <!---->
+
+</body>
+
+</html>

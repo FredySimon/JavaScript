@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Introducción</title>
+</head>
+<body>
+    <h1>Introducción</h1>
+    <hr>
+
+    <!--¿Qué puedo hacer con JavaScript?. JavaScript acepta comillas dobles y simples.-->
+    <p id="demo">JavaScript puede cambiar el contenido HTML.</p>
+    <button type="button" onclick='document.getElementById("demo").innerHTML="Hola con JavaScript"'>Click</button>
+    <hr>
+
+    <!--JavaScript puede cambiar los valores de los atributos HTML.-->
+    <p>En este caso, JavaScript cambia el valor del atributo src de una imagen.</p>
+    <button onclick="document.getElementById('myImage').src ='img/bombilla-encendida.jpg'">Enciender</button>
+    <img id="myImage" src="img/bombilla-apagada.jpg" style="width: 100px;">
+    <button onclick="document.getElementById('myImage').src ='img/bombilla-apagada.jpg'">Apagar</button>
+    <hr>
+
+    <!--Puede cambiar los estilos CSS-->
+    <p id="demo1">JavaScript puede cambiar el estilo de un elemento HTML.</p>
+    <button type="button" onclick="document.getElementById('demo1').style.fontSize='35px'">Click</button>
+    <hr>
+
+    <!--Puede ocultar y mostrar elementos HTML-->
+    <p id="demo2">JavaScript puede ocultar y mostrar elementos HTML.</p>
+    <button type="button" onclick="document.getElementById('demo2').style.display='none'">Ocultar</button>
+    <button type="button" onclick="document.getElementById('demo2').style.display='block'">Mostrar</button>
+    <hr>
+
+    <!--Mosrar fecha y hora-->
+    <p>Mostrar fecha y hora</p>
+    <button type="button" onclick="document.getElementById('demo3').innerHTML=Date()">Click</button>
+    <p id="demo3"></p>
+    <hr>
+
+    <!---->
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Versiones de JavaScript</title>
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">
+    <style>
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            text-align: center;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body style="font-family: 'McLaren', cursive;">
+    <h1>Versiones</h1>
+    <hr>
+    
+    <!--ECMAScript a menudo se abrevia a ES.-->
+    <p style="font-family: 'McLaren', cursive;">JavaScript fue inventado por Brendan Eich en 1995, y se convirtió en un
+        estándar ECMA en 1997. ECMAScript es el nombre oficial del idioma. Desde 2015, ECMAScript se nombra por
+        año(ECMAScript 2015).</p>
+    <hr>
+
+    <table style="font-family: 'McLaren', cursive;">
+        <caption>Ediciones ECMAScript</caption>
+        <thead>
+            <tr>
+                <th>Ver</th>
+                <th>Nombre oficial</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>ECMAScript 1 (1997)</td>
+                <td>Primera edición.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ECMAScript 2 (1998)</td>
+                <td>Solo cambios editoriales.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>ECMAScript 3 (1999)</td>
+                <td>Se agregaron expresiones regulares.
+                    Añadido try / catch.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>ECMAScript 4</td>
+                <td>Nunca lanzado.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>ECMAScript 5 (2009)</td>
+                <td>Se agregó "modo estricto".Se agregó soporte JSON.Se agregó String.trim ().Se agregó Array.isArray
+                    ().Se agregaron métodos de iteración de matriz.</td>
+            </tr>
+            <tr>
+                <td>5.1</td>
+                <td>ECMAScript 5.1 (2011)</td>
+                <td>Cambios editoriales.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>ECMAScript 2015</td>
+                <td>Añadido let y const. Se agregaron valores de parámetros predeterminados. Se agregó Array.find (). Se
+                    agregó Array.findIndex ().</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>ECMAScript 2016</td>
+                <td>Operador exponencial agregado (**). Se agregó Array.prototype.includes.</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>ECMAScript 2017</td>
+                <td>Se agregó relleno de cadena. Se agregaron nuevas propiedades de objeto. Fuciones asíncronas
+                    añadidas. Memoria compartida agregada.</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>ECMAScript 2018</td>
+                <td>Se agregaron propiedades de descanso / propagación. Se agregó iteración asincrónica. Promesa
+                    agregada.finalmente (). Adiciones a RegExp.</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <p>ECMAScript 3 es totalmente compatible con todos los navegadores.</p>
+    <p>ECMAScript 5 es totalmente compatible con todos los navegadores modernos .</p>
+    <hr>
+
+    <table>
+        <caption>Soporte de navegador para ES5</caption>
+        <thead>
+            <tr>
+                <th>Navegador</th>
+                <th>Versión</th>
+                <th>Partir de la fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chrome</td>
+                <td>23</td>
+                <td>Sep 2012</td>
+            </tr>
+            <tr>
+                <td>Firefox</td>
+                <td>21</td>
+                <td>Abr 2013</td>
+            </tr>
+            <tr>
+                <td>IE</td>
+                <td>9*</td>
+                <td>Mar 2011</td>
+            </tr>
+            <tr>
+                <td>IE / Edge</td>
+                <td>10</td>
+                <td>Sep 2012</td>
+            </tr>
+            <tr>
+                <td>Safari</td>
+                <td>6</td>
+                <td>Jul 2012</td>
+            </tr>
+            <tr>
+                <td>Opera</td>
+                <td>13</td>
+                <td>Jul 2013</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>* Internet Explorer 9 no es compatible con ECMAScript 5 "uso estricto".</p>
+    <hr>
+
+    <table>
+        <caption>Soporte de navegador para ES6</caption>
+        <thead>
+            <tr>
+                <th>Navegador</th>
+                <th>Versión</th>
+                <th>Partir de la fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chrome</td>
+                <td>51</td>
+                <td>May 2016</td>
+            </tr>
+            <tr>
+                <td>Firefox</td>
+                <td>54</td>
+                <td>Jun 2017</td>
+            </tr>
+            <tr>
+                <td>Edge</td>
+                <td>14</td>
+                <td>Aug 2016</td>
+            </tr>
+            <tr>
+                <td>Safari</td>
+                <td>10</td>
+                <td>Sep 2016</td>
+            </tr>
+            <tr>
+                <td>Opera</td>
+                <td>38</td>
+                <td>Jun 2016</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Internet Explorer no es compatible con ECMAScript 2015.</p>
+    <hr>
+
+    <table>
+        <caption>Soporte de navegador para ES7</caption>
+        <thead>
+            <tr>
+                <th>Navegador</th>
+                <th>Versión</th>
+                <th>Partir de la fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chrome</td>
+                <td>68</td>
+                <td>May 2018</td>
+            </tr>
+            <tr>
+                <td>Opera</td>
+                <td>55</td>
+                <td>Aug 2018</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <h1>JavaScript / ECMAScript</h1>
+
+    <p><b>JavaScript:</b>Fue desarrollado para Netscape. Netscape 2 fue el primer navegador en ejecutar JavaScript. Después de Netscape, la fundación Mozilla continuó desarrollando JavaScript para el navegador Firefox. La última versión de JavaScript fue 1.8.5. (Idéntico a ECMAScript 5).</p>
+    <p><b>ECMAScript:</b>Fue desarrollado por ECMA International después de que la organización adoptó JavaScript. La primera edición de ECMAScript se lanzó en 1997.</p>
+
+
+</body>
+
+</html>

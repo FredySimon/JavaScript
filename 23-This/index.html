@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This palabra clave</title>
+</head>
+<body>
+    <h1>This palabra clave</h1>
+    <hr>
+
+    <!--La thispalabra clave JavaScript se refiere al objeto al que pertenece. En una ventana del navegador, el objeto Global es [object Window].-->
+    <!--Tiene diferentes valores dependiendo de dónde se use:-->
+    <!--En un método de objeto, se thisrefiere al " propietario " del método. se thisrefiere al objeto persona .El objeto persona es el propietario del método fullName-->
+    <!--Solo, se thisrefiere al objeto global .-->
+    <!--En modo estricto , cuando se usa solo, thistambién se refiere al objeto Global -->
+    <!--Objeto Método Enlace. this es el objeto persona (el objeto persona es el "propietario" de la función)-->
+    <p id="demo"></p>
+    <script>
+    var persona = {nombre:"Fredy", apellido:"Simon", id:5566, nombreCompleto : function () { return this.nombre + " " + this.apellido;}}
+    var a = this;
+    function  funcion1() {
+        return this;
+    }
+    var persona1 = {nombre : "Josué", apellido:"Raymundo", id:5566, funcion3:function(){return this;}};
+    document.getElementById("demo").innerHTML = persona.nombreCompleto() + "<br>" + a + "<br>" + funcion1() + "<br>" + persona1.funcion3();
+    </script>
+    <hr>
+
+    <!-- El modo estricto de JavaScript no permite el enlace predeterminado. Entonces, cuando se usa en una función, en modo estricto, thises undefined..-->
+    <p id="demo1"></p>
+    <script>
+    "use strict";
+    document.getElementById("demo1").innerHTML=funcion2();
+    function funcion2() {
+        return this;
+    }
+    </script>
+    <hr>
+
+    <!--En controladores de eventos HTML, se refiere al elemento que recibió el evento.-->
+    <button onclick="this.style.display='none'">Click</button>
+    <hr>
+
+    <!--Métodos como call()y apply()pueden referirse thisa cualquier objeto. Los métodos call()y apply()son métodos JavaScript predefinidos. Ambos se pueden usar para llamar a un método de objeto con otro objeto como argumento. -->
+    <p id="demo2"></p>
+    <script>
+    var persona2 = {
+        nombreCompleto: function () {
+            return this.nombre + " " + this.apellido;
+        }
+    }
+    var persona3 = {
+        nombre:"asdAd",
+        apellido:"adghfd",
+    }
+    var d = persona2.nombreCompleto.call(persona3);
+    document.getElementById("demo2").innerHTML=d;
+    </script>
+    <hr>
+
+    <!---->
+</body>
+</html>

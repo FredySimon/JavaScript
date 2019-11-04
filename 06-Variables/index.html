@@ -1,28 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Variables</title>
 </head>
+
 <body>
-    <p id="parrafo1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, repudiandae cumque recusandae beatae culpa velit nobis laudantium laboriosam error. Et tempora non id, voluptatibus ut laborum ipsam ipsum quisquam. Itaque.</p>
+    <h1>Variables</h1>
+    <hr>
+
+    <h2>var</h2>
+    <hr>
+    <!--variables: unicos, descriptivos, empiezan con $, _, letra, pueden contener cadenas ("", ''), numeros, Los nombres distinguen entre mayúsculas y minúsculas (y e Y son variables diferentes), Las palabras reservadas (como las palabras clave de JavaScript) no se pueden usar como nombres. Es una buena práctica de programación declarar todas las variables al comienzo de un script.-->
+    <p id="parrafo1"></p>
     <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+    <p id="parrafo4"></p>
     <script>
-        /*variables: unicos, descriptivos, empiezan con $, _, letra, pueden contener cadenas ("", ''), numeros
-        */  
-       var nombre = "Ada"; 
-       document.getElementById("parrafo1").innerHTML = nombre; 
-
-       var pais, nacimiento;
-       pais="reino unido";
-       nacimiento = 1815;
-       var idioma="sd", color='rojo';
-       var nombreApellido = "Ada" + " " + "Lourdes";
-       var fallecimiento = nacimiento + 37;
-
-       document.getElementById("parrafo2").innerHTML = nombreApellido + " nacio en " + pais + " en " + nacimiento + " y fallecio en "+ fallecimiento;
+        var nombre = "Ada";
+        document.getElementById("parrafo1").innerHTML = nombre;
+        var pais = "reino unido", nacimiento = 1815;
+        var idioma = "sd", color = 'rojo';
+        var nombreApellido = "Ada" + " " + "Lourdes";
+        var fallecimiento = nacimiento + 37;
+        var indefinida;
+        document.getElementById("parrafo2").innerHTML = nombreApellido + " nacio en " + pais + " en " + nacimiento + " y fallecio en " + fallecimiento + " " + indefinida;
+        x = 5; x = x + 5;
+        document.getElementById("parrafo3").innerHTML = x;
+        var pi = 3.14; var person = "Fredy"; var answer = "¿?";
+        document.getElementById("parrafo4").innerHTML = pi + "<br>" + person + "<br>" + answer;
     </script>
+    <hr>
+
+    <!--Si pone un número entre comillas, el resto de los números se tratarán como cadenas y se concatenarán.-->
+    <p>El resultado de agregar "5" + 2 + 3:</p>
+    <p id="parrafo5"></p>
+    <script>
+        a = "5" + 2 + 3;
+        document.getElementById("parrafo5").innerHTML = a; 
+    </script>
+    <p>El resultado de sumar 2 + 3 + "5" + 5:</p>
+    <p id="parrafo6"></p>
+    <script>
+        var y = 2 + 3 + "5" + 5;
+        document.getElementById("parrafo6").innerHTML = y;
+    </script>
+    <hr>
+
+    <!--ECMAScript 2015 ES2015 introdujo dos nuevas palabras clave JavaScript importantes: lety const. Estas dos palabras clave proporcionan variables de alcance de bloque (y constantes) en JavaScript. Antes de ES2015, JavaScript tenía solo dos tipos de alcance: alcance global y alcance de función . -->
+
+    <!--Alcance del bloque de JavaScript: Las variables declaradas con la varpalabra clave no pueden tener Block Scope. Se puede acceder a las variables declaradas dentro de un bloque {} desde fuera del bloque.-->
+
+    <!--Antes de ES2015, JavaScript no tenía Block Scope. Las variables declaradas con la letpalabra clave pueden tener Block Scope. No se puede acceder a las variables declaradas dentro de un bloque {} desde fuera del bloque.-->
+
+    <!--Redeclarar una variable usando la varpalabra clave puede imponer problemas. Redeclarar una variable dentro de un bloque también redeclarará la variable fuera del bloque-->
+    <!--Redeclarar una variable JavaScript con varestá permitido en cualquier parte de un programa.-->
+    <p id="parrafo7"></p>
+    <script>
+        var a = 10;
+        {
+            var a = 2;
+        }
+        var g = 4;
+        var g = 8;
+        document.getElementById("parrafo7").innerHTML = a + "<br>" + g;
+    </script>
+    <hr>
+
+    <!--Usando var en un bucle: la variable declarada en el ciclo redeclara la variable fuera del ciclo.-->
+    <p id="parrafo8"></p>
+    <script>
+        var c = 5;
+        for (var c = 0; c < 10; c++) {
+
+        }
+        document.getElementById("parrafo8").innerHTML = c;
+    </script>
+    <hr>
+
+    <h2>let</h2>
+    <hr>
+    <!--Redeclarar una variable usando la letpalabra clave puede resolver este problema. Redeclarar una variable dentro de un bloque no redeclarará la variable fuera del bloque.-->
+    <!--Las variables globales definidas con la let palabra clave no pertenecen al objeto de ventana-->
+    <!--Redeclarar una varvariable con let, en el mismo ámbito, o en el mismo bloque, no está permitido. Redeclarar una letvariable con let, en el mismo ámbito, o en el mismo bloque, no está permitido. Redeclarar una letvariable con var, en el mismo ámbito, o en el mismo bloque, no está permitido. Se permite redefinir una variable con let, en otro ámbito, o en otro bloque.-->
+    <p id="parrafo9"></p>
+    <script>
+        let b = 10;
+        {
+            let b = 2;
+        }
+        let f = "asdasd";
+        let h = 2;
+        {
+            let h = 3;
+        }
+        {
+            let h = 4;
+        }
+        document.getElementById("parrafo9").innerHTML = b + "<br>" + window.f + "<br>" + h;
+    </script>
+    <hr>
+
+    <!--Usando let en un bucle: a variable declarada en el bucle no redeclara la variable fuera del bucle. Cuando letse usa para declarar la variable i en un ciclo, la variable i solo será visible dentro del ciclo.-->
+    <p id="parrafo10"></p>
+    <script>
+        let d = 5;
+        for (let d = 0; d < 10; d++) {
+
+        }
+        document.getElementById("parrafo10").innerHTML = d;
+    </script>
+    <hr>
+
+    <!--Las variables definidas con let no se elevan a la parte superior.El uso de una let variable antes de que se declare dará como resultado a ReferenceError. La variable está en una "zona muerta temporal" desde el inicio del bloque hasta que se declara-->
+    <p id="parrafo11"></p>
+    <script>
+        i = 5;
+        document.getElementById("parrafo11").innerHTML = i;
+        let i;
+    </script>
+    <hr>
+
+    <h2>const</h2>
+    <hr>
+
+    <!--A las const variables de JavaScript se les debe asignar un valor cuando se declaran-->
+    <script>
+        const asd = 64565;
+    </script>
+
+    <!--Las variables definidas con const no pueden reasignarse. Si asignamos un valor primitivo a una constante, no podemos cambiar el valor primitivo.-->
+    <p id="parrafo12"></p>
+    <script>
+        try {
+            const PI = 3.141592653589793;
+            PI = 3.14;
+        }
+        catch (err) {
+            document.getElementById("parrafo12").innerHTML = err;
+        }
+    </script>
+    <hr>
+
+    <!--Alcance del bloque Declarar una variable con const-->
+    <!--Puede cambiar las propiedades de un objeto constante-->
+    <!--Puede cambiar los elementos de una matriz constante-->
+    <p id="parrafo13"></p>
+    <script>
+        var x = 10;
+        {
+            const x = 2;
+        }
+        const carro1 = { tipo: "Fiat", modelo: 500, color: "Blanco" };
+        carro1.color = "Rojo";
+        carro1.propietario = "Fredy";
+        const carros2 = ["Saab", "Volvo", "BMW"];
+        carros2[0] = "Toyota";
+        carros2.push("Audi");
+        document.getElementById("parrafo13").innerHTML = x + "<br>" + "El carro es de " + carro1.propietario + "<br>" + carros2;
+    </script>
+    <hr>
+
+    <!--Pero NO puede reasignar una matriz constante-->
+    <p id="parrafo14"></p>
+    <script>
+        try {
+            const carros1 = ["Saab", "Volvo", "BMW"];
+            carros1 = ["Toyota", "Volvo", "Audi"];
+        }
+        catch (err) {
+            document.getElementById("parrafo14").innerHTML = err;
+        }
+    </script>
+    <hr>
+
+    <!--Redeclarar o reasignar una variable var o let variable existente a const, en el mismo ámbito o en el mismo bloque, no está permitido. Redeclarar o reasignar una constvariable existente , en el mismo ámbito, o en el mismo bloque, no está permitido. -->
+
+    <!--Pero NO puede reasignar un objeto constante-->
+    <p id="parrafo15"></p>
+    <script>
+        try {
+            const carro1 = { tipo: "Fiat", modelo: 500, color: "Blanco" };
+            carro1 = { tipo: "Volvo", modelo: "EX60", color: "Negro" };
+        }
+        catch (err) {
+            document.getElementById("parrafo15").innerHTML = err;
+        }
+    </script>
+    <hr>
+
+    <!--Las variables definidas con const no se elevan a la parte superior. const No se puede usar una variable antes de declararla.-->
+    <p id="parrafo16"></p>
+    <script>
+    k = 5;
+    document.getElementById("parrafo16").innerHTML=k;
+    const k;
+    </script>
+    <hr>
+
+    <!--Se permite redefinir una variable con const, en otro ámbito, o en otro bloque-->
+    <script>
+        const j = 2;
+        {
+            const j = 3;
+        }
+        {
+            const j = 4;
+        }
+        console.log(j);
+    </script>
+
+
+
+    <h1>Alcance</h1>
+    <hr>
+    <!--El alcance determina la accesibilidad (visibilidad) de las variables.-->
+
+    <!--En JavaScript hay dos tipos de alcance: Alcance local, Alcance global. JavaScript tiene un alcance de función: cada función crea un nuevo alcance. El alcance determina la accesibilidad (visibilidad) de estas variables. Las variables definidas dentro de una función no son accesibles (visibles) desde fuera de la función.-->
+
+    <!--Las variables declaradas dentro de una función de JavaScript se vuelven LOCALES a la función. Las variables locales tienen alcance de función : solo se puede acceder desde dentro de la función. Como las variables locales solo se reconocen dentro de sus funciones, las variables con el mismo nombre se pueden usar en diferentes funciones. Las variables locales se crean cuando se inicia una función y se eliminan cuando se completa la función.-->
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <script>
+        funcion();
+        function funcion() {
+            var nombreCarro = "Volvo";
+            document.getElementById("demo").innerHTML = typeof nombreCarro + " " + nombreCarro;
+        }
+        document.getElementById("demo1").innerHTML = typeof nombreCarro;
+    </script>
+    <hr>
+
+    <!--Una variable declarada fuera de una función, se convierte en GLOBAL. Una variable global tiene alcance global : todos los scripts y funciones en una página web pueden acceder a ella. -->
+    <p id="demo2"></p>
+    <script>
+        var Carro = "Volvo";
+        funcion1();
+        function funcion1() {
+            document.getElementById("demo2").innerHTML = "Puedo mostrar " + Carro;
+        }
+    </script>
+    <hr>
+
+    <!--En JavaScript, los objetos y las funciones también son variables. El alcance determina la accesibilidad de variables, objetos y funciones desde diferentes partes del código.-->
+
+    <!--Automáticamente global: Si asigna un valor a una variable que no ha sido declarada, se convertirá automáticamente en una variable GLOBAL .-->
+    <p id="demo3"></p>
+    <script>
+        funcion2();
+        document.getElementById("demo3").innerHTML = "Puedo mostrar " + nombreDelCarro;
+        function funcion2() {
+            nombreDelCarro = "Mazda"
+        }
+    </script>
+    <hr>
+
+    <!--Modo estricto: Todos los navegadores modernos admiten ejecutar JavaScript en "Modo estricto". En el "Modo estricto", las variables no declaradas no son automáticamente globales.-->
+
+    <!--Con JavaScript, el alcance global es el entorno completo de JavaScript. En HTML, el alcance global es el objeto de ventana. Todas las variables globales pertenecen al objeto de ventana.-->
+    <p id="demo4"></p>
+    <script>
+        var Nombre = "Ferrari";
+        document.getElementById("demo4").innerHTML = "Puedo mostrar " + window.Nombre;
+    </script>
+    <hr>
+
+    <!--NO cree variables globales a menos que tenga la intención de hacerlo. Sus variables globales (o funciones) pueden sobrescribir las variables de ventana (o funciones). Cualquier función, incluido el objeto de ventana, puede sobrescribir sus variables y funciones globales.-->
+
+    <!--La vida útil de las variables de JavaScript: La vida útil de una variable de JavaScript comienza cuando se declara. Las variables locales se eliminan cuando se completa la función. En un navegador web, las variables globales se eliminan cuando cierra la ventana (o pestaña) del navegador.-->
+
+    <!--Los argumentos de función (parámetros) funcionan como variables locales dentro de las funciones.-->
+
 </body>
+
 </html>

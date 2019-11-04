@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expresiones regulares</title>
+</head>
+
+<body>
+    <h1>Expresiones regulares</h1>
+    <hr>
+
+    <!--Una expresión regular es una secuencia de caracteres que forma un patrón de búsqueda. El patrón de búsqueda se puede utilizar para operaciones de búsqueda y reemplazo de texto. Cuando busca datos en un texto, puede usar este patrón de búsqueda para describir lo que está buscando. Una expresión regular puede ser un solo carácter o un patrón más complicado. Las expresiones regulares se pueden usar para realizar todo tipo de operaciones de búsqueda y reemplazo de texto .
+    Sintaxis: /pattern/modifiers;: var patt = /w3schools/i;: 
+    Ejemplo explicado:
+    / w3schools / i   es una expresión regular.
+    w3schools   es un patrón (para ser usado en una búsqueda.
+    i   es un modificador (modifica la búsqueda para que no distinga entre mayúsculas y minúsculas).-->
+
+    <!--Usar métodos de cadena: En JavaScript, las expresiones regulares a menudo se usan con los dos métodos de cadena : search()y replace().
+    El search()método usa una expresión para buscar una coincidencia y devuelve la posición de la coincidencia.
+    El replace()método devuelve una cadena modificada donde se reemplaza el patrón.-->
+
+    <!--El search()método busca en una cadena un valor especificado y devuelve la posición de la coincidencia:-->
+    <!--Use una expresión regular para hacer una búsqueda que no distinga entre mayúsculas y minúsculas en una cadena:-->
+    <p id="demo"></p>
+    <script>
+        var a = "Visista España";
+        var buscar = a.search("España");
+        var buscar1 = a.search(/españa/i);
+        document.getElementById("demo").innerHTML = buscar + "<br>" + buscar1;
+    </script>
+    <hr>
+
+    <!--El replace()método reemplaza un valor especificado con otro valor en una cadena:-->
+    <button onclick="funcion1()">Click</button>
+    <p id="demo1">Hola, =).</p>
+    <script>
+        function funcion1() {
+            var b = document.getElementById("demo1").innerHTML;
+            var c = b.replace("Hola", "Adios");
+            document.getElementById("demo1").innerHTML = c;
+        }
+    </script>
+    <hr>
+
+    <!--Use una expresión regular que no distinga entre mayúsculas y minúsculas para reemplazar Microsoft con W3Schools en una cadena:-->
+    <button onclick="funcion2()">Click</button>
+    <p id="demo2">Hola, =), Hola.</p>
+    <script>
+        function funcion2() {
+            var b = document.getElementById("demo2").innerHTML;
+            var c = b.replace(/hola/i, "Adios");
+            document.getElementById("demo2").innerHTML = c;
+        }
+    </script>
+    <hr>
+
+    <!--Los modificadores se pueden usar para realizar búsquedas más globales sin distinción entre mayúsculas y minúsculas.-->
+    <!-- i: Realizar coincidencias entre mayúsculas y minúsculas-->
+    <button onclick="funcion3()">Click</button>
+    <p id="demo4"></p>
+    <script>
+        function funcion3() {
+            var a = "Visita Alemania";
+            var b = /Alemania/i;
+            var c = a.match(b);
+            document.getElementById("demo4").innerHTML = c;
+        }
+    </script>
+    <hr>
+
+    <!-- g: Realice una coincidencia global (encuentre todas las coincidencias en lugar de detenerse después de la primera coincidencia)-->
+    <button onclick="funcion4()">Click</button>
+    <p id="demo5"></p>
+    <script>
+        function funcion4() {
+            var a = "Es todo lo que hay ahi, Es una mierda.";
+            var b = /Es/g;
+            var c = a.match(b);
+            document.getElementById("demo5").innerHTML = c;
+        }
+    </script>
+    <hr>
+
+    <!-- m: Realizar coincidencia multilínea-->
+    <button onclick="funcion5()">Click</button>
+    <p id="demo6"></p>
+    <script>
+        function funcion5(){
+            var a = "\nEs \nes esto?"
+            var b = /^es/m;
+            var c = a.match(b);
+            document.getElementById("demo6").innerHTML=c;
+        }
+    </script>
+    <hr>
+
+    <!--Los corchetes se usan para encontrar una variedad de caracteres. Encuentra cualquiera de los caracteres entre paréntesis. Encuentra cualquiera de los dígitos entre paréntesis. Encuentre cualquiera de las alternativas separadas con |. -->
+    <button onclick="funcion6()">Click</button>
+    <p id="demo7"></p>
+    <script>
+        function funcion6(){
+            var a = "Es todo lo que hay ahí.";
+            var b = /[o]/g;
+            var c = a.match(b);
+            var d = "123456789";
+            var e = /[1-4]/g;
+            var f = d.match(e);
+            var g = "ro, verde, rojo, verde, verd, rev, azul, amarillo.";
+            var h = /(rojo|verde)/g;
+            var i = g.match(h);
+            document.getElementById("demo7").innerHTML=c + " - " + f + " - " + i;
+        }
+    </script>
+    <hr>
+
+    <!--Los metacaracteres son caracteres con un significado especial. \d: Encuentra un dígito, \s: Encuentra un personaje de espacio en blanco, \b: Encuentre una coincidencia al comienzo de una palabra como esta: \ bWORD, o al final de una palabra como esta: WORD \ b, \uxxxx: Encuentre el carácter Unicode especificado por el número hexadecimal xxxx 0057 (W), -->
+    <button onclick="funcion7()">Click</button>
+    <p id="demo8"></p>
+    <script>
+    function funcion7() {
+        var a = "Da el 100%";
+        var b = /\d/g;
+        var c = a.match(b);
+        var d = "   ";
+        var e = /\s/g;
+        var f = d.match(e);
+        var g = "HOLA, LAURA";
+        var h = /\bLA/;
+        var i = g.search(h);
+        var j = /LA\b/g;
+        var k = g.search(j);
+        var l = "Visita W3School. Hola Worklans";
+        var m = /\u0057/g;
+        var n = l.match(m);
+        document.getElementById("demo8").innerHTML=c + " - " + f + " - " + i + " - " + k + " - " + n;
+    }
+    </script>
+    <hr>
+
+    <!--Los cuantificadores definen cantidades: n+: Coincide con cualquier cadena que contenga al menos un n, n*: Coincide con cualquier cadena que contenga cero o más ocurrencias de n, n?: Coincide con cualquier cadena que contenga cero o una aparición de n.-->
+    <button onclick="funcion8()">Click</button>
+    <p id="demo9"></p>
+    <script>
+    function funcion8() {
+        var a = "oincide con cualquier cadena que contenga al menos un n cien codo";
+        var b = /c+/g;
+        var c = a.match(b);
+        var d = /ci*/g;
+        var e = a.match(d);
+        var f = "1, 100 or 1000?";
+        var g = /10?/g;
+        var h = f.match(g);
+        document.getElementById("demo9").innerHTML=c + " - " + e + " - " + h;
+    }
+    </script>
+    <hr>
+
+    <!--Usando el objeto RegExp: En JavaScript, el objeto RegExp es un objeto de expresión regular con propiedades y métodos predefinidos. -->
+
+    <!--El test()método es un método de expresión RegExp. Busca en una cadena un patrón y devuelve verdadero o falso, según el resultado. El siguiente ejemplo busca en una cadena el carácter "e".-->
+    <p id="demo10">Las mejores cosas en la vida son gratis.</p>
+    <p id="demo11"></p>
+    <script>
+    texto = document.getElementById("demo10").innerHTML;
+    document.getElementById("demo11").innerHTML=/e/.test(texto);
+    </script>
+    <hr>
+
+    <!--El exec()método es un método de expresión RegExp.
+    Busca en una cadena un patrón específico y devuelve el texto encontrado como un objeto. Si no se encuentra ninguna coincidencia, devuelve un objeto vacío (nulo). El siguiente ejemplo busca en una cadena el carácter "e"-->
+    <p id="demo12"></p>
+    <script>
+        var b = /e/.exec(document.getElementById("demo10").innerHTML);
+        document.getElementById("demo12").innerHTML="Se encontro " + b[0] + " en la posición " + b.index + " en el texto: " + b.input;
+    </script>
+    <hr>
+
+</body>
+
+</html>

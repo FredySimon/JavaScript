@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funciones</title>
+</head>
+
+<body>
+    <h1>Funciones</h1>
+    <hr>
+
+    <!--Una función de JavaScript es un bloque de código diseñado para realizar una tarea en particular. función puede tener 0 parametros, parametros: no lleva tipo de dato, Argumento: valores que pasamos a (y que recibe) una función. Una función de JavaScript se ejecuta cuando "algo" lo invoca (lo llama). Puede usar el mismo código muchas veces con diferentes argumentos, para producir resultados diferentes. Acceder a una función sin () devolverá la definición de la función en lugar del resultado de la función. Las funciones se pueden usar de la misma manera que las variables, en todos los tipos de fórmulas, tareas y cálculos. -->
+    <p id="demo"></p>
+    <script>
+        function saludo() {
+            return "Hola"
+        }
+        function producto(a, b) {
+            return a * b;
+        }
+        var multiplicacion = function (a, b) { return a * b; };
+        var division = new Function("a", "b", "return a / b;");
+        function suma(a, b) {
+            if (b === undefined) {
+                b = 0;
+            }
+            return a + b;
+        }
+        var resultado = suma(4)
+        var x = myFunction(4, 3);
+        function myFunction(p1, p2) {
+            return p1 * p2;
+        }
+        function convertirCelsius(f) {
+            return (5 / 9) * (f - 32);
+        }
+        document.getElementById("demo").innerHTML = saludo() + "<br>" + producto(3, 4) + "<br>" + ("Funciones anónimas:" + multiplicacion(3, 6)) + "<br>" + ("Constructor función: " + division(10, 2)) + "<br>" + resultado + "<br>" + x + "<br>" + convertirCelsius(77);
+    </script>
+    <hr>
+
+    <!--parametros por exceso-->
+    <p id="demo1"></p>
+    <script>
+        function valores() {
+            var texto = '';
+            texto += "El numero de argumentos es " + arguments.length + "<br>";
+            for (var i = 0; i < arguments.length; i++) {
+                texto += "Argumeto " + i + " = " + arguments[i] + "<br>";
+            }
+            document.getElementById("demo1").innerHTML = texto;
+        }
+        valores(4, 6, 8, 2, 7, 5, 8, 5, 0, 3);
+    </script>
+    <hr>
+
+    <script>
+        //anonima autoinvocada
+        (function () {
+            alert("Adios")
+        }())
+    </script>
+
+    <!--Las variables declaradas dentro de una función de JavaScript se vuelven LOCALES a la función.  Solo se puede acceder a las variables locales desde la función.-->
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        variables();
+        function variables() {
+            var carName = "Volvo";
+            document.getElementById("demo2").innerHTML = typeof carName + " " + carName
+        }
+        document.getElementById("demo3").innerHTML = typeof carName;
+    </script>
+    <hr>
+
+    <!--variables como funciones-->
+    <script>
+        var persona = { nombre: "asdsd", apellido: "sadsd", id: 1, nombreCompleto: function () { return this.nombre + " " + this.apellido + ".-"; } };
+    </script>
+
+    <h1>Funciones de flecha</h1>
+    <hr>
+
+    <!--Las funciones de flecha se introdujeron en ES6.Las funciones de flecha nos permiten escribir una sintaxis de función más corta-->
+    <p id="demo4"></p>
+    <script>
+        var hola = () => {
+            return "Hola mundo";
+        }
+        document.getElementById("demo4").innerHTML = hola();
+    </script>
+    <hr>
+
+    <!--¡Se acorta! Si la función tiene solo una instrucción y la instrucción devuelve un valor, puede eliminar los corchetes y la returnpalabra clave. Si tiene parámetros, los pasa dentro de los paréntesis-->
+    <p id="demo5"></p>
+    <script>
+        var saludo = (valor) => "HOLA" + valor;
+        document.getElementById("demo5").innerHTML = saludo("UNIVERSO");
+    </script>
+    <hr>
+
+    <!--De hecho, si solo tiene un parámetro, también puede omitir los paréntesis-->
+    <script>
+        var despedida = valor => valor + ".";
+        console.log(despedida("ADIOS"));
+    </script>
+
+    <!--El manejo de this también es diferente en las funciones de flecha en comparación con las funciones regulares. En las funciones regulares, la this palabra clave representaba el objeto que llamaba a la función, que podría ser la ventana, el documento, un botón o lo que sea.-->
+    <button id="btn">Click</button>
+    <p id="demo6"></p>
+    <script>
+        var funcion;
+        funcion = function(){
+            document.getElementById("demo6").innerHTML += this;
+        }
+        window.addEventListener("load", funcion);
+        document.getElementById("btn").addEventListener("click", funcion);
+    </script>
+    <hr>
+
+    <!--Con una función de flecha this representa el propietario de la función. Con las funciones de flecha, la this palabra clave siempre representa el objeto que definió la función de flecha.-->
+    <button id="btn1">Click</button>
+    <p id="demo7"></p>
+    <script>
+    var a = () => {
+        document.getElementById("demo7").innerHTML+=this;
+    };
+    window.addEventListener("load", a);
+    document.getElementById("btn1").addEventListener("click", a);
+    </script>
+    <hr>
+
+</body>
+
+</html>

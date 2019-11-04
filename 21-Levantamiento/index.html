@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hoisting - Levantamiento JavaScript</title>
+</head>
+<body>
+    <h1>Hoisting - Levantamiento - Elevación</h1>
+    <hr>
+    <!--La elevación es el comportamiento predeterminado de JavaScript de mover las declaraciones a la parte superior.-->
+
+    <!--En JavaScript, una variable se puede declarar después de que se haya utilizado. Las variables definidas con varse elevan a la parte superior. -->
+    <p id="demo"></p>
+    <script>
+    //var a;
+    a = 5;
+    elemento = document.getElementById("demo");
+    elemento.innerHTML=a;
+    var a;
+    </script>
+    <hr>
+
+    <!--JavaScript solo levanta declaraciones, no inicializaciones.-->
+    <p id="demo1"></p>
+    <script>
+    var b = 7;
+    elemento1 = document.getElementById("demo1");
+    elemento1.innerHTML =  a + " " + b;
+    </script>
+    <hr>
+
+    <p id="demo2"></p>
+    <script>
+    elemento2 = document.getElementById("demo2");
+    elemento2.innerHTML = "A es " + a + " C es " + c;
+    var c = 8;
+    </script>
+    <hr>
+
+    <!--La elevación es (para muchos desarrolladores) un comportamiento desconocido o ignorado de JavaScript. Si un desarrollador no comprende la elevación, los programas pueden contener errores (errores). Para evitar errores, siempre declare todas las variables al comienzo de cada ámbito. Como así es como JavaScript interpreta el código, siempre es una buena regla. JavaScript en modo estricto no permite el uso de variables si no se declaran. Estudie "uso estricto"-->
+</body>
+</html>

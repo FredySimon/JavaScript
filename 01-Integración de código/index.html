@@ -5,14 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Integración de código</title>
+    <!--JavaScript externo-->
     <script src="metodos.js"></script>
+    <!--JavaScript en el head-->
+    <script>
+        function myFunction1() {
+            document.getElementById("demo1").innerHTML="Mi primer JavaScript";
+        }
+    </script>
 </head>
 
 <body>
-    <h1>Bienvenido al curso de javascript</h1>
-    <script>holamundo();</script>
-    <h1>hasta luego</h1>
+    <h1>Integración de código</h1>
+    <hr>
+
+    <!--JavaScript en el cuerpo-->
+    <p id="demo2"></p>
+    <script>
+    document.getElementById("demo2").innerHTML = "Mi primer JavaScript";
+    </script>
+    <hr>
+
+    <h1></h1>
+    <p id="demo1">Hola.</p>
+    <button type="button" onclick="myFunction1()">Click</button>
+    <hr>
+
+    <button type="button" onclick="holaMundo()">Click</button>
+    <hr>
+
+    <!--JavaScript externo-->
+    <p id="demo">Párrafo.</p>
+    <button type="button" onclick="myFunction()">Click</button>
+    <script src="https://www.w3schools.com/js/myScript.js"></script>
+    <hr>
+
+    <!---->
+    
 </body>
 
 </html>

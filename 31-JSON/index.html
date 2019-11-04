@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript JSON</title>
+</head>
+<body>
+    <h1>JSON</h1>
+    <hr>
+    
+    <!--JSON es un formato para almacenar y transportar datos. JSON se usa a menudo cuando los datos se envían desde un servidor a una página web.-->
+    <p><b>JSON Significa:</b> Java Script Object Notation</p>
+    <p>JSON es un formato de intercambio de datos ligero.</p>
+    <p>JSON es independiente del idioma.</p>
+    <p>JSON es "autodescriptivo" y fácil de entender.</p>
+    <p>La sintaxis JSON se deriva de la sintaxis de notación de objetos JavaScript, pero el formato JSON es solo texto. El código para leer y generar datos JSON se puede escribir en cualquier lenguaje de programación.</p>
+    <hr>
+
+    <!--JSON define un objeto-->
+    <script>
+    {'{"empleados":[' + 
+        '{"nombre":"John", "apellido":"Doe"}' +
+        '{"nombre":"Anna", "apellido":"Smith"}' +
+        '{"nombre":"Peter", "apellido":"Jones"}]}'
+    }
+    </script>
+
+    <!--l formato JSON es sintácticamente idéntico al código para crear objetos JavaScript. Debido a esta similitud, un programa JavaScript puede convertir fácilmente datos JSON en objetos JavaScript nativos.-->
+
+    <!--Reglas de sintaxis JSON-->
+    <ul>
+        <li>Los datos están en pares de nombre / valor</li>
+        <li>Los datos están separados por comas.</li>
+        <li>Las llaves contienen objetos</li>
+        <li>Los corchetes contienen matrices</li>
+    </ul>
+    <hr>
+
+    <!--Un uso común de JSON es leer datos de un servidor web y mostrar los datos en una página web. Para simplificar, esto se puede demostrar usando una cadena como entrada. Primero, cree una cadena de JavaScript que contenga la sintaxis JSON. Luego, use la función incorporada de JavaScript JSON.parse()para convertir la cadena en un objeto JavaScript. -->
+    <p id="demo"></p>
+    <script>
+        var texto = '{"empleados":[' + '{"nombre":"John", "apelldio":"Doe"},' + '{"nombre":"Anna", "apellido":"Smith"},' + '{"nombre":"Peter", "apellido":"Jones"}]}';
+        var objeto = JSON.parse(texto);
+        document.getElementById("demo").innerHTML = objeto.empleados[1].nombre + ", " + objeto.empleados[2].apellido;
+    </script>
+    <hr>
+
+    <!---->
+</body>
+</html>

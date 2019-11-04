@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Operadores</title>
+</head>
+
+<body>
+    <h1>Operadores</h1>
+    <hr>
+
+    <!--Asigne valores a las variables y agréguelos juntos. El operador de asignación ( =) asigna un valor a una variable. El operador de suma ( +) agrega números. El operador de multiplicación ( *) multiplica números. El + operador también se puede usar para agregar (concatenar) cadenas. Agregar dos números devolverá la suma, pero agregar un número y una cadena devolverá una cadena. -->
+    <p>x = 5, y = 2, calcule z = x + y, y visualice z:</p>
+    <p id="demo"></p>
+    <script>
+        var x = 5;
+        var y = 2;
+        var z = x + y;
+        var txt1="john"; txt2="Doe";
+        var a=5+5; b="5"+5; c="Hola"+5;
+        document.getElementById("demo").innerHTML = z + "<br>" + (x*y) + "<br>" + (txt1+" "+txt2) + "<br>" + a + "<br>" + b + "<br>" + c;
+    </script>
+    <hr>
+
+    <h1>Tipos de operadores:</h1>
+    <hr>
+
+    <h2>Operadores Aritmeticos:</h2>
+    <hr>
+
+    <!--Operadores Aritmeticos: +:Suma, -:Resta, *:Multiplicación, **:Exponenciación, /:División, %:Módulo (resto de división), ++:Incremento, --:Decremento. Una operación aritmética típica opera en dos números, variables o expresiones. x ** y produce el mismo resultado que Math.pow(x,y). La precedencia del operador describe el orden en que se realizan las operaciones en una expresión aritmética. Como en las matemáticas escolares tradicionales, la multiplicación se realiza primero. la precedencia se puede cambiar usando paréntesis-->
+    <p id="demo1"></p>
+    <script>
+    var modulo = x % y;
+    document.getElementById("demo1").innerHTML=modulo + "<br>" + x ** y + "<br>" + (++x) + "<br>" + (--y) + "<br>" + (100 + 50) * 6 + "<br>" + Math.pow(5, 2);
+    </script>
+    <hr>
+
+    <h2>Operadores de asignación:</h2>
+    <hr>
+
+    <!--Operadores Asignación: =, +=, -=, *=, /=, %=: residuo de división, <<=:binarios, >>=:binarios, >>>=:, &=,  ^=, |=, **=, -->
+    <p id="demo4"></p>
+    <script>
+        var d = 10;
+        d += 10;
+        var e = 10;
+        e *= 10;
+        var f = 10;
+        f %= 3;
+        var g = 10;
+        g **=2;
+        var h = 5; //(00000000000000000000000000000101)
+        h <<=2; //20 (00000000000000000000000000010100)
+        var i = -5; //(-00000000000000000000000000000101)
+        i >>>= 2; // 1073741822 (00111111111111111111111111111110)
+        document.getElementById("demo4").innerHTML = d + "<br>" + e + "<br>" + f + "<br>" + g + "<br>" + h + "<br>" + i;
+    </script>
+    <hr>
+
+    <h2>Operadores de comparación:</h2>
+    <hr>
+    <!--Operadores de comparación: ==:Igual, ===:Igual Valor, Igual tipo, !=:no igual, !==: Diferente valor, diferente tipo, >,<,>=,<=, ?:Ternario-->
+    <p id="demo5"></p>
+    <script>
+        var j = 5;
+        document.getElementById("demo5").innerHTML=(j==8) + "<br>" + (j==5) + "<br>" + (j=='5') + "<br><br>" + (j===8) + "<br>" + (j===5) + "<br>" + (j==='5') + "<br><br>" + (j!=8) + "<br>" + (j!=5) + "<br>" + (j!='5') + "<br><br>" + (j!==8)  + "<br>" + (j!==5) + "<br>" + (j!=='5') + "<br><br>" + (j>8) + "<br>" + (j<8) + "<br><br>" + (j>=8) + "<br>" + (j<=8) + "<br>" + (j>=5) + "<br>" + (j<=5);
+    </script>
+    <hr>
+
+    <h2>Operadores Lógicos:</h2>
+    <hr>
+
+    <!--Operadores logicos: Los operadores lógicos se utilizan para determinar la lógica entre variables o valores. &&: operador y, ||: operador o, !: operador no.-->
+    <p id="demo6"></p>
+    <script>
+    var k = 6;
+    var l = 3;
+    document.getElementById("demo6").innerHTML=(k<5 && l>1) + "<br>" + (k>5 && l>1) + "<br><br>" + (k == 5 || l == 5) + "<br>" + (k == 6 || l == 0) + "<br>" + (k == 0 || l == 3) + "<br>" + (k == 6 || l == 3) + "<br><br>" + !(k === l) + "<br>" + !(k > l) + "<br>" + !(k == l);
+    </script> 
+    <hr>
+   
+    <h2>Operador Ternario:</h2>
+    <hr>
+
+    <!--Operador Condicional (Ternario): JavaScript también contiene un operador condicional que asigna un valor a una variable en función de alguna condición. variablename = (condition) ? value1:value2.-->
+    <input id="edad" value="18" />
+    <button onclick="funcion1()">Click</button>
+    <p id="demo7"></p>
+    <script>
+    function funcion1(){
+        var edad = document.getElementById("edad").value;
+        vota = (edad < 18) ? "Demasiado joven":"Adecuado";
+        document.getElementById("demo7").innerHTML=vota + " para votar.";
+    }
+    </script>
+    <hr>
+
+    <!--Al comparar una cadena con un número, JavaScript convertirá la cadena en un número al hacer la comparación. Una cadena vacía se convierte en 0. Una cadena no numérica se convierte en lo NaNque siempre es false.-->
+    <p id="demo8"></p>
+    <script>
+    document.getElementById("demo8").innerHTML=(2<1) + "<br>" + (2 < "12") + "<br>" + (2 < "John") + "<br>" + (2 > "John") + "<br>" + (2 == "John") + "<br>" + ("2" < "12") + "<br>" + ("2" > "12") + "<br>" + ("2" == "12");
+    </script>
+    <hr>
+
+    <!--Para asegurar un resultado adecuado, las variables deben convertirse al tipo adecuado antes de la comparación:-->
+    <input id="edad1" value="18" />
+    <button onclick="funcion2()">Click</button>
+    <p id="demo9"></p>
+    <script>
+    function funcion2(){
+        var edad1 = Number(document.getElementById("edad1").value);
+
+        if(isNaN(edad1)){
+            vota1 = "No es un número."
+        } else {
+            vota1 = (edad1 < 18) ? "Demasiado joven":"Adecuado";
+        }
+        document.getElementById("demo9").innerHTML=vota1;
+    }
+    </script>
+    <hr>
+
+    <h2>Operadores de Tipo:</h2>
+    <hr>
+    <!--Operadores de tipo: typeof, instanceof -->
+    <!--Tipos de datos de JavaScript: En JavaScript hay 5 tipos de datos diferentes que pueden contener valores: string, number, boolean, object, function. Hay 6 tipos de objetos: Object, Date, Array, String, Number, Boolean. Y 2 tipos de datos que no pueden contener valores: null, undefined-->
+    <!--Puede usar el typeofoperador para encontrar el tipo de datos de una variable de JavaScript.-->
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <script>
+        var cadena = "Ada Lovelace";
+        var numero = 3.14;
+        var bool = true;
+        var lista = [1, 2, 3, 4];
+        var registro = { nombre: "Ada", apellido: "Lovelace" };
+        var fecha = new Date;
+        var miFuncion = function miFun() { alert("Hola") };
+        var sinDefinir;
+        var vacia = null;
+        var animales = ["Perro", "Gato", "Hamster"];
+
+        document.getElementById("demo10").innerHTML = typeof cadena + "<br>" + typeof numero + "<br>" + typeof NaN + "<br>" + typeof bool + "<br>" + typeof lista + "<br>" + typeof registro + "<br>" + typeof fecha + "<br>" + typeof miFuncion + "<br>" + typeof sinDefinir + "<br>" + typeof vacia;
+        document.getElementById("demo11").innerHTML = animales instanceof Array;
+    </script>
+    <hr>
+
+    <!--La constructorpropiedad devuelve la función constructora para todas las variables de JavaScript.-->
+    <p id="demo12"></p>
+    <script>
+        document.getElementById("demo12").innerHTML = "John".constructor + "<br>" + (3.14).constructor + "<br>" + false.constructor + "<br>" + [1, 2, 3, 4].constructor + "<br>" + { name: "John", age: 34 }.constructor + "<br>" + new Date().constructor + "<br>" + function () { }.constructor;
+    </script>
+    <hr>
+
+    <!--puede verificar si el objeto es una función de matriz, una función Fecha, -->
+    <p id="demo13"></p>
+    <script>
+    document.getElementById("demo13").innerHTML=esArray(animales);
+    function esArray(miArray){
+        return miArray.constructor === Array;
+    }
+    </script>
+    <hr>
+
+    <!--Puede verificar la propiedad del constructor para averiguar si un objeto es un Date-->
+    <p id="demo14"></p>
+    <script>
+    var fecha = new Date();
+    document.getElementById("demo14").innerHTML= esFecha(fecha);
+    function esFecha(fecha){
+        return fecha.constructor.toString().indexOf("Date") > -1;
+    }
+    </script>
+    <hr>
+
+    <!--El método global String()puede convertir números en cadenas. puede convertir booleanos en cadenas. puede convertir fechas en cadenas.-->
+    <p id="demo15"></p>
+    <script>
+    var m = 123;
+    var n = false;
+    document.getElementById("demo15").innerHTML=String(m) + "<br>" + String(123) + "<br>" + String(100 + 23) + "<br>" + String(n) + "<br>" + String(Date());
+    </script>
+    <hr>
+
+    <!--El método toString() puede convertir booleanos y fechas en cadenas.-->
+    <p id="demo16"></p>
+    <script>
+     document.getElementById("demo16").innerHTML=n.toString() + "<br>" + Date().toString();
+    </script>
+    <hr>
+
+     <!--El método global Number()puede convertir cadenas en números. Las cadenas vacías se convierten a 0. Cualquier otra cosa se convierte en NaN. también puede convertir booleanos a números. false=0, true=1. se puede usar para convertir fechas en números.-->
+     <p id="demo17"></p>
+     <script>
+        var o = new Date();
+     document.getElementById("demo17").innerHTML=Number("3.14") + "<br>" + Number(" ") + "<br>" + Number("") + "<br>" + Number("99 88") + "<br>" + Number(n) + "<br>" + Number(o);
+     </script>
+     <hr>
+
+     <!--El operador unario + se puede usar para convertir una variable en un número. Si la variable no se puede convertir, seguirá siendo un número, pero con el valor NaN.-->
+    <p id="demo18"></p>
+    <script>
+        var p = "John";
+        var q =+ p;
+    document.getElementById("demo18").innerHTML= typeof q + "<br>" + q;
+    </script>
+    <hr>
+
+    <!--Cuando JavaScript intenta operar con un tipo de datos "incorrecto", intentará convertir el valor en un tipo "correcto".El resultado no siempre es lo que espera. null is converted to 0 al igual que [] -->
+    <p id="demo19"></p>
+    <script>
+    document.getElementById("demo19").innerHTML=(5+null) + "<br>" + ("5" + null) + "<br>" + ("5" + 2) + "<br>" + ("5" - 2) + "<br>" + ("5" * "2"); 
+    </script>
+    <hr>
+
+    <h2>Operadores de Bits:</h2>
+    <hr>
+    <!--Operadores de bits: &, |, ~, ^, <<, >>, >>> -->
+     <!-- &:AND: Establece cada bit en 1 si ambos bits son 1-->
+     <p id="demo20">fdsf</p>
+     <script>
+     document.getElementById("demo20").innerHTML=(5 & 1) + "<br>" + (0101  & 0001) + "<br>" + (0 & 0) + "<br>" + (0 & 1) + "<br>" + (1 & 1) + "<br>" + (1111 & 0000) + "<br>" + (1111 & 0001) + "<br>" + (1111 & 0010) + "<br>" + (1111 & 0100);
+     </script>
+     <hr>
+
+     <!-- |: OR: Establece cada bit en 1 si uno de los dos bits es 1-->
+    <p id="demo21"></p>
+    <script>
+    document.getElementById("demo21").innerHTML=(5|1) + "<br>" + (0101 | 0001) + "<br>" + (0 | 0) + "<br>" + (0 | 1) + "<br>" + (1 | 1) + "<br>" + (1111 | 0000) + "<br>" + (1111 | 0001) + "<br>" + (1111 | 0010) + "<br>" + (1111 | 0100);
+    </script>
+    <hr>
+
+    <!-- ^: XOR: Establece cada bit en 1 si solo uno de dos bits es 1-->
+    <p id="demo22"></p>
+    <script>
+    document.getElementById("demo22").innerHTML=(5 ^ 1) + "<br>" + (0101 ^ 0001) + "<br>" + (0 ^ 0) + "<br>" + (0 ^ 1) + "<br>" + (1 ^ 1) + "<br>" + (1111 ^ 0000) + "<br>" + (1111 ^ 0001) + "<br>" + (1111 ^ 0010) + "<br>" + (1111 ^ 0100);;
+    </script>
+    <hr>
+
+    <!-- ~: NOT: Cómo se pronuncia. Invierte todos los bits -->
+    <!-- <<: Zero fill left shift: Se desplaza hacia la izquierda presionando ceros desde la derecha y deja caer los bits más a la izquierda. -->
+    <!-- >>: Signed right shift: Se desplaza hacia la derecha empujando copias del bit más a la izquierda desde la izquierda, y deja que los bits más a la derecha se caigan-->
+    <!-- >>>: Zero fill right shift: Se desplaza hacia la derecha presionando ceros desde la izquierda y deja caer los bits más a la derecha-->
+    <p id="demo23"></p>
+    <script>    
+    document.getElementById("demo23").innerHTML=(~ 5) + "<br>" + (~0101) + "<br>" + (5<<1) + "<br>" + (0101<<1) + "<br>" + (5>>1) + "<br>" + (0101 >> 1) + "<br>" + (-5 >> 1) + "<br>" + (5 >>> 1) + "<br>" + (0101 >>> 1);
+    </script>
+    <hr>
+
+    <!--JavaScript almacena números como números de coma flotante de 64 bits, pero todas las operaciones bit a bit se realizan en números binarios de 32 bits.-->
+
+    <!--
+    00000000000000000000000000000001	1
+    00000000000000000000000000000010	2
+    00000000000000000000000000000100	4 
+    00000000000000000000000000001000	8
+    00000000000000000000000000010000	dieciséis
+    00000000000000000000000000100000	32
+    00000000000000000000000001000000	64
+    -->
+
+    <!--
+    00000000000000000000000000000101	5 (4 + 1)
+    00000000000000000000000000001101	13 (8 + 4 + 1)
+    00000000000000000000000000101101	45 (32 + 8 + 4 + 1)
+    -->
+
+    <!--Convertir decimal a binario, -5-->
+    <p id="demo24"></p>
+    <script>
+    document.getElementById("demo24").innerHTML=funcion(5);
+    function funcion(dec){
+        return (dec >>> 0).toString(2);
+    }
+    </script>
+    <hr>
+
+    <!--Convertir binario a decimal-->
+    <p id="demo25"></p>
+    <script>
+    document.getElementById("demo25").innerHTML=funcio(101);
+    function funcio(bin){
+        return parseInt(bin, 2).toString(10);
+    }
+    </script>
+    <hr>
+ 
+
+</body>
+
+</html>

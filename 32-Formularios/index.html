@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Formularios</title>
+    <style>
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            text-align: center;
+            padding: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Formularios</h1>
+    <hr>
+
+    <!--La validación de formularios HTML se puede hacer mediante JavaScript. Si un campo de formulario (fname) está vacío, esta función alerta un mensaje y devuelve falso para evitar que se envíe el formulario. Se puede llamar a la función cuando se envía el formulario. -->
+    <script>
+        function validar() {
+            var a = document.forms["formulario"]["nombre"].value;
+            if (a == "") {
+                alert("No puede estar vacio.");
+                return false;
+            }
+        }
+    </script>
+    <form action="" name="formulario" onsubmit="return validar()" method="post">
+        Name: <input type="text" name="nombre">
+        <input type="submit" value="Click">
+    </form>
+    <hr>
+
+    <!--JavaScript puede validar la entrada numérica-->
+    <p>Ingrese un número de 1 a 10:</p>
+    <input type="text" id="numero">
+    <button type="button" onclick="validar1()">Click</button>
+    <p id="demo"></p>
+    <script>
+        function validar1() {
+            var a, texto;
+            a = document.getElementById("numero").value;
+            if (isNaN(a) || a < 1 || a > 10) {
+                texto = "Valor invalido.";
+            } else {
+                texto = "OK";
+            }
+            document.getElementById("demo").innerHTML = texto;
+        }
+    </script>
+    <hr>
+
+    <!--El navegador puede realizar automáticamente la validación de formularios HTML. Si un campo de formulario (fname) está vacío, el requiredatributo evita que se envíe este formulario. La validación automática de formularios HTML no funciona en Internet Explorer 9 o versiones anteriores. -->
+    <form action="" method="post">
+        <input type="text" required>
+        <input type="submit" value="Click">
+    </form>
+    <hr>
+
+    <!--La validación de datos es el proceso de garantizar que la entrada del usuario sea limpia, correcta y útil.-->
+    <p>Las tareas de validación típicas son:</p>
+    <ul>
+        <li>¿ha completado el usuario todos los campos obligatorios?</li>
+        <li>¿Ha introducido el usuario una fecha válida?</li>
+        <li>¿Ha introducido el usuario texto en un campo numérico?</li>
+    </ul>
+    <hr>
+
+    <!--HTML5 introdujo un nuevo concepto de validación HTML llamado validación de restricción. -->
+    <p>La validación de restricciones HTML se basa en:</p>
+    <ul>
+        <li>Validación de restricciones Atributos de entrada HTML</li>
+        <li>Validación de restricciones Pseudo Selectores CSS</li>
+        <li>Validación de restricciones Propiedades y métodos de DOM</li>
+    </ul>
+    <hr>
+
+    <!--Atributos de entrada HTML de validación de restricciones: disabled, max, min, pattern, required, type. -->
+
+    <!--Validación de restricciones Pseudo selectores CSS: :disabled, :invalid, :optional, :required, :valid. -->
+
+    <h1>API de validación</h1>
+    <hr>
+
+    <!--Si un campo de entrada contiene datos no válidos, muestre un mensaje-->
+    <table>
+        <caption>Métodos DOM de validación de restricciones</caption>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>checkValidity()</td>
+                <td>Devuelve verdadero si un elemento de entrada contiene datos válidos.</td>
+            </tr>
+            <tr>
+                <td>setCustomValidity()</td>
+                <td>Establece la propiedad validationMessage de un elemento de entrada.</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <input type="number" id="numero1" min="100" max="300" required>
+    <button onclick="validar2()">Click</button>
+    <p id="demo1"></p>
+    <script>
+        function validar2() {
+            var objeto = document.getElementById("numero1");
+            if (!objeto.checkValidity()) {
+                document.getElementById("demo1").innerHTML = objeto.validationMessage;
+            } else {
+                document.getElementById("demo1").innerHTML = "OK";
+            }
+        }
+    </script>
+    <hr>
+
+    <table>
+        <caption>Propiedades de DOM de validación de restricciones</caption>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>validity</td>
+                <td>Contiene propiedades booleanas relacionadas con la validez de un elemento de entrada.</td>
+            </tr>
+            <tr>
+                <td>validationMessage</td>
+                <td>Contiene el mensaje que mostrará un navegador cuando la validez sea falsa.</td>
+            </tr>
+            <tr>
+                <td>willValidate</td>
+                <td>Indica si un elemento de entrada será validado.</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <!--La propiedad de validez de un elemento de entrada contiene varias propiedades relacionadas con la validez de los datos-->
+    <table>
+        <caption>Propiedades de validez</caption>
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>customError</td>
+                <td>Establecer en verdadero, si se establece un mensaje de validez personalizado.</td>
+            </tr>
+            <tr>
+                <td>patternMismatch</td>
+                <td>Establecer en verdadero, si el valor de un elemento no coincide con su atributo de patrón.</td>
+            </tr>
+            <tr>
+                <td>rangeOverflow</td>
+                <td>Establecer en verdadero, si el valor de un elemento es mayor que su atributo máximo.</td>
+            </tr>
+            <tr>
+                <td>rangeUnderflow</td>
+                <td>Establecer en verdadero, si el valor de un elemento es menor que su atributo min.</td>
+            </tr>
+            <tr>
+                <td>stepMismatch</td>
+                <td>Se establece en true, si el valor de un elemento no es válido por su atributo paso.</td>
+            </tr>
+            <tr>
+                <td>tooLong</td>
+                <td>Establecer en verdadero, si el valor de un elemento excede su atributo maxLength.</td>
+            </tr>
+            <tr>
+                <td>typeMismatch</td>
+                <td>Establecer en verdadero, si el valor de un elemento no es válido por su atributo de tipo.</td>
+            </tr>
+            <tr>
+                <td>valueMissing</td>
+                <td>Establecer en verdadero, si un elemento (con un atributo requerido) no tiene valor.</td>
+            </tr>
+            <tr>
+                <td>valid</td>
+                <td>Establecer en verdadero, si el valor de un elemento es válido.</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <!--Si el número en un campo de entrada es mayor que 100 (el max atributo de la entrada ), muestre un mensaje-->
+    <input type="number" id="numero2" min="50" max="100" required>
+    <button onclick="validar3()">Click</button>
+    <p id="demo2"></p>
+    <script>
+    function validar3(){
+        var texto = "";
+        if(document.getElementById("numero2").validity.rangeOverflow){
+            texto = "Valor demasiado grande."
+        } else if(document.getElementById("numero2").validity.valueMissing) {
+            texto = "Valor vacio.";
+        } else if(document.getElementById("numero2").validity.rangeUnderflow){
+            texto = "Valor demasiado pequeño."
+        } else {
+            texto = "OK";
+        }
+        document.getElementById("demo2").innerHTML=texto;
+    }
+    </script>
+    <hr>
+
+</body>
+
+</html>

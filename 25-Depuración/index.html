@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Depuración</title>
+</head>
+<body>
+    <h1>Depuración</h1>
+    <hr>
+
+    <!--La búsqueda (y corrección) de errores en el código de programación se denomina depuración de código. La depuración no es fácil. Pero afortunadamente, todos los navegadores modernos tienen un depurador de JavaScript incorporado. -->
+
+    <!--Si su navegador admite depuración, puede usar console.log()para mostrar los valores de JavaScript en la ventana del depurador-->
+    <script>
+    var a =5, b=6, c=a+b;
+    console.log(c);
+    </script>
+
+    <!--En la ventana del depurador, puede establecer puntos de interrupción en el código JavaScript. En cada punto de interrupción, JavaScript dejará de ejecutarse y le permitirá examinar los valores de JavaScript. Después de examinar los valores, puede reanudar la ejecución del código (generalmente con un botón de reproducción).-->
+
+    <!--La debuggerpalabra clave detiene la ejecución de JavaScript y llama (si está disponible) a la función de depuración. Tiene la misma función que establecer un punto de interrupción en el depurador. Si no hay depuración disponible, la declaración del depurador no tiene efecto.-->
+    <p id="demo"></p>
+    <script>
+    var x = 15 * 5;
+    debugger;
+    document.getElementById("demo").innerHTML=x;
+    </script>
+    <hr>
+
+    <!--"Herramientas para desarrolladores".-->
+</body>
+</html>

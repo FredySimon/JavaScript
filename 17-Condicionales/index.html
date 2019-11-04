@@ -7,76 +7,68 @@
     <title>Condicionales</title>
 </head>
 <body>
+    <h1>Condicionales</h1>
+    <hr>
+    
+    <!--if: instrucción para especificar un bloque de código JavaScript que se ejecutará si una condición es verdadera.-->
+    <!--Use la else instrucción para especificar un bloque de código que se ejecutará si la condición es falsa.-->
+    <!--Use la else ifinstrucción para especificar una nueva condición si la primera condición es falsa.-->
+    <p id="demo"></p>
     <script>
-    //if: codigo que se cumple si se cumple su condición
-
-    var nota=8;
-
-    if(nota>=5){
-        alert("has aprobado")
-    }
-
-    //else: codigo que se cumple si no se cunple la condición if
-
-    var nota2 = 3;
-
-    if(nota2 >=5){
-        alert("has aprobado")
+    var hora=new Date().getHours();
+    var texto = "";
+    if(hora<12  && hora>0){
+        texto="Buenos días."
+    } else if (hora<18 && hora>11){
+        texto ="Buenas tardes."
     } else {
-        alert("No has aprobado")
+        texto="Buenas noches.";
     }
-
-    //else if: especifica nueva condicion si el primer if es falso
-
-    var nota3 =9;
-
-    if(nota3<5){
-        alert("Has reprobado")
-    } else if(nota3>5 && nota3<=8) {
-        alert("Has aprobado")
-    } else {
-        alert("Excelente")
-    }
-
-    //switch: se utiliza para validar condiciones, la condicion se evalua solo una vez, 
-
-    var nota4 = 0;
-    var mensaje = "";
-
-    switch(nota4){
-        case 0: 
+    document.getElementById("demo").innerHTML=texto;
+    </script>
+    <hr>
+    
+    <!--La switchdeclaración se utiliza para realizar diferentes acciones en función de diferentes condiciones. La expresión de cambio se evalúa una vez.-->
+    <p id="demo1"></p>
+    <script>
+   var dia;
+   switch (new  Date().getDay()){
         case 1:
         case 2:
-        mensaje = "Error fatal";
-        break;
-
         case 3:
         case 4:
-        mensaje = "Insatisfactorio";
-        break;
-
         case 5:
+            dia = "Entre semana";
+            break;
         case 6:
-        mensaje = "Aceptable";
-        break;
-
-        case 7:
-        case 8:
-        mensaje = "Sobresaliente";
-        break;
-
-        case 9:
-        mensaje = "Muy bien";
-        break;
-
-        case 10:
-        mensaje = "Excelente";
-        break;
-
+            dia = "Sábado";
+            break;
         default:
-        mensaje = "Error"
-    }
-    alert(mensaje);
+            dia = "Domingo";  
+   }
+   document.getElementById("demo1").innerHTML="Hoy es " + dia;
     </script>
+    <hr>
+
+    <!--Los casos de cambio usan una comparación estricta-->
+    <p id="demo2"></p>
+    <script>
+        var x = "0";
+        switch (x) {
+            case 0:
+                text = "Off";
+                break;
+            case 1:
+                text = "On";
+                break;
+            default:
+                text = "No value found";
+        }
+        document.getElementById("demo2").innerHTML = text;
+    </script>
+    <hr>
+    
+    <!---->
+    
 </body>
 </html>

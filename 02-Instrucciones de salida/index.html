@@ -7,13 +7,26 @@
     <title>Instrucciones de salida</title>
 </head>
 <body>
-    <h1>Bienvenido a las instrucciones de salida</h1>
-    <p id="parrafo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa neque et sint non expedita sequi, incidunt voluptate sapiente. Nesciunt odit fugit ipsam nobis iure, ad provident repudiandae doloribus labore reiciendis!</p>
+    <h1>Instrucciones de salida</h1>
+    <hr>
+
+    <!--document.getElementById-->
+    <p id="parrafo"></p>
     <script>
-        window.alert("Hola");
-        document.write("<h2>¿Qué tal?</h2>");
-        document.getElementById("parrafo").innerHTML = "Parrafo cambiado."; 
-        console.log("Texto en consola.", 1+1 );
+    document.getElementById("parrafo").innerHTML = 5+6; 
     </script>
+    <hr>
+
+    <!--document.write-->
+    <p>El método document.write () solo debe usarse para pruebas.</p>
+    <script>document.write("<h2>¿Qué tal?</h2>");</script>
+    <button type="button" onclick="document.write(55+45)">Nunca llame a document.write después de que el documento haya terminado de cargarse. Sobreescribirá todo el documento. Si usa document.write () después de cargar un documento HTML, eliminará todo el HTML existente : click para probar</button>
+    <hr>
+
+    <!--alertas-->
+    <script>window.alert("Hola");</script>
+        
+    <!--consola-->    
+    <script>console.log("Texto en consola.", 1+1 );</script>
 </body>
 </html>

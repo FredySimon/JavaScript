@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tipos de datos</title>
+</head>
+
+<body>
+    <h1>Tipos de datos</h1>
+    <hr>
+
+    <!--datos primitivos: son los tipos de datos : string, number, boolean, Array, Object, Undefined, null, JavaScript tiene tipos dinámicos. Esto significa que la misma variable se puede usar para contener diferentes tipos de datos-->
+    <p id="demo"></p>
+    <script>
+        var cadena = "Ada", cadena2 = " Lovelace", cadena3 = "Ada 'Lovelace'";
+        var entero = 3;
+        var decimal = 3.56;
+        var cierto = true;
+        var falso = false;
+        var lista = [1, 4, 6, 8, 'caracola'];
+        var animal = { nombre: "Lola", tipo: "Roedor", raza: "Ruso", edad: 1, fechaDeNacimiento: '12/05/2000' };
+        var objeto;
+        var vacio = '';
+        var vacio1 = null;
+        var indefinido = undefined;
+        document.getElementById("demo").innerHTML=cadena3 + "<br>" + (entero+decimal) + "<br>" +  cierto + "<br>" + falso + "<br>" + lista + "<br>" + (animal.nombre + " " + animal.tipo + " " + animal.raza + " " + animal.edad + " " + animal.fechaDeNacimiento + " " + typeof animal) + "<br>" + (objeto + " " + typeof objeto) + "<br>" + (vacio + " " + typeof vacio) + "<br>" + (vacio1 + " " + typeof vacio1) + "<br>" + (indefinido + " " + typeof indefinido);
+    </script>
+    <hr>
+
+    <!--JavaScript evalúa expresiones de izquierda a derecha. Diferentes secuencias pueden producir diferentes resultados:-->
+    <p id="demo1"></p>
+    <script>
+        var x = 16 + 4 + "Volvo";
+        var y = "Volvo" + 16 + 4;
+        document.getElementById("demo1").innerHTML = x + " _ " + y;
+    </script>
+    <hr>
+
+    <!--Datos complejos: -->
+    <p id="demo3"></p>
+    <script>
+    document.getElementById("demo3").innerHTML=typeof{name:'John', age:34} + "<br>" + typeof[1,2,3,4] + "<br>" + typeof null + "<br>" + typeof function myFun(){};
+    </script>
+    <hr>
+
+    <!---->
+</body>
+
+</html>

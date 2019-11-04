@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Arrays - Matrices</h1>
+    <hr>
+
+    <!--Las matrices de JavaScript se utilizan para almacenar múltiples valores en una sola variable. Una matriz es una variable especial, que puede contener más de un valor a la vez. Con JavaScript, se puede acceder a la matriz completa haciendo referencia al nombre de la matriz. Accede a un elemento de matriz haciendo referencia al número de índice. Puede tener objetos en una matriz. Puede tener funciones en una matriz. Puede tener matrices en una matriz. La lengthpropiedad de una matriz devuelve la longitud de una matriz. En JavaScript, las matrices siempre usan índices numerados.-->
+    <p id="demo"></p>
+    <script>
+        var carros = ["Saab", "Volvo", "BMW", 46];
+        carros[3] = "Audi";
+        document.getElementById("demo").innerHTML = carros + "<br>" + carros.length;
+    </script>
+    <hr>
+
+    <!--La forma más segura de recorrer una matriz es usando un forciclo-->
+    <p id="demo1"></p>
+    <script>
+        var texto, cantidad, a;
+        cantidad = carros.length;
+        texto = "<ul>";
+        for (a = 0; a < cantidad; a++) {
+            texto += "<li>" + carros[a] + "</li>";
+        }
+        texto += "</ul>";
+        document.getElementById("demo1").innerHTML = texto;
+    </script>
+    <hr>
+
+    <!--También puedes usar la Array.forEach()función. Array.forEach() es compatible con todos los navegadores, excepto Internet Explorer 8 o anterior:-->
+    <p id="demo2"></p>
+    <script>
+        var texto1 = "<ul>";
+        carros.forEach(recorrerArray);
+        texto1 += "</ul>";
+        document.getElementById("demo2").innerHTML = texto1;
+        function recorrerArray(value) {
+            texto1 += "<li>" + value + "</li>";
+        }
+    </script>
+    <hr>
+
+    <!--La forma más fácil de agregar un nuevo elemento (al final) a una matriz es usar el push()método. El push()método devuelve la nueva longitud de la matriz. -->
+    <button onclick="agregarElemento()">Click</button>
+    <p id="demo3"></p>
+    <script>
+        var frutas = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo3").innerHTML = frutas;
+        function agregarElemento() {
+            frutas.push("Lemon");
+            document.getElementById("demo3").innerHTML = frutas + "<br>" + frutas.push();
+        }
+    </script>
+    <hr>
+
+    <!--El nuevo elemento también se puede agregar a una matriz utilizando la lengthpropiedad-->
+    <button onclick="agregarElemento1()">Click</button>
+    <p id="demo4"></p>
+    <script>
+        var frutas1 = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo4").innerHTML = frutas1;
+        function agregarElemento1() {
+            frutas1[frutas1.length] = "Lemon";
+            document.getElementById("demo4").innerHTML = frutas1;
+        }
+    </script>
+    <hr>
+
+    <!--Agregar elementos con altos índices puede crear "agujeros" indefinidos en una matriz-->
+    <p id="demo5"></p>
+    <script>
+        var frutas2, texto2, cantidad1, b;
+        frutas2 = ["Banana", "Orange", "Apple", "Mango"];
+        frutas2[6] = "Lemon";
+        cantidad1 = frutas2.length;
+        texto2 = "";
+        for (b = 0; b < cantidad1; b++) {
+            texto2 += frutas2[b] + "<br>";
+        }
+        document.getElementById("demo5").innerHTML = texto2;
+    </script>
+    <hr>
+
+    <!--Si usa índices con nombre, JavaScript redefinirá la matriz en un objeto estándar.
+    Después de eso, algunos métodos de matriz y propiedades producirán resultados incorrectos .-->
+    <p id="demo6"></p>
+    <script>
+        var person = [];
+        person["firstName"] = "John";
+        person["lastName"] = "Doe";
+        person["age"] = 46;
+        document.getElementById("demo6").innerHTML =
+            person[0] + " " + person.length;
+    </script>
+    <hr>
+
+    <!--Cuándo usar matrices. Y Cuando usar objetos. JavaScript no admite matrices asociativas. Debe usar objetos cuando desee que los nombres de los elementos sean cadenas (texto). Debe usar matrices cuando desee que los nombres de los elementos sean números.-->
+
+    <!--¿Cómo sé si una variable es una matriz?-->
+    <p id="demo7"></p>
+    <script>
+        document.getElementById("demo7").innerHTML = Array.isArray(frutas2);
+    </script>
+    <hr>
+
+    <!--Para resolver este problema, puede crear su propia isArray()función-->
+    <p id="demo8"></p>
+    <script>
+        document.getElementById("demo8").innerHTML = esArray(frutas2);
+        function esArray(miArray) {
+            return miArray.constructor.toString().indexOf("Array") > -1;
+        }
+    </script>
+    <hr>
+
+    <!--El instanceofoperador devuelve verdadero si un objeto es creado por un constructor dado-->
+    <p id="demo9"></p>
+    <script>
+        document.getElementById("demo9").innerHTML = frutas2 instanceof Array;
+    </script>
+    <hr>
+
+    <!--toString()convierte una matriz en una cadena de valores de matriz (separados por comas). El join()método también une todos los elementos de la matriz en una cadena. Se comporta igual que toString(), pero además puede especificar el separador-->
+    <p id="demo10"></p>
+    <script>
+        document.getElementById("demo10").innerHTML = carros.toString() + "<br>" + carros.join(" -");
+    </script>
+    <hr>
+
+    <!--El pop()método elimina el último elemento de una matriz. El pop()método devuelve el valor que se "extrajo". -->
+    <p id="demo11"></p>
+    <script>
+        var frutas3 = ["Banano", "Naranja", "Manzana", "Mango"];
+        frutas3.pop()
+        document.getElementById("demo11").innerHTML = frutas3 + "<br>" + frutas3.pop();
+    </script>
+    <hr>
+
+    <!--El shift()método elimina el primer elemento de la matriz y "desplaza" todos los demás elementos a un índice inferior.-->
+    <p id="demo12"></p>
+    <script>
+        var frutas4 = ["Banano", "Naranja", "Manzana", "Mango"];
+        frutas4.shift();
+        document.getElementById("demo12").innerHTML = frutas4;
+    </script>
+    <hr>
+
+    <!--El shift()método devuelve la cadena que se "desplazó"-->
+    <p id="demo13"></p>
+    <script>
+        var frutas5 = ["Banano", "Naranja", "Manzana", "Mango"];
+        document.getElementById("demo13").innerHTML = frutas5.shift();
+    </script>
+    <hr>
+
+    <!--El unshift()método agrega un nuevo elemento a una matriz (al principio) y "desvía" los elementos más antiguos. El unshift()método devuelve la nueva longitud de la matriz.-->
+    <button onclick="agregar1()">Click</button>
+    <p id="demo14"></p>
+    <p>El método unshift () no funciona correctamente en Internet Explorer 8 y versiones anteriores, los valores se
+        insertarán, pero el valor de retorno será indefinido.</p>
+    <script>
+        var frutas6 = ["Banano", "Naranja", "Manzana", "Mango"];
+        document.getElementById("demo14").innerHTML = frutas6;
+
+        function agregar1() {
+            frutas6.unshift("Lemon");
+            document.getElementById("demo14").innerHTML = frutas6 + " - " + frutas6.unshift();
+        }
+    </script>
+    <hr>
+
+    <!--El splice()método se puede usar para agregar nuevos elementos a una matriz. El primer parámetro (2) define la posición donde se deben agregar nuevos elementos (empalmados).El segundo parámetro (0) define cuántos elementos deben eliminarse .El resto de los parámetros ("Lemon", "Kiwi") definen los nuevos elementos que se agregarán. El splice()método devuelve una matriz con los elementos eliminados. -->
+    <button onclick="agregar2()">Click</button>
+    <p id="demo15"></p>
+    <script>
+        var frutas7 = ["Banano", "Naranja", "Manzana", "Mango"];
+        document.getElementById("demo15").innerHTML = frutas7;
+        var removed = frutas7.splice(2, 2, "Limon", "Kiwi");
+        function agregar2() {
+            document.getElementById("demo15").innerHTML = frutas7 + "<br>" + removed;
+        } 
+    </script>
+    <hr>
+
+    <!--puede usar splice()para eliminar elementos sin dejar "agujeros" en la matriz-->
+    <button onclick="eliminar1()">Click</button>
+    <p id="demo16"></p>
+    <script>
+        var frutas8 = ["Banano", "Naranja", "Manzana", "Mango"];
+        document.getElementById("demo16").innerHTML = frutas8;
+        function eliminar1() {
+            frutas8.splice(0, 1);
+            document.getElementById("demo16").innerHTML = frutas8;
+        }
+    </script>
+    <hr>
+
+    <!--El concat()método crea una nueva matriz al fusionar (concatenar) las matrices existentes. El concat()método puede tomar cualquier número de argumentos de matriz. El concat()método también puede tomar valores como argumentos-->
+    <p id="demo17"></p>
+    <script>
+        var niñas = ["Cecilia", "Lone"];
+        var niños = ["Emil", "Tobias", "Linus"];
+        var hijos = niñas.concat(niños + ["Carolina", "Andres"]);
+        document.getElementById("demo17").innerHTML = hijos;
+    </script>
+    <hr>
+
+    <!--El slice()método corta una parte de una matriz en una nueva matriz.-->
+    <p id="demo18"></p>
+    <script>
+        var frutas9 = ["banano", "Naranja", "Limon", "Manzana", "Mango"];
+        var citrus = frutas9.slice(2);
+        document.getElementById("demo18").innerHTML = frutas9 + "<br>" + citrus;
+    </script>
+    <hr>
+
+    <!--El slice()método puede tomar dos argumentos como slice(1, 3). El método luego selecciona elementos del argumento inicial y hasta (pero sin incluir) el argumento final.-->
+    <p id="demo19"></p>
+    <script>
+        var frutas10 = ["banano", "Naranja", "Limon", "Manzana", "Mango"];
+        var citrus1 = frutas10.slice(2, 3);
+        document.getElementById("demo19").innerHTML = citrus1;
+    </script>
+    <hr>
+
+    <!--El sort()método ordena una matriz alfabéticamente:-->
+    <button onclick="ordenar()">Click</button>
+    <p id="demo20"></p>
+    <script>
+        var frutas11 = ["Banano", "Naranja", "Limon", "Manzana", "Mango"];
+        document.getElementById("demo20").innerHTML = frutas11;
+        function ordenar() {
+            frutas11.sort();
+            document.getElementById("demo20").innerHTML = frutas11;
+        }
+    </script>
+    <hr>
+
+    <!--El reverse()método invierte los elementos en una matriz. Puede usarlo para ordenar una matriz en orden descendente. función clasifica los valores como cadenas .-->
+    <button onclick="ordenar1()">Click</button>
+    <script>
+        function ordenar1() {
+            frutas11.sort();
+            frutas11.reverse();
+            document.getElementById("demo20").innerHTML = frutas11;
+        }
+    </script>
+    <hr>
+
+    <!--Ordenar numérico y Ordenar numérico en reverso función de comparación-->
+    <button onclick="ordenar2()">Click</button>
+    <button onclick="ordenar3()">CLick</button>
+    <p id="demo21"></p>
+    <script>
+        var puntos = [40, 100, 1, 5, 25, 10];
+        document.getElementById("demo21").innerHTML = puntos;
+        function ordenar2() {
+            puntos.sort(function (a, b) { return a - b });
+            document.getElementById("demo21").innerHTML = puntos;
+        }
+        function ordenar3() {
+            puntos.sort(function (a, b) { return b - a });
+            document.getElementById("demo21").innerHTML = puntos;
+        }
+    </script>
+    <hr>
+
+    <!--Ordenar una matriz en orden aleatorio-->
+    <button onclick="aleatorio()">Click</button>
+    <script>
+        function aleatorio() {
+            puntos.sort(function (a, b) { return 0.5 - Math.random() });
+            document.getElementById("demo21").innerHTML = puntos;
+        }
+    </script>
+    <hr>
+
+    <!--Encontrar el valor máximo o mínimo en una matriz.-->
+    <p id="demo22"></p>
+    <script>
+        puntos.sort(function (a, b) { return a - b });
+        document.getElementById("demo22").innerHTML = "El número más pequeño es: " + puntos[0] + " , el número más grande es: " + puntos[5];
+    </script>
+    <hr>
+
+    <!--Puede usar Math.max.apply para encontrar el número más alto en una matriz.-->
+    <p id="demo23"></p>
+    <script>
+        document.getElementById("demo23").innerHTML = "El número mayor es: " + myArrayMax(puntos);
+        function myArrayMax(arr) {
+            return Math.max.apply(null, arr);
+        }
+    </script>
+    <hr>
+
+    <!--Puede usar Math.min.applypara encontrar el número más bajo en una matriz-->
+    <p id="demo24"></p>
+    <script>
+        document.getElementById("demo24").innerHTML = "El número menor es: " + myArrayMin(puntos);
+        function myArrayMin(arr) {
+            return Math.min.apply(null, arr);
+        }
+    </script>
+    <hr>
+
+    <!--Esta función recorre una matriz que compara cada valor con el valor más alto encontrado:-->
+    <p id="demo25"></p>
+    <script>
+        document.getElementById("demo25").innerHTML = "El número más alto es: " + myArrayMax1(puntos);
+
+        function myArrayMax1(arr) {
+            var len = arr.length;
+            var max = -Infinity;
+            while (len--) {
+                if (arr[len] > max) {
+                    max = arr[len];
+                }
+            }
+            return max;
+        }
+    </script>
+    <hr>
+
+    <!--Esta función recorre una matriz que compara cada valor con el valor más bajo encontrado-->
+    <p id="demo26"></p>
+    <script>
+        document.getElementById("demo26").innerHTML = "El número más bajo es: " + myArrayMin1(puntos);
+
+        function myArrayMin1(arr) {
+            var len = arr.length;
+            var min = Infinity;
+            while (len--) {
+                if (arr[len] < min) {
+                    min = arr[len];
+                }
+            }
+            return min;
+        }
+    </script>
+    <hr>
+
+    <!--Ordenar matrices de objetos por numeros y letras-->
+    <button onclick="ordenar4()">Click</button>
+    <button onclick="ordenar5()">Click</button>
+    <p id="demo27"></p>
+    <script>
+    var carros1 = [
+        {tipo:"Volvo", año:2016},
+        {tipo:"Saab", año:2001},
+        {tipo:"BMW", año:2010}
+    ];
+    displayCars();
+    function ordenar4(){
+        carros1.sort(function(a, b){return a.año - b.año});
+        displayCars();
+    }
+    function ordenar5(){
+        carros1.sort(function(a,b){
+            var x = a.tipo.toLowerCase();
+            var y = b.tipo.toLowerCase();
+            if(x < y){return -1}
+            if(x > y){return 1}
+            return 0;
+        });
+        displayCars();
+    }
+    function displayCars(){
+        document.getElementById("demo27").innerHTML=carros1[0].tipo + " " + carros1[0].año + "<br>" + carros1[1].tipo + " " + carros1[1].año + "<br>" + carros1[2].tipo + " " + carros1[2].año;
+    }
+    </script>
+    <hr>
+
+    <!--El map()método crea una nueva matriz al realizar una función en cada elemento de la matriz.-->
+    <p id="demo28"></p>
+    <script>
+    var numeros = [45, 4, 9, 16, 25];
+    var numeros1 =  numeros.map(multiplicar);
+    document.getElementById("demo28").innerHTML=numeros1;
+    function multiplicar(value){
+        return value * 2;
+    }
+    </script>
+    <hr>
+
+    <!--El filter()método crea una nueva matriz con elementos de matriz que pasa una prueba.-->
+    <p id="demo29"></p>
+    <script>
+    var mayor18 = numeros.filter(mayorDieciocho);
+    document.getElementById("demo29").innerHTML=mayor18;
+    function mayorDieciocho(value){
+        return value > 18;
+    }
+    </script>
+    <hr>
+
+    <!--El reduce()método ejecuta una función en cada elemento de la matriz para producir (reducirlo) un solo valor. funciona de izquierda a derecha en la matriz. no reduce la matriz original. El reduce()método puede aceptar un valor inicial. sin valor inicial solo borrar el número.-->
+    <p id="demo30"></p>
+    <script>
+    var suma = numeros.reduce(sumatoria, 100);
+    document.getElementById("demo30").innerHTML="La suma es " + suma;
+    function sumatoria(total, value){
+        return total + value;
+    }
+    </script>
+    <hr>
+
+    <!--El reduceRight()método es igual al reduce() metodo perod de derecha a izquierda-->
+    <p id="demo31"></p>
+    <script>
+    var suma1 = numeros.reduceRight(sumatoria1, 50);
+    document.getElementById("demo31").innerHTML="La suma es " + suma1;
+    function sumatoria1(total, value){
+        return total + value;
+    }
+    </script>
+    <hr>
+
+    <!--El every()método verifica si todos los valores de la matriz pasan una prueba.-->
+    <p id="demo32"></p>
+    <script>
+    var mayor15 = numeros.every(mayorQuince);
+    document.getElementById("demo32").innerHTML=mayor15;
+    function mayorQuince(value){
+        return value > 15;
+    }
+    </script>
+    <hr>
+
+    <!--El some()método verifica si algunos valores de matriz pasan una prueba.-->
+    <p id="demo33"></p>
+    <script>
+    var mayor10 = numeros.some(mayorDiez);
+    document.getElementById("demo33").innerHTML=mayor10;
+    function mayorDiez(value){
+        return value > 10;
+    }
+    </script>
+    <hr>
+
+    <!--El indexOf()método busca en una matriz un valor de elemento y devuelve su posición. Array.indexOf() devuelve -1 si no se encuentra el artículo. Si el elemento está presente más de una vez, devuelve la posición de la primera aparición.-->
+    <p id="demo34"></p>
+    <script>
+    var frutas12 = ["Banano", "Naranja", "Limon", "Manzana", "Mango", "Banano"];
+    var posBana = frutas12.indexOf("Banano");
+    document.getElementById("demo34").innerHTML="Banano esta en la posición " + posBana;
+    </script>
+    <hr>
+
+    <!--Array.lastIndexOf() devuelve la posición de la última aparición del elemento especificado.-->
+    <p id="demo35"></p>
+    <script>
+    var posBana1 = frutas12.lastIndexOf("Banano");
+    document.getElementById("demo35").innerHTML="Banano esta en la posición " + posBana1;
+    </script>
+    <hr>
+
+    <!--El find()método devuelve el valor del primer elemento de matriz que pasa una función de prueba.-->
+    <p id="demo36"></p>
+    <script>
+    var primeroMayor18 = numeros.find(primeroMayorDieciocho);
+    document.getElementById("demo36").innerHTML="El primer número mayor a 18 es " + primeroMayor18;
+    function primeroMayorDieciocho(value){
+        return value > 18;
+    }
+    </script>
+    <hr>
+
+    <!--El findIndex()método devuelve el índice del primer elemento de la matriz que pasa a una función de prueba.-->
+    <p id="demo37"></p>
+    <script>
+    var primerIndice = numeros.findIndex(myFunction);
+    document.getElementById("demo37").innerHTML="El indice del primer número mayor a 18 es " + primerIndice;
+    function myFunction(value){
+        return value > 18;
+    }
+    </script>
+    <hr>
+
+    <!---->
+
+</body>
+
+</html>

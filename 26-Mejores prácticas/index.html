@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mejores prácticas de JavaScript</title>
+</head>
+
+<body>
+    <h1>Mejores Prácticas</h1>
+    <hr>
+
+    <!--Evitar variables globales, evitar new, evitar ==, evitareval()-->
+    <!--Es una buena práctica de codificación colocar todas las declaraciones en la parte superior de cada script o función.-->
+    <!--Es una buena práctica de codificación inicializar variables cuando las declara.-->
+    <!--No use un nuevo objeto ()
+        Usar en {}lugar denew Object()
+        Usar en ""lugar denew String()
+        Usar en 0lugar denew Number()
+        Usar en falselugar denew Boolean()
+        Usar en []lugar denew Array()
+        Usar en /()/lugar denew RegExp()
+        Usar en function (){}lugar denew Function()-->
+    <p id="demo"></p>
+    <script>
+        var a1 = {};
+        var a2 = "";
+        var a3 = 0;
+        var a4 = false;
+        var a5 = [];
+        var a6 = /()/;
+        var a7 = function () { };
+        document.getElementById("demo").innerHTML = typeof a1 + "<br>" + typeof a2 + "<br>" + typeof a3 + "<br>" + typeof a4 + "<br>" + typeof a5 + "<br>" + typeof a6 + "<br>" + typeof a7;
+    </script>
+    <hr>
+
+    <!--Al realizar operaciones matemáticas, JavaScript puede convertir números en cadenas. Restando una cadena de una cadena, no genera un error pero devuelve NaN. -->
+    <p id="demo1"></p>
+    <script>
+        var b1 = 5 + 7;    
+        var b2 = 5 + "7";  
+        var b3 = "5" + 7;  
+        var b4 = 5 - 7;  
+        var b5 = 5 - "7";  
+        var b6 = "5" - 7;  
+        var b7 = 5 - "x";  
+        document.getElementById("demo1").innerHTML = b1.valueOf() + " " + typeof b1 + "<br>" + b2.valueOf() + " " + typeof b2 + "<br>" + b3.valueOf() + " " + typeof b3 + "<br>" + b4.valueOf() + " " + typeof b4 + "<br>" + b5.valueOf() + " " + typeof b5 + "<br>" + b6.valueOf() + " " + typeof b6 + "<br>" + b7.valueOf() + " " + typeof b7;
+    </script>
+    <hr>
+
+    <!--Si se llama a una función con un argumento faltante, el valor del argumento faltante se establece en undefined.-->
+    <p id="demo2"></p>
+    <script>
+        function funcion(x, y){
+            if(y=== undefined){
+                y = 0;
+            }
+            return x * y;
+        }
+        document.getElementById("demo2").innerHTML=funcion(4);
+    </script>
+    <hr>
+
+    <!--Siempre finalice sus switchdeclaraciones con a default. Incluso si crees que no hay necesidad de ello.-->
+
+    <!--Guia de estilos:-->
+
+    <!--Utilice siempre las mismas convenciones de codificación para todos sus proyectos de JavaScript.-->
+
+    <!--Las convenciones de codificación son pautas de estilo para la programación. Típicamente cubren:
+    Nombramiento y reglas de declaración para variables y funciones.
+    Reglas para el uso de espacios en blanco, sangría y comentarios.
+    Programación de prácticas y principios-->
+
+    <!--Convenciones de codificación de calidad segura :
+    Mejora la legibilidad del código.
+    Facilite el mantenimiento del código-->
+
+    <!--utilizamos camelCase para nombres de identificadores (variables y funciones).Todos los nombres comienzan con una letra .-->
+
+    <!--Coloque siempre espacios alrededor de los operadores (= + - * /) y después de las comas-->
+
+    <!--Utilice siempre 2 espacios para sangrar bloques de código-->
+
+    <!--Siempre finalice una declaración simple con un punto y coma.-->
+
+    <!--Reglas generales para declaraciones complejas (compuestas):
+    Coloque el soporte de apertura al final de la primera línea.
+    Use un espacio antes del soporte de apertura.
+    Coloque el soporte de cierre en una nueva línea, sin espacios iniciales.
+    No termine una declaración compleja con un punto y coma.-->
+
+    <!--Reglas generales para definiciones de objetos:
+    Coloque el soporte de apertura en la misma línea que el nombre del objeto.
+    Use dos puntos más un espacio entre cada propiedad y su valor.
+    Use comillas alrededor de valores de cadena, no alrededor de valores numéricos.
+    No agregue una coma después del último par de propiedad-valor.
+    Coloque el soporte de cierre en una nueva línea, sin espacios iniciales.
+    Siempre finalice una definición de objeto con un punto y coma.-->
+
+    <!--Para facilitar la lectura, evite líneas de más de 80 caracteres.
+    Si una declaración de JavaScript no cabe en una línea, el mejor lugar para separarla es después de un operador o una coma.-->
+
+    <!--Utilice siempre la misma convención de nomenclatura para todo su código. Por ejemplo:
+    Nombres de variables y funciones escritos como camelCase
+    Variables globales escritas en MAYÚSCULAS (No lo hacemos, pero es bastante común)
+    Constantes (como PI) escritas en MAYÚSCULAS-->
+
+    <!--Los guiones pueden confundirse con intentos de resta. Los guiones no están permitidos en los nombres de JavaScript.-->
+
+    <!--No comience los nombres con un signo $. Te pondrá en conflicto con muchos nombres de bibliotecas de JavaScript.-->
+
+    <!--Utilice una sintaxis simple para cargar scripts externos: <script src="myscript.js"></script> -->
+
+    <!--Visita la guia de estilos de HTML https://www.w3schools.com/html/html5_syntax.asp-->
+
+    <!---->
+</body>
+
+</html>

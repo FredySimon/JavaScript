@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Repeticiones</title>
+</head>
+
+<body>
+    <h1>Bucles - Repeticiones</h1>
+    <hr>
+
+    <!--Los bucles pueden ejecutar un bloque de código varias veces.-->
+
+    <!--for : recorre un bloque de código varias veces. sintaxis: for (sentencia1; sentencia2; sentencia3){
+            codigo que se repite
+            }
+            
+     sentencia1: se ejecuta antes del código, Puede iniciar muchos valores en la instrucción 1 (separados por comas), si omitimos sentencia1 hay que inicializarla antes,
+
+    sentencia2: define la condición para ejecutar el bloque de código, si omitimos la segunda sentencia se usa el break, 
+
+    sentencia3: se ejecuta (cada vez) después de que se haya ejecutado el bloque de código,  si omitimos sentencia tres debemos incrementar el valor de la variable dentro del bucle
+    -->
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <script>
+        var carros = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+        var texto = '';
+        var a;
+        for (a=0; a<carros.length; a++){
+            texto += carros[a] + "<br>";
+        }
+        document.getElementById("demo").innerHTML=texto;
+
+        var texto1 = '';
+        var b=0;
+        for ( ; b<5; ) {
+            texto1 += "El Número es " + b + "<br>";
+            b++
+        }
+        document.getElementById("demo1").innerHTML=texto1;
+    </script>
+    <hr>
+
+    <!--incrementar dos valores dentro del mismo bucle for-->
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        var c, d;
+        var texto2 = '';
+        var texto3 = '';
+
+        for (c=1, d=10; c<=10, d>=1; c++, d--){
+            texto2 += "Los números son " + c + " - " + d + "<br>";
+        }
+        document.getElementById("demo2").innerHTML=texto2;
+
+        for (c=1, d=2; c<=10, d>=1; c++, d--){
+            texto3 += "Los números son " + c + " - " + d + "<br>";
+        }
+        document.getElementById("demo3").innerHTML=texto3;
+    </script>
+    <hr>
+
+    <!--si omitimos la segunda sentencia se usa el break-->
+    <p id="extra"></p>
+    <script>
+    var textoo = '';
+    var azar;
+    for (azar=1; ;azar++){
+        textoo+="Número: " + azar + "<br>";
+        if(azar == 5){
+            break;
+        }
+    }
+    document.getElementById("extra").innerHTML=textoo;
+    </script>
+    <hr>
+
+    <!--for/in : recorre las propiedades de un objeto-->
+    <p id="demo4"></p>
+    <script>
+    var texto4 = '';
+    var animal = { nombre: "Lola", tipo: "Hamster", raza: "Ruso", edad: 1 };
+    var e;
+        for (e in animal) {
+             texto4 += animal[e] + " ";
+        }
+    document.getElementById("demo4").innerHTML=texto4;
+    </script>
+    <hr>
+
+    <!--for/of - recorre los valores de un objeto iterable. le permite recorrer estructuras de datos que son iterables, como matrices, cadenas, mapas, listas de nodos y más. -->
+    <p><b>Bucle sobre una:</b> Matriz.</p>
+    <script>
+    var f;
+    for (f of carros){
+        document.write(f + "<br>");
+    }
+    </script>
+    <p><b>Bucle sobre una:</b> Cadena.</p>
+    <script>
+    var g = "JavaScript";
+    var h;
+    for (h of g){
+        document.write(h + "<br>");
+    }
+    </script>
+    <hr>
+
+    <!--while - recorre un bloque de código mientras se cumple una condición específica.
+    sintaxis: while (condition) {
+    // code block to be executed
+    }
+    condicion: indicamos cuando deja de repetirse para que salga del bucle infinito.
+    Si olvida aumentar la variable utilizada en la condición, el ciclo nunca terminará. Esto bloqueará su navegador.
+    En el siguiente ejemplo, el código en el bucle se ejecutará, una y otra vez, siempre que una variable (i) sea menor que 10:
+    -->
+    <p id="demo5"></p>
+    <p id="extra1"></p>
+    <script>
+    var texto5 = '';
+    var i = 0;
+    while(i <10){
+        texto5 += "El número es " + i + "<br>";
+        i++;
+    }
+    document.getElementById("demo5").innerHTML=texto5;
+
+    var azar1 = 0;
+    var textooo = '';
+    while(carros[azar1]){
+        textooo += carros[azar1] + "<br>";
+        azar1++;
+    }
+    document.getElementById("extra1").innerHTML=textooo;
+    </script>
+    <hr>
+
+    <!--do/while - también recorre un bloque de código mientras se cumple una condición específica. sólo se ejecuta una vez. El bucle siempre se ejecutará al menos una vez, incluso si la condición es falsa, porque el bloque de código se ejecuta antes de que se pruebe la condición-->
+    <p id="demo6"></p>
+    <script>
+        var texto6 = '';
+        var j = 1;
+        do{
+            texto6 += "El número es " + j + "<br>";
+            j++;
+        }
+        while(j <10);
+        document.getElementById("demo6").innerHTML=texto6;
+    </script>
+    <hr>
+
+    <!--un ciclo while es muy similar a un ciclo for, con la declaración 1 y la declaración 3 omitidas.-->
+
+    <h1>Saltos</h1>
+    <hr>
+
+    <!--La breakdeclaración "salta" de un bucle. solo se puede usar para saltar de un bucle o un interruptor .-->
+    <p id="demo7"></p>
+    <script>
+    var texto7 = '';
+    var k;
+    for (k=0; k<10 ;k++){
+        if(k === 3){
+            break;
+        }
+        texto7+="Número: " + k + "<br>";
+    }
+    document.getElementById("demo7").innerHTML=texto7;
+    </script>
+    <hr>
+
+     <!--La continuedeclaración "salta" una iteración en el bucle. La continue declaración (con o sin una referencia de etiqueta) solo se puede usar para omitir una iteración de bucle .-->
+     <p id="demo8"></p>
+     <script>
+     var texto8 = '';
+     var l;
+     for(l=0; l<10; l++){
+         if(l === 3 || l===8){
+             continue;
+         }
+         texto8 += "Número " + l + "<br>";
+     }
+     document.getElementById("demo8").innerHTML=texto8;
+     </script>
+     <hr>
+
+      <!--Etiquetas de JavaScript: preceda las declaraciones con un nombre de etiqueta y dos puntos. Con una referencia de etiqueta, la instrucción break se puede usar para saltar de cualquier bloque de código -->
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <script>
+    var animales = ["perro", "gato", "hamster"];
+    var texto9 = '';
+    ver_animales:{
+        texto9 += animales[0] + "<br>";
+        texto9 += animales[1] + "<br>";
+        break ver_animales;
+        texto9 += animales[2];
+    }
+    document.getElementById("demo9").innerHTML=texto9;
+
+    var m;
+    var texto10 = '';
+    bucle:
+    for(m=0; m<10; m++){
+        if(m===3 || m===8){
+            continue bucle;
+        }
+        texto10 += "El número es " + m + "<br>";
+    }
+    document.getElementById("demo10").innerHTML=texto10;
+    </script>
+    <hr>
+
+    <!---->
+</body>
+
+</html>

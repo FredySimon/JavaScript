@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Strings</title>
+</head>
+<body>
+    <h1>Strings - Cadenas</h1>
+    <hr>
+
+    <!--Una cadena de JavaScript tiene cero o más caracteres escritos entre comillas. Puede usar comillas simples o dobles. Puede usar comillas dentro de una cadena, siempre que no coincidan con las comillas que rodean la cadena. Puede encontrar la longitud de una cadena con ".length". Debido a que las cadenas deben escribirse entre comillas, JavaScript malinterpretará las comillas dentro de la mismas coomillas La solución para evitar este problema es utilizar el carácter de escape de barra diagonal inversa. La secuencia \\  inserta una barra diagonal inversa en una cadena. Si una declaración de JavaScript no cabe en una línea, el mejor lugar para romperla es después de un operador. También puede dividir una línea de código dentro de una cadena de texto con una barra invertida simple. No puede dividir una línea de código con una barra diagonal inversa. Una forma más segura de dividir una cadena es utilizar la suma de cadenas. Las cadenas también se pueden definir como objetos con la palabra clave new. Disminuye la velocidad de ejecución, no usar. También puede encontrar la posición de la primera aparición de una letra o palabra en especifico, si no la encuentra el resultado sera -1, empieza en 0 con "indexOf()". El lastIndexOf()método devuelve el índice de la última aparición de un texto especificado en una cadena si no la encuentra el resultado sera -1. Ambos indexOf(), y lastIndexOf() aceptan un segundo parámetro como la posición inicial para la búsqueda. El search()método busca en una cadena un valor especificado y devuelve la posición de la coincidencia. concat() une dos o más cadenas.
+    El concat()método se puede utilizar en lugar del operador más. El trim()método elimina los espacios en blanco de ambos lados de una cadena.-->
+    <p id="demo"></p>
+    <p><strong>Note:</strong> El método trim() no es compatible con Internet Explorer 8 y versiones anteriores.</p>
+    <script>
+    var a = "John "; 
+    var b = 'Doe - "A"'
+    var letras ='ABCDEFGHIJKLMNÑOPQRSTUVWXYZA'
+    var c = "asdasdadasd \"asdasdasd\" sdasdasdasdasd " + " - " + ' sdasdasdasd \'asadasdadas\' sdasdasdsd' + " - " + 'It\'s alright.' + " - " + " asd \\ dsfsdfsdfsd";
+    var d = " Hola \
+    Dolly";
+    var e = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius, repellendus eum repudiandae aperiam nesciunt, deleniti, illum sequi suscipit sapiente architecto perspiciatis? Mollitia accusantium quisquam, ea corrupti beatae iste culpa!";
+    var g = "     Hola         ";
+    document.getElementById("demo").innerHTML=a+b + "<br>" + letras + "; Son: " + letras.length + " letras." + "<br>" + c + "<br>" + d + "<br>" + ("Hola" + "Dolly") + "<br>" + (letras.indexOf("A", 1)) + "<br>" + (letras.lastIndexOf("A", 26)) + "<br>" + (e.search("ipsum")) + "<br>" + (a.concat(" .- " + b)) + "<br>" + (g.trim());
+    </script>
+    <hr>
+
+    <!--Extracción de piezas de cuerda-->
+
+     <!--slice(start, end) : Si un parámetro es negativo, la posición se cuenta desde el final de la cadena. Si omite el segundo parámetro, el método cortará el resto de la cadena, o contando desde el final -->
+     <p id="demo1"></p>
+     <script>
+         var cadena1 = "Apple, Banana, Kiwi";
+         var cadena2 = cadena1.slice(13, 19);
+         var cadena3 = cadena1.slice(-12, -6);
+         var cadena4 = cadena1.slice(7) + " - " + cadena1.slice(-12);
+         document.getElementById("demo1").innerHTML = cadena1.length + " - " + cadena2 + " - " + cadena3 + " - " + cadena4;
+     </script>
+     <hr>
+
+     <!--substring(start, end) : no puede aceptar índices negativos. Si omite el segundo parámetro, substring()cortará el resto de la cadena.-->
+    <p id="demo2"></p>
+    <script>
+        var cadena5 = "El pescadito Ruiz en estos momentos";
+        var cadena6 = cadena5.substring(3, 17) + " - " + cadena5.substring(3);
+        document.getElementById("demo2").innerHTML = cadena6;
+    </script>
+    <hr>
+
+     <!--substr(start, length) : El segundo parámetro especifica la longitud de la parte extraída. Si omite el segundo parámetro, substr()cortará el resto de la cadena. Si el primer parámetro es negativo, la posición cuenta desde el final de la cadena.-->
+     <p id="demo3"></p>
+     <script>
+         var cadena7 = "PERO INMEDIATAMENTE DESPUÉS EMPEZÓ OTRO MUNDO EXACTAMENTE IGUAL, POR ESO NO SE NOTÓ.";
+         var cadena8 = cadena7.substr(5, 14) + " - " + cadena7.substr(19) + " - " + cadena7.substr(-5);
+         document.getElementById("demo3").innerHTML = cadena8;
+     </script>
+     <hr>
+
+      <!--El replace("", "")método reemplaza un valor especificado con otro valor en una cadena. Devuelve una nueva cadena. Reemplaza solo la primera coincidencia. Distingue entre mayúsculas y minúsculas. Para reemplazar mayúsculas y minúsculas, use una expresión regular con una /ibandera. para reemplazar todas las coincidencias, use una expresión regular con una /gbandera-->
+    <button onclick="myFunction()">Click</button>
+    <p id="demo4">Por un DEMONIO lo que faltaba demonio</p>
+    <button onclick="myFunction1()">Click</button>
+    <p id="demo5">Por un demonio lo que faltaba demonio</p>
+    <script>
+        function myFunction() {
+            var str = document.getElementById("demo4").innerHTML;
+            var txt = str.replace(/demonio/i, "asdasdasd");
+            document.getElementById("demo4").innerHTML = txt;
+        }
+        function myFunction1() {
+            var str = document.getElementById("demo5").innerHTML;
+            var txt = str.replace(/demonio/g, "asdasdasd");
+            document.getElementById("demo5").innerHTML = txt;
+        }
+    </script>
+    <hr>
+
+    <!--Convertir a mayúsculas y minúsculas-->
+    <p id="demo6"></p>
+    <script>
+        var f = "fdsfsdfsdSDFSDFd"
+        document.getElementById("demo6").innerHTML = f + " - " + f.toUpperCase() + " - " + f.toLowerCase();
+    </script>
+    <hr>
+
+    <!--Si necesita elimina los espacios en blanco en IE 8, puede usar replace() y una expresión regular en su lugar-->
+    <p id="demo7"></p>
+    <script>
+    document.getElementById("demo7").innerHTML=g.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+    </script>
+    <hr>
+
+    <!--También puede usar la solución de reemplazo anterior para agregar una función de recorte al JavaScript String.prototype-->
+    <button onclick="espaciosFuncion1()">Click</button>
+    <script>
+        function espaciosFuncion1() {
+            if (!String.prototype.trim) {
+                String.prototype.trim = function () {
+                    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+                };
+            }
+            var str = "     Hello World!    ";
+            alert(str.trim());
+        }
+    </script>
+    <hr>
+
+     <!--Hay 3 métodos para extraer caracteres de cadena-->
+     <!--El charAt()método devuelve el carácter en un índice (posición) especificado en una cadena-->
+    <p id="demo8"></p>
+    <script>
+        var str = "Hello world";
+        document.getElementById("demo8").innerHTML = str.charAt(1);
+    </script>
+    <hr>
+
+     <!--El charCodeAt()método devuelve el unicode del carácter en un índice especificado en una cadena. El método devuelve un código UTF-16 (un entero entre 0 y 65535).-->
+     <p id="demo9"></p>
+     <script>
+         document.getElementById("demo9").innerHTML = str.charCodeAt(4);
+     </script>
+     <hr>
+
+     <!--ECMAScript 5 (2009) permite el acceso a la propiedad [] en cadenas. No funciona en Internet Explorer 7 o anterior. Es de solo lectura. str [0] = "A" no da ningún error (¡pero no funciona!)-->
+    <p id="demo10"></p>
+    <script>
+        document.getElementById("demo10").innerHTML = str[0];
+    </script>
+    <hr>
+
+    <!--Una cadena se puede convertir en una matriz con el split()método - ",", " ", "|" - Si se omite el separador, la matriz devuelta contendrá la cadena completa en el índice [0]. Si el separador es "", la matriz devuelta será una matriz de caracteres individuales -->
+    <p id="demo11"></p>
+    <script>
+    var str1 = "a,b,c,d,e,f";
+    var arr = str1.split(",");
+    document.getElementById("demo11").innerHTML=arr[1];
+    </script>
+    <hr>
+
+</body>
+</html>

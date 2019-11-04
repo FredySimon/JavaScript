@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos</title>
+</head>
+<body>
+    <h1>Eventos</h1>
+    <hr>
+    
+    <!--En el siguiente ejemplo onclick, se agrega un atributo (con código) a un <button>elemento-->
+    <button onclick="document.getElementById('demo').innerHTML=Date()">Click</button>
+    <p id="demo"></p>
+    <hr>
+
+    <!--En el siguiente ejemplo, el código cambia el contenido de su propio elemento-->
+    <button onclick="this.innerHTML=Date()">Click</button>
+    <hr>
+
+    <!--El código JavaScript suele tener varias líneas. Es más común ver atributos de eventos que llaman a funciones-->
+    <button onclick="displayDate()">Click</button>
+    <p id="demo1"></p>    
+    <script>
+    function displayDate(){
+        document.getElementById("demo1").innerHTML=Date();
+    }
+    </script>
+    <hr>
+
+    <!--onchange, onclick, onmouseover, onmouseout, onkeydown, onload,-->
+</body>
+</html>
