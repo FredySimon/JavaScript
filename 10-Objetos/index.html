@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <!--Objeto: propiedades: se definen en modo nombre:valor, Métodos: acciones que se pueden ejecutar a un objeto-->
+    <!--Objeto: propiedades: se definen en modo nombre:valor, Métodos: acciones que se pueden ejecutar a un objeto. los objetos son los reyes. Si entiendes los objetos, entiendes JavaScript. Todos los valores de JavaScript, excepto las primitivas, son objetos.-->
     <h1>Objetos</h1>
     <hr>
 
@@ -45,22 +45,141 @@
     </script>
     <hr>
     
-    <!--definir objeto: Los espacios y los saltos de línea no son importantes. Una definición de objeto puede abarcar varias líneas. Propiedad del objeto: El nombre: los pares de valores en los objetos JavaScript se denominan propiedades. Puede acceder a las propiedades del objeto de dos maneras-->
+    <!--definir objeto: Los espacios y los saltos de línea no son importantes. Una definición de objeto puede abarcar varias líneas. Propiedad del objeto: El nombre: los pares de valores en los objetos JavaScript se denominan propiedades. Puede acceder a las propiedades del objeto de tres maneras. La expresión debe evaluar a un nombre de propiedad. Puede agregar nuevas propiedades a un objeto existente simplemente dándole un valor. La deletepalabra clave elimina tanto el valor de la propiedad como la propiedad misma. El deleteoperador está diseñado para usarse en propiedades de objeto. No tiene efecto sobre variables o funciones. -->
     <p id="demo1"></p>
     <script>
         var person = {
             firstName: "John",
             lastName: "Doe",
             age: 50,
-            eyeColor: "blue"
+            eyeColor: "blue",
+            id:1,
+            fullname: function(){
+                return this.firstName + " " + this.lastName;
+            }
         };
-        document.getElementById("demo1").innerHTML = person.firstName + " " + person["lastName"];
+        person.nationality = "English";
+        x10 = "age"
+        delete person.eyeColor;
+        document.getElementById("demo1").innerHTML = person.firstName + " " + person["lastName"] + " " + person[x10] + " " + person.nationality + " " + person.eyeColor + " " + person.fullname();
     </script>
     <hr>
 
       <!--Todos los tipos de datos de JavaScript tienen un valueOf()y un toString()método.-->
 
-    <!---->
+    <!--Los objetos escritos como pares de nombre y valor son similares a: Matrices asociativas en PHP, Diccionarios en Python, Tablas hash en C, Mapas hash en Java, Hashes en Ruby y Perl, -->
+
+    <!--En ECMAScript 5, también se puede crear un objeto con la función Object.create().-->
+
+    <!--Los objetos son mutables: se abordan por referencia, no por valor. Si la persona es un objeto, la siguiente declaración no creará una copia de la persona-->
+    <p id="demo2"></p>
+    <script>
+    var persona = {nombre:"Fredy", apellido:"Simón", edad:19};
+    var a = persona;
+    a.edad = 20;
+    document.getElementById("demo2").innerHTML=persona.nombre + " " + persona.edad;
+    </script>
+    <hr>
+
+    <!--La for...indeclaración de JavaScript recorre las propiedades de un objeto.-->
+    <p id="demo3"></p>
+    <script>
+    var texto = "";
+    var b;
+    for (b in persona){
+        texto += persona[b] + " ";
+    }
+    document.getElementById("demo3").innerHTML=texto;
+    </script>
+    <hr>
+
+    <!--utiliza una langpropiedad para get el valor de la languagepropiedad. utiliza long propiedad para set el valor de la language propiedad. get lang() { return this.language.toUpperCase();}. -->
+    <p id="demo4"></p>
+    <script>
+    var persona1 = {lenguage: "Español", get lang(){return this.lenguage;}, set long(long){this.lenguage = long.toUpperCase()}};
+    persona1.long = "es"
+    document.getElementById("demo4").innerHTML=persona1.lang;
+    </script>
+    <hr>
+
+    <!--¿Por qué usar getters y setters?: Da una sintaxis más simple, Permite una sintaxis igual para propiedades y métodos, Puede asegurar una mejor calidad de datos, Es útil para hacer cosas detrás de escena.-->
+
+    <!--El Object.defineProperty()método también se puede usar para agregar Getters y Setters-->
+    <p id="demo5"></p>
+    <script>
+        var stock = {contadores: 0};
+        Object.defineProperty(stock, "borrar", { get : function(){this.contadores = 0;}});
+        Object.defineProperty(stock, "incrementar", { get : function(){this.contadores++;}});
+        Object.defineProperty(stock, "decrementar", { get : function(){this.contadores--;}});
+        Object.defineProperty(stock, "agregar", { set : function(value){this.contadores += value;}});
+        Object.defineProperty(stock, "quitar", { set : function(value){this.contadores -= value;}});
+        stock.borrar;
+        stock.agregar = 5;
+        stock.quitar = 1;
+        stock.incrementar;
+        stock.decrementar;
+        document.getElementById("demo5").innerHTML=stock.contadores;
+    </script>
+    <hr>
+
+    <!--función de constructor de objetos. para crear muchos objetos del mismo "tipo". Agregar un nuevo método a un objeto existente. La prototypepropiedad de JavaScript le permite agregar nuevas propiedades a los constructores de objetos, también le permite agregar nuevos métodos a los constructores de objetos. Solo modifique sus propios prototipos. Nunca modifique los prototipos de objetos JavaScript estándar. -->
+    <p id="demo6"></p>
+    <script>
+        function persona2 (nombre, apellido, edad){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+        }
+        persona2.prototype.nacionalidad = "guatemalteca";
+        persona2.prototype.completo = function(){
+            return this.nombre + " " + this.apellido;
+        };
+        var papa = new persona2("John", "Doe", 50);
+        var mama = new persona2("Sally", "Doe", 49);
+        document.getElementById("demo6").innerHTML=papa.completo() + " " + papa.edad + papa.nacionalidad + " " + mama.completo() + " " + mama.edad + " " + mama.nacionalidad;
+    </script>
+    <hr>
+
+    <!--No puede agregar una nueva propiedad a un constructor de objetos de la misma manera que agrega una nueva propiedad o método a un objeto existente. Para agregar una nueva propiedad a un constructor, debe agregarla a la función de constructor. De esta forma, las propiedades del objeto pueden tener valores predeterminados. Su función de constructor también puede definir métodos. -->
+
+    <!--ECMAScript 5 agregó muchos métodos de objetos nuevos a JavaScript: Object.getPrototypeOf(object): Accediendo al prototipo. Object.preventExtensions(object): Impide agregar propiedades a un objeto. Object.isExtensible(object): Devuelve verdadero si se pueden agregar propiedades a un objeto. Object.seal(object): Evita cambios en las propiedades del objeto (no en los valores). Object.isSealed(object): Devuelve verdadero si el objeto está sellado. Object.freeze(object): Previene cualquier cambio en un objeto. Object.isFrozen(object): Devuelve verdadero si el objeto está congelado. -->
+   
+    <!--Este ejemplo enumera todas las propiedades de un objeto-->
+    <p id="demo7"></p>
+    <script>
+    document.getElementById("demo7").innerHTML=Object.getOwnPropertyNames(persona);
+    </script>
+    <hr>
+
+    <!--Object.keys(object): Devuelve propiedades enumerables como una matriz.-->
+    <p id="demo8"></p>
+    <script>
+    var persona3 = {nombre:"Ada", apellido:"Lovecode", idioma:"EN"};
+    Object.defineProperty(persona3, "idioma", {enumerable:false});
+    document.getElementById("demo8").innerHTML=Object.keys(persona3);
+    </script>
+    <hr>
+
+    <!-- Object.defineProperty(object, property, descriptor):Agregar o cambiar una propiedad de objeto.-->
+    <p id="demo9"></p>
+    <script>
+        Object.defineProperty(persona3, "año", {value:"2000"});
+        document.getElementById("demo9").innerHTML=persona3.nombre + " " + persona3.apellido + " " + persona3.año;
+    </script>
+    <hr>
+
+    <!-- Object.defineProperties(object, descriptors): Agregar o cambiar muchas propiedades de objeto. -->
+    <p id="demo10"></p>
+    <script>
+    Object.defineProperties(persona3, {"color":{value:"Blanca"}, "altura":{value:"1.50"} });
+    document.getElementById("demo10").innerHTML=persona3.color + " " + persona3.altura;
+    </script>
+    <hr>
+
+    <!--Object.getOwnPropertyDescriptor(object, property): Acceso a propiedades.-->
+    <script>
+    Object.getOwnPropertyDescriptor(persona3, "color");
+    </script>
 
 </body>
 

@@ -12,7 +12,9 @@
     <h1>Funciones</h1>
     <hr>
 
-    <!--Una función de JavaScript es un bloque de código diseñado para realizar una tarea en particular. función puede tener 0 parametros, parametros: no lleva tipo de dato, Argumento: valores que pasamos a (y que recibe) una función. Una función de JavaScript se ejecuta cuando "algo" lo invoca (lo llama). Puede usar el mismo código muchas veces con diferentes argumentos, para producir resultados diferentes. Acceder a una función sin () devolverá la definición de la función en lugar del resultado de la función. Las funciones se pueden usar de la misma manera que las variables, en todos los tipos de fórmulas, tareas y cálculos. -->
+    <!--Las funciones de JavaScript se definen con la functionpalabra clave. Puede usar una declaración de función o una expresión de función. -->
+
+    <!--Una función de JavaScript es un bloque de código diseñado para realizar una tarea en particular. función puede tener 0 parametros, parametros: no lleva tipo de dato, Argumento: valores que pasamos a (y que recibe) una función. Una función de JavaScript se ejecuta cuando "algo" lo invoca (lo llama). Puede usar el mismo código muchas veces con diferentes argumentos, para producir resultados diferentes. Acceder a una función sin () devolverá la definición de la función en lugar del resultado de la función. Las funciones se pueden usar de la misma manera que las variables, en todos los tipos de fórmulas, tareas y cálculos. Los puntos y comas se usan para separar las sentencias ejecutables de JavaScript. Como una declaración de función no es una declaración ejecutable, no es común terminarla con un punto y coma. El izado se aplica a las declaraciones de variables y a las declaraciones de funciones. Las funciones definidas usando una expresión no se izan.-->
     <p id="demo"></p>
     <script>
         function saludo() {
@@ -59,7 +61,7 @@
     <script>
         //anonima autoinvocada
         (function () {
-            alert("Adios")
+            alert("Hola")
         }())
     </script>
 
@@ -76,10 +78,124 @@
     </script>
     <hr>
 
-    <!--variables como funciones-->
+    <!--variables como funciones. En JavaScript puede definir funciones como métodos de objeto.-->
     <script>
         var persona = { nombre: "asdsd", apellido: "sadsd", id: 1, nombreCompleto: function () { return this.nombre + " " + this.apellido + ".-"; } };
     </script>
+
+    <!--El toString()método devuelve la función como una cadena. Una función definida como la propiedad de un objeto, se llama un método para el objeto. Una función diseñada para crear nuevos objetos, se denomina constructor de objetos.-->
+    <p id="demo8"></p>
+    <script>
+     function funciontoString(a, b){
+         return a * b;
+     }
+     document.getElementById("demo8").innerHTML=funciontoString.toString();
+    </script>
+    <hr>
+
+    <!--Las funciones de JavaScript tienen un objeto incorporado llamado objeto de argumentos. El objeto de argumento contiene una matriz de los argumentos utilizados cuando se llamó a la función (invocada).-->
+    <p id="demo9"></p>
+    <script>
+        function buscarMayor(){
+            var i;
+            var max = -Infinity;
+            for (i=0; i<arguments.length; i++){
+                if(arguments[i] > max){
+                    max = arguments[i];
+                }
+            }
+            return max;
+        } 
+        document.getElementById("demo9").innerHTML=buscarMayor(4, 5, 6, 7);
+    </script>
+    <hr>
+
+    <!--Sumar todos los parametros que recibe una función.-->
+    <p id="demo10"></p>
+    <script>
+    function sumarTodos(){
+        var i;
+        var suma = 0;
+        for (i=0; i<arguments.length; i++){
+            suma += arguments[i];
+        }
+        return suma;
+    }
+    document.getElementById("demo10").innerHTML=sumarTodos(1, 123, 500, 115, 44, 88);
+    </script>
+    <hr>
+
+    <!--En un navegador, el objeto de la página es la ventana del navegador. La función siguiente se convierte automáticamente en una función de ventana.-->
+    <p id="demo11"></p>
+    <script>
+    function restar(a, b){
+        return a - b;
+    }
+    document.getElementById("demo11").innerHTML=window.restar(10, 2);
+    </script>
+    <hr>
+
+    <!--Si una invocación de función está precedida por la newpalabra clave, es una invocación de constructor.-->
+    <p id="demo12"></p>
+    <script>
+    function funcionCOnstructor(a, b){
+        this.nombre = a;
+        this.apellido = b;
+    }
+    var z = new funcionCOnstructor("John", "Doe");
+    document.getElementById("demo12").innerHTML=z.nombre;
+    </script>
+    <hr>
+
+    <!--El call()método es un método de JavaScript predefinido. Se puede utilizar para invocar (llamar) un método con un objeto propietario como argumento (parámetro). Con el call()método, puede escribir un método que pueda usarse en diferentes objetos. Con call(), un objeto puede usar un método que pertenece a otro objeto. El call()método puede aceptar argumentos.-->
+    <p id="demo13"></p>
+    <script>
+    var persona1 = {
+        completo: function(ciudad, pais){
+            return this.nombre + " " + this.apellido + ", " + ciudad + ", " + pais;
+        }
+    }
+    var persona2 = {
+        nombre: "John",
+        apellido: "Doe"
+    }
+    var y = persona1.completo.call(persona2, "Guatemla", "Guatemala");
+    document.getElementById("demo13").innerHTML=y;
+    </script>
+    <hr>
+
+    <!--Con el apply()método, puede escribir un método que pueda usarse en diferentes objetos. El método apply () es muy útil si desea usar una matriz en lugar de una lista de argumentos. El apply()método acepta argumentos en una matriz-->
+    <p id="demo14"></p>
+    <script>
+    var carro = {
+        registroCarro: function(pais, dueño){
+            return this.marca + " " + this.modelo + ", " + pais + " " + dueño;
+        }
+    }
+    var carro1 = {
+        marca:"BMW",
+        modelo:1995
+    }
+    var x = carro.registroCarro.apply(carro1, ["Alemania", "Fredy"]);
+    document.getElementById("demo14").innerHTML=x;
+    </script>
+    <hr>
+
+    <!--El call()método toma argumentos por separado. El apply()método toma argumentos como una matriz .-->
+
+    <!--Dado que las matrices de JavaScript no tienen un método max (), puede aplicar el Math.max()método en su lugar.-->
+    <p id="demo15"></p>
+    <script>
+    document.getElementById("demo15").innerHTML=Math.max.apply(null, [1,2,3]) + " o " + Math.max.apply(Math, [1,2,3]) + " o " + Math.max.apply(" ", [1,2,3]) + " o " + Math.max.apply(0, [1,2,3]);
+    </script>
+    <hr>
+
+    <!--Contador-->
+    <button id="demo16" type="button" onclick="document.getElementById('demo16').innerHTML=++j">Click</button>
+    <script>
+    var j = 0;
+    </script>
+    <hr>
 
     <h1>Funciones de flecha</h1>
     <hr>
@@ -133,6 +249,7 @@
     </script>
     <hr>
 
+    <!---->
 </body>
 
 </html>
