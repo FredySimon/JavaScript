@@ -1,34 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eventos</title>
+    <style>
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            text-align: center;
+            padding: 0.5em;
+        }
+    </style>
 </head>
-<body>
+
+<body onload="verificarCookies()">
     <h1>Eventos</h1>
     <hr>
-    
-    <!--En el siguiente ejemplo onclick, se agrega un atributo (con código) a un <button>elemento-->
+
+    <!--En el siguiente ejemplo onclick, se agrega un atributo (con código) a un <button>elemento. getElementByIdes un método , mientras que innerHTMLes una propiedad. La innerHTMLpropiedad se puede usar para obtener o cambiar cualquier elemento HTML, incluidos <html>y <body>. El objeto del documento representa su página web.-->
     <button onclick="document.getElementById('demo').innerHTML=Date()">Click</button>
-    <p id="demo"></p>
+    <p id="demo">.</p>
     <hr>
 
     <!--En el siguiente ejemplo, el código cambia el contenido de su propio elemento-->
     <button onclick="this.innerHTML=Date()">Click</button>
     <hr>
 
-    <!--El código JavaScript suele tener varias líneas. Es más común ver atributos de eventos que llaman a funciones-->
+    <!--El código JavaScript suele tener varias líneas. Es más común ver atributos de eventos que llaman a funciones. La forma más fácil de modificar el contenido de un elemento HTML es mediante el uso de la innerHTMLpropiedad.-->
     <button onclick="displayDate()">Click</button>
-    <p id="demo1"></p>    
+    <p id="demo1"></p>
     <script>
-    function displayDate(){
-        document.getElementById("demo1").innerHTML=Date();
+        function displayDate() {
+            document.getElementById("demo1").innerHTML = Date();
+        }
+    </script>
+    <hr>
+
+    <!--onchange, onclick, onmouseover, onmouseout, onkeydown, onload, Los eventos onloady onunloadse activan cuando el usuario entra o sale de la página. El onloadevento se puede utilizar para verificar el tipo de navegador del visitante y la versión del navegador, y cargar la versión adecuada de la página web en función de la información. Los eventos onloady onunloadse pueden usar para tratar las cookies. El onchangeevento a menudo se usa en combinación con la validación de los campos de entrada. Los eventos onmouseovery onmouseoutse pueden usar para activar una función cuando el usuario pasa el mouse sobre o fuera de un elemento HTML. Las onmousedown, onmouseupy onclicklos acontecimientos son todos partes de un clic del ratón. Primero, cuando se hace clic en un botón del mouse, se activa el evento onmousedown, luego, cuando se suelta el botón del mouse, se activa el evento onmouseup, finalmente, cuando se completa el clic del mouse, se activa el evento onclick.-->
+    <h2 onclick="this.innerHTML='Texto cambiado.'">Texto</h2>
+    <p id="demo11"></p>
+    Ingresa texto: <input type="text" id="campo" onchange="cambioMayusculas()"
+        onfocus="this.style.backgroundColor ='yellow'">
+
+    <div onmouseover="mouseEncima(this)" onmouseout="mouseFuera(this)"
+        style="margin-top:5px; background-color: tomato; width: 120px; height: 20px; padding: 40px;">Pasa sobre mi.
+    </div>
+
+    <div onmousedown="click(this)" onmouseup="soltarClick(this)"
+        style="margin-top:5px; background-color: teal; width: 90px; height: 20px; padding: 40px;">Click</div>
+
+    <img id="imagen1" src="../00-Introducción/img/bombilla-apagada.jpg" onmousedown="bombillaEncendida()"
+        onmouseup="bombillaApagada()" width="100" height="100" style="margin-top:5px">
+
+    <h2 onmouseover="style.color='red'" onmouseout="style.color='black'">Pasa el mouse encima</h2>
+
+    <script onload="mensaje()">
+        function verificarCookies() {
+            var texto = '';
+            if (navigator.cookieEnabled == true) {
+                texto = "Cookies habilitadas.";
+            } else {
+                texto = "Cookies deshabilitadas.";
+            }
+            document.getElementById("demo11").innerHTML = texto;
+        }
+        function cambioMayusculas() {
+            var x = document.getElementById("campo");
+            x.value = x.value.toUpperCase();
+        }
+        function mouseEncima(obj) {
+            obj.innerHTML = "Gracias";
+        }
+        function mouseFuera(obj) {
+            obj.innerHTML = "Pasa sobre mi.";
+        }
+        function click(obj) {
+            obj.style.backgroundColor = "blue";
+            obj.innerHTML = "Soltar";
+        }
+        function soltarClick(obj) {
+            obj.style.backgroundColor = "blue";
+            obj.innerHTML = "Gracias";
+        }
+        function bombillaEncendida() {
+            document.getElementById("imagen1").src = "../00-Introducción/img/bombilla-encendida.jpg";
+        }
+        function bombillaApagada() {
+            document.getElementById("imagen1").src = "../00-Introducción/img/bombilla-apagada.jpg";
+        }
+        function mensaje() {
+            alert("onload va en el body.");
+        }
+    </script>
+    <hr>
+
+    <h1>HTML DOM</h1>
+    <hr>
+    <!--Con HTML DOM, JavaScript puede acceder y cambiar todos los elementos de un documento HTML. Cuando se carga una página web, el navegador crea una D DOCUMENTO O bject M odelo de la página.-->
+    <p>El modelo HTML DOM se construye como un árbol de objetos :</p>
+    <img src="https://www.w3schools.com/js/pic_htmltree.gif">
+    <p>Con el modelo de objetos, JavaScript obtiene toda la potencia que necesita para crear HTML dinámico:</p>
+    <ul>
+        <li>JavaScript puede cambiar todos los elementos HTML en la página.</li>
+        <li>JavaScript puede cambiar todos los atributos HTML en la página.</li>
+        <li>JavaScript puede cambiar todos los estilos CSS en la página.</li>
+        <li>JavaScript puede eliminar elementos y atributos HTML existentes.</li>
+        <li>JavaScript puede agregar nuevos elementos y atributos HTML.</li>
+        <li>JavaScript puede reaccionar a todos los eventos HTML existentes en la página.</li>
+        <li>JavaScript puede crear nuevos eventos HTML en la página.</li>
+    </ul>
+    <hr>
+
+    <p>El estándar W3C DOM está separado en 3 partes diferentes:</p>
+    <ul>
+        <li>Core DOM: modelo estándar para todos los tipos de documentos</li>
+        <li>XML DOM: modelo estándar para documentos XML</li>
+        <li>HTML DOM - modelo estándar para documentos HTML</li>
+    </ul>
+    <hr>
+
+    <!--document.getElementsByTagName(name): Encuentra elementos por nombre de etiqueta.-->
+    <!--El getElementsByTagName()método devuelve un HTMLCollectionobjeto. Un HTMLCollectionobjeto es una lista de tipo HTML (colección) de elementos HTML. La lengthpropiedad define el número de elementos en un HTMLCollectio-->
+
+    <p id="demo2"></p>
+    <script>
+        var a = document.getElementsByTagName("p");
+        document.getElementById("demo2").innerHTML = 'El texto del primer parrafo es: ' + a[0].innerHTML + "<br>" + 'La cantidad de elementos p es: ' + a.length;
+    </script>
+    <hr>
+
+    <!--Este ejemplo encuentra el elemento con id, y luego encuentra todos los <p>elementos dentro-->
+    <div id="division">
+        <p>El DOM es muy útil.</p>
+        <p>Este ejemplo demuestra el método getElementsByTagName.</p>
+        <p>abcde</p>
+    </div>
+    <p id="demo3"></p>
+    <script>
+        var b = document.getElementById("division");
+        var c = b.getElementsByTagName("p");
+        document.getElementById("demo3").innerHTML = "El primer párrofo dentro de división es: " + c[0].innerHTML;
+    </script>
+    <hr>
+
+    <!--document.getElementsByClassName(name): Encuentra elementos por nombre de clase.  No funciona en Internet Explorer 8 y versiones anteriores.-->
+    <a class="parrafo" name="parrafo">12345</a>
+    <p class="parrafo">ABCEDE</p>
+    <p class="parrafo">FGHIJK</p>
+    <p id="demo4"></p>
+    <script>
+        var d = document.getElementsByClassName("parrafo");
+        document.getElementById("demo4").innerHTML = "El primer elemento con la clase parrafo es: " + d[0].innerHTML;
+    </script>
+    <hr>
+
+    <!--Si desea encontrar todos los elementos HTML que coincidan con un selector CSS especificado (id, nombres de clase, tipos, atributos, valores de atributos, etc.), use el querySelectorAll()método. con selector name.-->
+    <p id="demo5"></p>
+    <script>
+        var e = document.querySelectorAll("p.parrafo");
+        document.getElementById("demo5").innerHTML = 'El primer p con la clase parrafo es: ' + e[0].innerHTML;
+    </script>
+    <hr>
+
+    <!--Este ejemplo encuentra el elemento de formulario con id, en la colección de formularios, y muestra todos los valores de los elementos.-->
+    <form action="" id="formulario">
+        Nombre: <input type="text" name="nombre" value="Donald"><br>
+        Apellido <input type="text" name="apellido" value="Duck"><br>
+        <input type="submit" value="Enviar">
+    </form><br>
+    <button onclick="elementosFormulario()">Click</button>
+    <p id="demo6"></p>
+    <script>
+        function elementosFormulario() {
+            var a = document.forms["formulario"];
+            var texto = "";
+            var b;
+            for (b = 0; b < a.length; b++) {
+                texto += a.elements[b].value + "<br>";
+            }
+            document.getElementById("demo6").innerHTML = texto;
+        }
+    </script>
+    <hr>
+
+    <!--También se puede acceder a los siguientes objetos HTML (y colecciones de objetos):-->
+    <!--document.anchors: Devuelve todos los elementos <a> que tienen un atributo de nombre.-->
+    <!--document.body: Devuelve el elemento <body>. -->
+    <!--document.documentElement: Devuelve el elemento <html>.-->
+    <!--document.embeds: Devuelve todos los elementos <embed>-->
+    <!--document.forms: Devuelve todos los elementos <form>-->
+    <!--document.head: Devuelve el elemento <head>-->
+    <!--document.images: Devuelve todos los elementos <img>	-->
+    <!--document.links: Devuelve todos los elementos <area> y <a> que tienen un atributo href.-->
+    <!--document.scripts: Devuelve todos los elementos <script>.-->
+    <!--document.title: Devuelve el elemento <title>.-->
+    <a href="https://www.w3schools.com/html/default.asp">HTML</a>
+    <a href="https://www.w3schools.com/css/default.asp">CSS</a>
+    <p id="demo7"></p>
+    <script>
+        document.getElementById("demo7").innerHTML = "El numero de elementos a es: " + document.anchors.length + "<br>" + "El número de embeds elemntos es: " + document.embeds.length + "<br> El número de formularios es: " + document.forms.length + "<br> El elemento head es: " + document.head + "<br> El número de imagenes es: " + document.images.length + "<br> El número de links es: " + document.links.length + "<br> El número de scripts es: " + document.scripts.length + "<br> El elemento titulo es: " + document.title;
+        alert(document.body.innerHTML);
+        console.log(document.documentElement.innerHTML);
+    </script>
+    <hr>
+
+    <!--document.write(text): Escribir en la secuencia de salida HTML. puede crear contenido HTML dinámico. Nunca lo use document.write()después de cargar el documento. Sobreescribirá el documento.-->
+    <script>
+        document.write(Date());
+    </script>
+    <hr>
+
+    <!--element.attribute = new value: Cambiar el valor del atributo de un elemento HTML. document.getElementById(id).attribute = new value-->
+    <img src="https://previews.123rf.com/images/victoroancea/victoroancea1201/victoroancea120100060/12055844-la-televisi%C3%B3n-de-la-se%C3%B1al-barras-de-color-se%C3%B1al-de-prueba-para-la-programaci%C3%B3n-de-tv.jpg"
+        id="imagen" width="160px" height="120px">
+    <script>
+        document.getElementById("imagen").src = "https://i.ytimg.com/vi/7gt5bbe_D74/hqdefault.jpg";
+    </script>
+    <hr>
+
+    <!--element.style.property = new style: Cambiar el estilo de un elemento HTML. document.getElementById(id).style.property = new style-->
+    <p id="demo8">Hola</p>
+    <p id="demo9">Hola</p>
+    <script>
+        var f = document.getElementById("demo9").style;
+        f.color = "blue";
+        f.fontFamily = "Arial";
+        f.fontSize = "larger";
+    </script>
+    <hr>
+
+    <!--¿Quieres mostrar el elemento o no?-->
+    <p id="demo10">Texto.</p>
+    <input type="button" value="Ocultar" onclick="document.getElementById('demo10').style.visibility='hidden'">
+    <input type="button" value="Mostrar" onclick="document.getElementById('demo10').style.visibility='visible'">
+    <hr>
+
+    <!--Para demostrar cómo crear animaciones HTML con JavaScript, utilizaremos una página web simple. Las animaciones de JavaScript se realizan mediante la programación de cambios graduales en el estilo de un elemento. Los cambios son llamados por un temporizador. Cuando el intervalo del temporizador es pequeño, la animación se ve continua.-->
+    <h2>Animaciones</h2>
+    <button onclick="animacion()">Click</button>
+    <div class="contenedor"
+        style=" margin-top:10px; width: 400px; height: 400px; position: relative; background-color: yellow;">
+        <div id="animacion" style="width: 50px; height: 50px; position: absolute; background-color: red;"></div>
+    </div>
+    <script>
+        function animacion() {
+            var elemento = document.getElementById("animacion");
+            var posicion = 0;
+            var id = setInterval(mover, 5);
+            function mover() {
+                if (posicion == 350) {
+                    clearInterval(id);
+                } else {
+                    posicion++;
+                    elemento.style.top = posicion + "px";
+                    elemento.style.left = posicion + "px";
+                }
+            }
+        }
+    </script>
+    <hr>
+
+    <!--El método addEventListener () Agrega un detector de eventos al elemento especificado. Sin sobrescribir los controladores de eventos existentes. Facilita el control de cómo reacciona el evento al burbujeo. Puede eliminar fácilmente un detector de eventos utilizando el removeEventListener()método. El tercer parámetro es un valor booleano que especifica si se utiliza el burbujeo de eventos o la captura de eventos. Este parámetro es opcional. Puede agregar eventos de diferentes tipos al mismo elemento. Hay dos formas de propagación de eventos en el DOM HTML, burbujeando y capturando. La propagación de eventos es una forma de definir el orden de los elementos cuando ocurre un evento. Si tiene un elemento <p> dentro de un elemento <div> y el usuario hace clic en el elemento <p>, ¿qué evento "clic" de elemento debe manejarse primero? Al burbujear, el evento del elemento más interno se maneja primero y luego el externo. Al capturar el evento del elemento más externo se maneja primero y luego el interno. puede especificar el tipo de propagación utilizando el parámetro "useCapture". El valor predeterminado es falso, que utilizará la propagación burbujeante, cuando el valor se establece en verdadero, el evento utiliza la propagación de captura. -->
+    <button id="btn" onclick="this.style.backgroundColor='blue'">Click</button>
+    <p id="demo12"></p>
+    <script>
+        document.getElementById("btn").addEventListener("click", mostrarFecha);
+        document.getElementById("btn").addEventListener("mouseover", function () { document.getElementById("btn").style.backgroundColor = "red" });
+        document.getElementById("btn").addEventListener("mouseout", function () { document.getElementById("btn").style.backgroundColor = "gray"; });
+        function mostrarFecha() {
+            document.getElementById("demo12").innerHTML = Date();
+        }
+    </script>
+    <hr>
+
+    <!--El addEventListener()método le permite agregar oyentes de eventos en cualquier objeto DOM de HTML, como elementos HTML, el documento HTML, el objeto de ventana u otros objetos que admiten eventos, como el xmlHttpRequestobjeto.-->
+    <p id="demo13"></p>
+    <script>
+        window.addEventListener("resize", function () { document.getElementById("demo13").innerHTML = Math.random(); })
+    </script>
+    <hr>
+
+    <!--El removeEventListener()método elimina los controladores de eventos que se han adjuntado con el método addEventListener ()-->
+    <div id="cuadro"
+        style="background-color: coral; border: 1px solid black; padding: 50px; color: white; width: 600px; font-size: 20px;">
+        <p>Este elemento div tiene un controlador de eventos onmousemove que muestra un número aleatorio cada vez que
+            mueve el mouse dentro de este campo naranja. </p>
+
+        <p>Haga clic en el botón para eliminar el controlador de eventos del div.</p>
+        <button style="margin-top:5px;" onclick="removerEvento()">Click</button>
+    </div>
+    <p id="demo14">123</p>
+    <script>
+        document.getElementById("cuadro").addEventListener("mousemove", numeroRandom)
+
+        function numeroRandom() { document.getElementById("demo14").innerHTML = Math.random(); }
+
+        function removerEvento() {
+            document.getElementById("cuadro").removeEventListener("mousemove", numeroRandom)
+        }
+    </script>
+    <hr>
+
+    <!--Los métodos addEventListener()y removeEventListener()no son compatibles con IE 8 y versiones anteriores. Sin embargo, para estas versiones específicas del navegador, puede usar el attachEvent()método para adjuntar un controlador de eventos al elemento y el detachEvent()método para eliminarlo-->
+    <button id="btn1">Click</button>
+    <script>
+        (function () {
+            var a = document.getElementById("btn1");
+            if (a.addEventListener) {
+                a.addEventListener("click", funcion);
+            } else if (a.attachEvent) {
+                a.attachEvent("onclick", funcion);
+            }
+
+            function funcion() {
+                alert("Hola");
+            }
+        }())
+    </script>
+    <hr>
+
+    <!--element.innerHTML =  new html content: Cambiar el HTML interno de un elemento.-->
+
+    <!--element.setAttribute(attribute, value): Cambiar el valor del atributo de un elemento HTML.-->
+
+    <!--document.getElementById(id).onclick = function(){code}: Agregar código de controlador de eventos a un evento onclick.-->
+
+    <!--document.applets: Devuelve todos los elementos <applet> (en desuso en HTML5).-->
+
+    <!--document.baseURI: Devuelve el URI base absoluto del documento.-->
+
+    <!--document.cookie: Devuelve la cookie del documento.-->
+
+    <!--document.doctype: Devuelve el tipo de documento-->
+
+    <!--document.documentMode: Devuelve el modo utilizado por el navegador.-->
+
+    <!--document.documentURI: Devuelve el URI del documento.-->
+
+    <!--document.domain: Devuelve el nombre de dominio del servidor de documentos.-->
+
+    <!--document.domConfig: Obsoleto. Devuelve la configuración DOM-->
+
+    <!--document.implementation: Devuelve la implementación DOM-->
+
+    <!--document.inputEncoding: Devuelve la codificación del documento (juego de caracteres)-->
+
+    <!--document.lastModified: Devuelve la fecha y hora en que se actualizó el documento.	-->
+
+    <!--document.readyState: Devuelve el estado (cargando) del documento-->
+
+    <!--document.referrer: Devuelve el URI del referente (el documento de enlace). -->
+
+    <!--document.strictErrorChecking: Devuelve si se aplica la comprobación de errores.-->
+
+    <!--document.URL: Devuelve la URL completa del documento.-->
+
+    <p>Con el HTML DOM, puede navegar por el árbol de nodos utilizando relaciones de nodos.</p>
+    <p>De acuerdo con el estándar W3C HTML DOM, todo en un documento HTML es un nodo. Se pueden crear nuevos nodos, y
+        todos los nodos se pueden modificar o eliminar.</p>
+    <ul>
+        <li>Todo el documento es un nodo de documento.</li>
+        <li>Cada elemento HTML es un nodo de elemento.</li>
+        <li>El texto dentro de los elementos HTML son nodos de texto.</li>
+        <li>Cada atributo HTML es un nodo de atributo (en desuso).</li>
+        <li>Todos los comentarios son nodos de comentarios.</li>
+    </ul>
+    <img src="https://www.w3schools.com/js/pic_htmltree.gif" alt="">
+    <p>Los nodos en el árbol de nodos tienen una relación jerárquica entre sí. Los términos padre, hijo y hermano se
+        usan para describir las relaciones.</p>
+    <ul>
+        <li>En un árbol de nodos, el nodo superior se llama raíz (o nodo raíz).</li>
+        <li>Cada nodo tiene exactamente un padre, excepto la raíz (que no tiene padre).</li>
+        <li>Un nodo puede tener varios hijos.</li>
+        <li>Los hermanos (hermanos o hermanas) son nodos con el mismo padre.</li>
+    </ul>
+    <img src="https://www.w3schools.com/js/pic_navigate.gif" alt="">
+    <hr>
+
+    <!--Puede usar las siguientes propiedades de nodo para navegar entre nodos con JavaScript: parentNode, childNodes[nodenumber], firstChild, lastChild, nextSibling, previousSibling.-->
+
+    <!--Acceder a la propiedad innerHTML es lo mismo que acceder nodeValue al primer hijo-->
+    <p id="demo15"></p>
+    <script>
+        document.getElementById("demo15").innerHTML = document.getElementById("demo14").firstChild.nodeValue + "<br>" + document.getElementById("demo14").childNodes[0].nodeValue;
+    </script>
+    <hr>
+
+    <!--La nodeNamepropiedad especifica el nombre de un nodo. nodeName es de solo lectura. nodeName de un nodo de elemento es el mismo que el nombre de la etiqueta. nodeName de un nodo de atributo es el nombre del atributo. nodeName de un nodo de texto siempre es #text. nodeName del nodo del documento siempre es #documento. nodeName siempre contiene el nombre de etiqueta en mayúscula de un elemento HTML.-->
+    <h2 id="demo16">Texto</h2>
+    <p id="demo17"></p>
+    <script>
+        document.getElementById("demo17").innerHTML = document.getElementById("demo16").nodeName;
+    </script>
+    <hr>
+
+    <!--La nodeValuepropiedad especifica el valor de un nodo. nodeValue para elementos nodos es null. nodeValue para los nodos de texto es el texto en sí. nodeValue para los nodos de atributo es el valor del atributo. -->
+    <!--La nodeTypepropiedad es de solo lectura. Devuelve el tipo de un nodo. El tipo 2 está en desuso en el HTML DOM (pero funciona). No está en desuso en el DOM XML.-->
+    <p>Las propiedades más importantes de nodeType son:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Node</th>
+                <th>Tipo</th>
+                <th>Ejemplo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ELEMENT_NODE</td>
+                <td>1</td>
+                <td>h1 class="heading">W3Schools /h1
+                </td>
+            </tr>
+            <tr>
+                <td>ATTRIBUTE_NODE</td>
+                <td>2</td>
+                <td>class = "heading" (deprecated)</td>
+            </tr>
+            <tr>
+                <td>TEXT_NODE</td>
+                <td>3</td>
+                <td>W3Schools</td>
+            </tr>
+            <tr>
+                <td>COMMENT_NODE</td>
+                <td>8</td>
+                <td>Un comentario</td>
+            </tr>
+            <tr>
+                <td>DOCUMENT_NODE</td>
+                <td>9</td>
+                <td>The HTML document itself (the parent of <html>)
+                </td>
+            </tr>
+            <tr>
+                <td>DOCUMENT_TYPE_NODE</td>
+                <td>10</td>
+                <td>!Doctype html></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="demo18"></p>
+    <script>
+    document.getElementById("demo18").innerHTML=document.getElementById("demo16").nodeType;
+    </script>
+    <hr>
+
+    <!--Para agregar un nuevo elemento al DOM HTML, primero debe crear el elemento (nodo del elemento) y luego agregarlo a un elemento existente.-->
+     <!--document.createElement(element): Create an HTML element. agregó el nuevo elemento como el último hijo del padre.-->
+     <!--document.appendChild(element): Agregar un elemento HTML.-->
+    <div id="contenedor1">
+        <p>Parrafo.</p>
+        <p>Otro parrafo.</p>
+    </div>
+    <script>
+    var z = document.createElement("p");
+    var y = document.createTextNode("Parrafo nuevo.");
+    z.appendChild(y);
+    var elemento1 = document.getElementById("contenedor1");
+    elemento1.appendChild(z);
+    </script>
+    <hr>
+
+    <!--insertBefore()método-->
+    <div id="contenedor2">
+        <p id="demo19">Parrafo.</p>
+        <p>Otro parrafo.</p>
+    </div>
+    <script>
+    var x = document.createElement("p");
+    var w = document.createTextNode("Parrafo nuevo 2.");
+    x.appendChild(w);
+    var elemento2 = document.getElementById("contenedor2");
+    var parrafo = document.getElementById("demo19");
+    elemento2.insertBefore(x, parrafo)
+    </script>
+    <hr>
+
+    <!--Para eliminar un elemento HTML, use el remove() método:-->
+    <div>
+        <p id="demo20">Parrafo.</p>
+        <p>Otro parrafo.</p>
+    </div>
+    <button onclick="eliminarElemento()">Click</button>
+    <script>
+    function eliminarElemento(){
+        var eliminar = document.getElementById("demo20");
+        eliminar.remove();
     }
     </script>
     <hr>
 
-    <!--onchange, onclick, onmouseover, onmouseout, onkeydown, onload,-->
+    <!--Para los navegadores que no admiten el remove()método, debe encontrar el nodo principal para eliminar un elemento.-->
+     <!--document.removeChild(element): Eliminar un elemento HTML.-->
+    <div id="contenedor3">
+        <p id="demo21">Parrafo.</p>
+        <p>Otro parrafo.</p>
+    </div>
+    <button onclick="eliminarElemento1()">Click</button>
+    <script>
+        function eliminarElemento1(){
+            var padre = document.getElementById("contenedor3");
+            var hijo = document.getElementById("demo21");
+            padre.removeChild(hijo);
+        }
+    </script>
+    <hr>
+
+    <!--document.replaceChild(new, old): Reemplazar un elemento HTML.-->
+    <div id="contenedor4">
+        <p id="demo22">Parrafo.</p>
+        <p>Otro parrafo</p>
+    </div>
+    <button onclick="reemplazarElemento()">Click</button>
+    <script>
+    function reemplazarElemento(){
+        var padre = document.getElementById("contenedor4");
+        var hijo = document.getElementById("demo22");
+        var a = document.createElement("h3");
+        var b = document.createTextNode("Reemplazo.");
+        a.appendChild(b);
+        padre.replaceChild(a, hijo)
+    }
+    </script>
+    <hr>
+
+    <!--La lengthpropiedad es útil cuando desea recorrer los elementos de una colección. Una colección HTMLC puede parecer una matriz, pero no lo es. Puede recorrer la lista y hacer referencia a los elementos con un número (como una matriz). Sin embargo, no puede usar métodos de matriz como valueOf (), pop (), push () o join () en una colección HTMLC.-->
+    <div id="contenedor5">
+        <p>Hola.</p>
+        <p>Adios.</p>
+        <p>Prueba.</p>
+    </div>
+    <button onclick="cambiarColorLetra()">Click</button>
+    <script>
+    function cambiarColorLetra(){
+        var contenedor = document.getElementById("contenedor5");
+        var elementos = contenedor.getElementsByTagName("p");
+        var i;
+        for (i=0; i<elementos.length; i++){
+            elementos[i].style.color="red";
+        }
+    }    
+    </script>
+    <hr>
+    
+    <!--Un NodeListobjeto es una lista (colección) de nodos extraídos de un documento. Un NodeListobjeto es casi lo mismo que un HTMLCollectionobjeto. Algunos navegadores (más antiguos) devuelven un objeto NodeList en lugar de una colección HTMLC para métodos como getElementsByClassName(). Todos los navegadores devuelven un objeto NodeList para la propiedad childNodes. La mayoría de los navegadores devuelven un objeto NodeList para el método querySelectorAll(). La lengthpropiedad define el número de nodos en una lista de nodos. La length propiedad es útil cuando desea recorrer los nodos en una lista de nodos-->
+    <div id="contenedor6">
+        <p>Hola.</p>
+        <p>Adios.</p>
+        <p id="demo23">Prueba.</p>
+    </div>
+    <button onclick="reemplazarConNodeList()">Click</button>
+    <script>
+    function reemplazarConNodeList(){
+        var contenedor = document.getElementById("contenedor6");
+        var nodeList = contenedor.querySelectorAll("p");
+        document.getElementById("demo23").innerHTML="El innerHTML del segundo parrafo dentro del contenedor es: " + nodeList[1].innerHTML + "<br> La cantidad de elementos p en el contenedor es: " + nodeList.length;
+        var i;
+        for(i=0; i<nodeList.length; i++){
+            nodeList[i].style.color = "red";
+        }
+    }    
+    </script>
+    <hr>
+
+    <!--La diferencia entre una colección HTMLC y una NodeList: Un HTMLCollection es una colección de elementos HTML. A NodeListes una colección de nodos de documentos. Tanto un objeto HTMLCollection como un objeto NodeList es una lista (colección) de objetos similar a una matriz. Ambos proporcionan un índice (0, 1, 2, 3, 4, ...) para acceder a cada elemento como una matriz. Se puede acceder a los elementos de la colección HTMLC por su nombre, id o número de índice. Solo se puede acceder a los elementos de NodeList por su número de índice. Solo el objeto NodeList puede contener nodos de atributos y nodos de texto.-->
+
 </body>
+
 </html>

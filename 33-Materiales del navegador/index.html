@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de materiales del navegador</title>
+</head>
+<body>
+    <!--El modelo de objetos del navegador (BOM) permite que JavaScript "hable" con el navegador. No existen estándares oficiales para el B rower O bject M odel (BOM). Dado que los navegadores modernos han implementado (casi) los mismos métodos y propiedades para la interactividad de JavaScript, a menudo se le conoce como métodos y propiedades de la lista de materiales.-->
+    <h1>Lista de materiales del navegador - Browser BOM</h1>
+    <hr>
+    
+    <!--El windowobjeto es compatible con todos los navegadores. Representa la ventana del navegador. Todos los objetos, funciones y variables globales de JavaScript se convierten automáticamente en miembros del objeto de la ventana. Las variables globales son propiedades del objeto de ventana. Las funciones globales son métodos del objeto de ventana. La ventana del navegador (la ventana del navegador) NO incluye barras de herramientas ni barras de desplazamiento.-->
+    <!--Se pueden usar dos propiedades para determinar el tamaño de la ventana del navegador. Ambas propiedades devuelven los tamaños en píxeles:-->
+    <!--window.innerHeight - la altura interna de la ventana del navegador (en píxeles)-->
+    <!--window.innerWidth - el ancho interno de la ventana del navegador (en píxeles)-->
+    <p id="demo"></p>
+    <script>
+    var a = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+    var b = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+
+    var b = document.getElementById("demo").innerHTML= "La ventana tiene un ancho de " + a + " y un alto de " + b; 
+    </script>
+    <p>otros métodos:</p>
+    <ul>
+        <li>window.open() - abre una nueva ventana</li>
+        <li>window.close() - cierra la ventana actual</li>
+        <li>window.moveTo() - mover la ventana actual</li>
+        <li>window.resizeTo() - cambiar el tamaño de la ventana actual</li>
+    </ul>
+    <hr>
+
+    <!--El objeto window.screen contiene información sobre la pantalla del usuario. El window.screenobjeto se puede escribir sin el prefijo de la ventana. Propiedades:-->
+    <!--screen.width: devuelve el ancho de la pantalla del visitante en píxeles.-->
+    <!--screen.height: devuelve la altura de la pantalla del visitante en píxeles.-->
+    <!--screen.availWidth Ancho de pantalla de ventana disponible. evuelve el ancho de la pantalla del visitante, en píxeles, menos las características de la interfaz como la barra de tareas de Windows.-->
+    <!--screen.availHeight: devuelve la altura de la pantalla del visitante, en píxeles, menos las características de la interfaz como la barra de tareas de Windows. Altura de pantalla de ventana disponible.  -->
+    <!--screen.colorDepth: Profundidad de color de la pantalla de la ventana. devuelve el número de bits utilizados para mostrar un color. Todas las computadoras modernas usan hardware de 24 bits o 32 bits para la resolución de color: 24 bits = 16,777,216 diferentes "colores verdaderos" 32 bits = 4,294,967,296 diferentes "colores profundos". Las computadoras más antiguas usaban 16 bits: 65,536 resoluciones diferentes de "High Colors". Las computadoras muy viejas y los teléfonos celulares viejos usaban 8 bits: 256 "colores VGA" diferentes.-->
+    <!--screen.pixelDepth: La screen.pixelDepthpropiedad devuelve la profundidad de píxel de la pantalla.-->
+    <p id="demo1"></p>
+    <script>
+    document.getElementById("demo1").innerHTML= "El ancho de la pantalla es: " + screen.width + "<br> El alto de la pantalla es: " + screen.height + "<br> El ancho de pantalla disponible es: " + screen.availWidth + "<br> El alto de pantalla disponible es: " + screen.availHeight + "<br> La profundidad del color de la pantalla es: " + screen.colorDepth + "<br> La profundidad del píxel de la pantalla es: " + screen.pixelDepth;
+    </script>
+    <hr>
+
+    <!--Para las computadoras modernas, la profundidad de color y la profundidad de píxeles son iguales.-->
+
+    <!--El window.locationobjeto se puede utilizar para obtener la dirección de la página actual (URL) y redirigir el navegador a una nueva página.-->
+    <!--window.location.href devuelve el href (URL) de la página actual-->
+    <!--window.location.hostname devuelve el nombre de dominio del servidor web-->
+    <!--window.location.pathname devuelve la ruta y el nombre de archivo de la página actual-->
+    <!--window.location.protocol devuelve el protocolo web utilizado (http: o https :)-->
+    <!--La window.location.portpropiedad devuelve el número del puerto de host de Internet (de la página actual). La mayoría de los navegadores no mostrarán los números de puerto predeterminados (80 para http y 443 para https)-->
+    <p id="demo2"></p>
+    <script>
+    document.getElementById("demo2").innerHTML="La URL de página actual es: " + window.location.href + "<br> El hostname de la pagina es: " + window.location.hostname + "<br> La ruta y nombre de archivo de página actual es: " + window.location.pathname + "<br> El protocolo de la página actual es: " + window.location.protocol + "<br> El número de puerto de host de la página es: " + window.location.port;
+    </script>
+    <hr>
+
+    <!--window.location.assign() carga un nuevo documento-->
+    <button onclick="window.location.assign
+    ('https://www.w3schools.com')">Click</button>
+    <hr>
+
+    <!--El window.historyobjeto contiene el historial de los navegadores.-->
+    <!--El history.back()método carga la URL anterior en la lista del historial. Esto es lo mismo que hacer clic en el botón Atrás en el navegador.-->
+    <button onclick="window.history.back()">Click</button>
+    <button onclick="window.history.forward()">Click</button>
+    <hr>
+
+    <!--El window.navigatorobjeto contiene información sobre el navegador del visitante.-->
+    
+    
+    <!--navigator.platform-->
+
+    <!--La cookieEnabledpropiedad devuelve verdadero si las cookies están habilitadas, de lo contrario falso:-->
+    <!--navigator.appName devuelve el nombre de la aplicación del navegador. Por extraño que parezca, "Netscape" es el nombre de la aplicación para IE11, Chrome, Firefox y Safari.-->
+    <!--navigator.appCodeName: devuelve el nombre del código de la aplicación del navegador. "Mozilla" es el nombre del código de la aplicación para Chrome, Firefox, IE, Safari y Opera.-->
+    <!--La productpropiedad devuelve el nombre del producto del motor del navegador. La mayoría de los navegadores devuelven "Gecko" como nombre del producto!-->
+    <!--La appVersionpropiedad devuelve información sobre la versión del navegador.-->
+    <!--La userAgentpropiedad devuelve el encabezado de agente de usuario enviado por el navegador al servidor.-->
+    <!--La platformpropiedad devuelve la plataforma del navegador (sistema operativo).-->
+    <!--La languagepropiedad devuelve el idioma del navegador-->
+    <!--La onLinepropiedad devuelve verdadero si el navegador está en línea-->
+    <!--El javaEnabled()método devuelve verdadero si Java está habilitado-->
+    <p id="demo3"></p>
+    <script>
+    document.getElementById("demo3").innerHTML="cookiesEnabled es: " + navigator.cookieEnabled + "<br> El nombre de la aplicación del navegador es: " + navigator.appName + "<br> El nombre del código de la aplicación es: " + navigator.appCodeName + "<br> El nombre del producto del motor del navegador es: " + navigator.product + "<br> La versión del navegador es: " + navigator.appVersion + "<br> El encabezado de agente de usuario es: " + navigator.userAgent + "<br> El sistema operativo del navegador es: " + navigator.platform + "<br> El idioma del navegador es: " + navigator.language + "<br> El navegador esta en linea: " + navigator.onLine + "<br> Java esta habilitado: " + navigator.javaEnabled();
+    </script>
+    <hr>
+
+    <!--JavaScript tiene tres tipos de cuadros emergentes: cuadro de alerta, cuadro de confirmación y cuadro de aviso. Para mostrar saltos de línea dentro de un cuadro emergente, utilice una barra diagonal inversa seguida del carácter n.-->
+    <!--El window.alert()método se puede escribir sin el prefijo de la ventana.-->
+    <!--El window.confirm()método se puede escribir sin el prefijo de la ventana.-->
+    <!--El window.prompt()método se puede escribir sin el prefijo de la ventana. Si el usuario hace clic en "Aceptar", el cuadro devuelve el valor de entrada. Si el usuario hace clic en "Cancelar", el cuadro devuelve nulo.-->
+    <button onclick="alert('Alerta')">Click</button>
+    <button onclick="funcionConfirmar()">Click</button>
+    <button onclick="funcionVerificarCampo()">Click</button>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <script>
+    function funcionConfirmar(){
+        var texto;
+        if(confirm("Acepta o Cancela")){
+            texto = "OK";
+        } else {
+            texto = "Cancelado";
+        }
+        document.getElementById("demo4").innerHTML=texto;
+    }
+    function funcionVerificarCampo(){
+        var texto;
+        var persona = prompt("Ingresa tu nombre:", "Fredy Simón");
+        if(persona == null || persona == ""){
+            texto = "Cancelado";
+        } else {
+            texto = "Enviado.";
+        }
+        document.getElementById("demo5").innerHTML=texto;
+    }
+    alert("Hola.\nAdios");
+    </script>
+    <hr>
+
+    <!--JavaScript se puede ejecutar en intervalos de tiempo. Esto se llama eventos de tiempo.-->
+    
+    
+</body>
+</html>
