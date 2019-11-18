@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplos de JavaScript</title>
+</head>
+
+<body onload="funcion20()" onunload="funcion23()" onresize="funcion24()" onkeyup="funcion25(event)">
+    <h1>Ejemplos</h1>
+    <hr>
+
+    <!--el evento onerror-->
+    <button onclick="funcion()">Click</button>
+    <script>
+        onerror = funcionError;
+        var texto = "";
+        function funcionError(msg, url, l) {
+            texto = "Hay un error en la página.\n\n";
+            texto += "Error: " + msg + "\n";
+            texto += "URL:" + url + "\n";
+            texto += "Linea: " + l + "\n\n";
+            alert(texto);
+            return true;
+        }
+        function funcion() {
+            addlert("Bienvenido.");
+        }
+    </script>
+    <hr>
+
+    <!--Abrir una nueva ventana y agregar contenido en el-->
+    <button onclick="funcion1()">Click</button>
+    <script>
+        function funcion1() {
+            var a = window.open();
+            a.document.open();
+            a.document.write("<h1>Titulo</h1>");
+            a.document.close();
+        }
+    </script>
+    <hr>
+
+    <!--cambiar color de fondo-->
+    <table style="width: 300px; height:100px;">
+        <tr>
+            <td onmouseover="funcion2(this.style.backgroundColor)" onmouseout="funcion2('transparent')"
+                style="background-color: darkgoldenrod;"></td>
+            <td onmouseover="funcion2(this.style.backgroundColor)" onmouseout="funcion2('transparent')"
+                style="background-color: darkcyan;"></td>
+            <td onmouseover="funcion2(this.style.backgroundColor)" onmouseout="funcion2('transparent')"
+                style="background-color: gray;"></td>
+        </tr>
+    </table>
+    <script>
+        function funcion2(bg) {
+            document.body.style.background = bg;
+        }
+    </script>
+    <hr>
+
+    <!--deshabilitar un boton. se puede buscar el name, type, value, innerHTML, id.  -->
+    <button id="demo">Click</button>
+    <button onclick="document.getElementById('demo').disabled=true">Click</button>
+    <hr>
+
+    <!--Resetear un formulario-->
+    <!--accept-charset="": conjunto de caracteres aceptados de un formulario.-->
+    <!--Se puede encontrar el atributo acción, el valor del atributo enctype, el numero de elementos, metodo, nombre, destino con target. -->
+    <form id="demo1" accept-charset="ISO-8859-1">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <button onclick="document.getElementById('demo1').reset();">Click</button>
+    </form>
+    <hr>
+
+    <!--Deshabilitar y habilitar una lista desplegable-->
+    <form>
+        <select id="demo2">
+            <option value="">Manzana</option>
+            <option value="">Pera</option>
+            <option value="">Banano</option>
+            <option value="">Naranja</option>
+        </select>
+        <br><br>
+    </form>
+    <button onclick="document.getElementById('demo2').disabled=false">Click</button>
+    <button onclick="document.getElementById('demo2').disabled=true">Click</button>
+    <hr>
+
+    <!--el número de opciones en el select-->
+    <!--puede buscar el size, -->
+    <p id="demo3"></p>
+    <script>
+        document.getElementById("demo3").innerHTML = "El número de opciones es: " + document.getElementById('demo2').length;
+    </script>
+    <hr>
+
+    <!--seleccion multple-->
+    <!--doble click-->
+    <form>
+        <select id="demo3" size="4" multiple="false">
+            <option value="">Manzana</option>
+            <option value="">Pera</option>
+            <option value="">Banano</option>
+            <option value="">Naranja</option>
+        </select>
+    </form>
+    <input type="button" onclick="document.getElementById('demo3').multiple=true" ondblclick="this.style.color='red'"
+        value="Click">
+    <p>Presionar ctrl o shift para selección multiple</p>
+    <hr>
+
+    <!--Mostrar la opcion seleccionada-->
+    <form>
+        <select id="demo5">
+            <option value="">Manzana</option>
+            <option value="">Pera</option>
+            <option value="">Banano</option>
+            <option value="">Naranja</option>
+        </select>
+    </form>
+    <p id="demo4"></p>
+    <input type="button" onclick="mostrar()" value="Click">
+    <script>
+        function mostrar() {
+            var obj = document.getElementById("demo5");
+            document.getElementById("demo4").innerHTML = obj.options[obj.selectedIndex].text;
+        }
+    </script>
+    <hr>
+
+    <!--Cambiar la opción seleccionada-->
+    <!--Remover la opcion seleccionada-->
+    <form>
+        <select id="demo6">
+            <option value="">Manzana</option>
+            <option value="">Pera</option>
+            <option value="">Banano</option>
+            <option value="">Naranja</option>
+        </select>
+        <br><br>
+        <input type="button" onclick="cambiarOpcion()" value="Click">
+        <input type="button" onclick="removerOPcion()" value="Click">
+    </form>
+    <script>
+        function cambiarOpcion() {
+            var x = document.getElementById("demo6");
+            x.options[x.selectedIndex].text = "Melon";
+        }
+        function removerOPcion() {
+            var x = document.getElementById("demo6");
+            x.remove(x.selectedIndex);
+        }
+    </script>
+    <hr>
+
+    <!--objeto <a>-->
+    <a id="demo7" href="https://www.w3schools.com/" hreflang="en-us" rel="nofollow" target="_self"
+        type="text/html">W3Schools</a>
+    <button onclick="funcion3()">Click</button>
+    <p id="demo8"></p>
+    <script>
+        function funcion3() {
+            var x = document.getElementById("demo7");
+            document.getElementById("demo8").innerHTML = x.href + "<br>" + x.hreflang + "<br>" + x.id + "<br>" + x.rel + "<br>" + x.target + "<br>" + x.type;
+        }
+    </script>
+    <hr>
+
+    <!--objeto de área. coordenadas, texto alternativo, forma:shape, href, protocol, hostname, port, pathname, search, hash, target-->
+    <area shape="circle" coords="124,58,8" href="" alt="Area">
+
+    <!--Objeto base. target-->
+    <base href="https://www.w3schools.com/jsref/" target="_self">
+
+    <!--Objeto IFrame: altura-height, nombre-name, src -->
+    <iframe width="560" height="315" frameborder="0" id="demo9">
+        <p>Texto</p>
+    </iframe>
+    <iframe src="https://www.youtube.com/embed/_JZom_gVfuw?start=1" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="funcion4()">Click</button>
+    <script>
+        function funcion4() {
+            var x = document.getElementById("demo9");
+            x.style.backgroundColor = "red";
+        }
+    </script>
+    <hr>
+
+    <!--Objeto de imagen: texto alternativo-alt, altura-height, src, onclick, usemap -->
+
+    <!--Objetos de mesa: tabla: border, padding, -->
+    <table id="demo10" style="border: 1px solid black; padding:8px;">
+        <tr>
+            <td>cell 1</td>
+            <td>cell 2</td>
+        </tr>
+        <tr>
+            <td>cell 3</td>
+            <td>cell 4</td>
+        </tr>
+        <tr>
+            <td>cell 5</td>
+            <td>cell 6</td>
+        </tr>
+    </table>
+    <button onclick="funcion5('demo10')">Click</button>
+    <button onclick="funcion6('demo10')">Click</button>
+    <button onclick="document.getElementById('demo10').deleteRow(0)">Click</button>
+    <button onclick="funcion7('demo10')">Click</button>
+    <button onclick="funcion8('demo10', 0,0, 'Hola')">Click</button>
+    <p id="demo11"></p>
+    <script>
+        function funcion5(tabla) {
+            var x = document.getElementById(tabla).rows[0].cells;
+            document.getElementById("demo11").innerHTML = x[0].innerHTML;
+        }
+        function funcion6(tabla) {
+            document.getElementById(tabla).createCaption().innerHTML = "Titulo";
+        }
+        function funcion7(tabla) {
+            var x = document.getElementById(tabla).insertRow(0);
+            var y = x.insertCell(0);
+            var z = x.insertCell(1);
+            y.innerHTML = z.innerHTML = "Nuevo";
+        }
+        function funcion8(tabla, fila, celda, contenido) {
+            var x = document.getElementById(tabla).rows[fila].cells;
+            x[celda].innerHTML = contenido;
+        }
+    </script>
+    <hr>
+
+    <!--Eventos de entrada: onkeypress, onkeyup. -->
+    <form onsubmit="funcion13()" action="https://www.w3schools.com/" onreset="funcion14()" onkeydown="funcion15()" >
+        Ingresa tu nombre: <input type="text" id="demo12" onblur="funcion9()" onfocus="funcion11(this)" onselect="funcion12()" onkeyup="color('white')">
+        Selecciona tu navegador preferido: <select id="demo13" onchange="funcion10()">
+            <option value="Chrome">Chrome</option>
+            <option value="Internet Explorer">Internet Explorer</option>
+            <option value="Firefox">Firefox</option>
+        </select>
+        <input type="submit" value="Click">
+        <input type="reset" value="Resetear">
+    </form>
+    <p id="demo14"></p>
+    <script>
+        function funcion9() {
+            var x = document.getElementById("demo12");
+            x.value = x.value.toUpperCase();
+        }
+        function funcion10() {
+            var seleccion = document.forms[5].demo13.value;
+            alert("Tu navegador preferido es: " + seleccion)
+        }
+        function funcion11(x){
+            x.style.background="yellow";
+        }
+        function funcion12(){
+            document.getElementById("demo14").innerHTML = "Seleccionaste texto en el input.";
+        }
+        function funcion13(){
+            nombre = document.forms[5].demo12.value;
+            alert("Hola " + nombre + " seras redireccionado en este momento.");
+        }
+        function funcion14(){
+            alert("Se restablecra el formulario.")
+        }
+        function funcion15(){
+            alert("Ingresaste un caracter.")
+        }
+    </script>
+    <hr>
+
+    <!--Eventos de mouse: onmouseover/onmouseout, onmousedown/onmouseup, -->
+    <h2 onmouseover="style.color='red'" onmouseout="style.color='black'" onmousedown="style.color='green'" onmouseup="style.color='orange'">Texto.</h2>
+    <div id="demo15" onmousedown="funcion16(event)">
+        <h3>TExto</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur architecto voluptates cumque magni vitae qui voluptatem adipisci quia explicabo ad a, unde ullam nihil officia numquam commodi, molestiae similique nam.</p>
+        <img src="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg" alt="..." onmousemove="funcion17(event)" onmouseout="funcion18()">
+        <p id="demo16"></p>
+    </div>  
+    <script>
+        function funcion16(e){
+            var targ;
+            if(!e){
+                var e = window.event;
+            }
+            if(e.target){
+                targ=e.target;
+            } else if(e.srcElement){
+                targ=e.srcElement;
+            }
+            var tname;
+            tname = targ.tagName;
+            alert("Click sobre un elemento " + tname);
+        }
+        function funcion17(e){
+            var x = e.clientX;
+            var y = e.clientY;
+            var coor = "Coordenadas: (" + x + ", " + y + ")";
+            document.getElementById("demo16").innerHTML=coor;
+        }
+        function funcion18(){
+            document.getElementById("demo16").innerHTML="";
+        }
+    </script>
+    <hr>
+
+    <!--onmouseover un mapa de imagen-->
+    <img src="https://planmytrip.pk/Hotel/bhutan-wallpaper.jpg" alt="..." width="145" height="125" usemap="#paisaje" onload="funcion21()" />
+    <p id="demo17"></p>
+    <map name="paisaje">
+        <area shape="rect" coords="0, 0, 82, 126" onmouseover="funcion19('Montaña.')" href="" alt="">
+        <area shape="circle" coords="90,58,3" onmouseover="funcion19('Casa.')" href="" alt="">
+        <area shape="circle" coords="124,58,8" onmouseover="funcion19('Barranco.')" href="" alt="">
+    </map>
+    <script>
+    function funcion19(txt){
+        document.getElementById("demo17").innerHTML=txt;
+    }
+    </script>
+    <hr>
+
+    <!--Cargar eventos-->
+    <img src="sdf.htm" onerror="funcion22()" alt="...">
+    <p id="demo18"></p>
+    <script>
+        function funcion20(){
+            alert("Bienvenido.")
+        }
+        function funcion21(){
+            alert("Recurso cargado.")
+        }
+        function funcion22(){
+            alert('No se puedo cargar recurso.')
+        }
+        function funcion23(){
+            alert("Gracias por visitarnos.")
+        }
+        function funcion24(){
+            document.getElementById("demo18").innerHTML=Math.random();
+        }
+    </script>
+    <hr>
+
+    <!--Código de la tecla-->
+    <p id="demo19"></p>
+    <script>
+    function funcion25(e){
+        document.getElementById("demo19").innerHTML=e.keyCode;
+    }
+    </script>
+    <hr>
+
+    <!--coordenadas del cursor-->
+    <div style="border: 1px solid black; width: 200px; height: 200px; padding: 50px;" id="demo20" onmousedown="funcion26(event)">...</div>
+    <script>
+    function funcion26(e){
+        document.getElementById("demo20").innerHTML="X=" + e.clientX + "<br>Y=" + e.clientY + "<br>Con relación a la pantalla<br>" + "X=" + e.screenX + "<br>Y" + e.screenY;
+    }
+    </script>
+    <hr>
+
+    <!--PUEDES ACCEDER AL TIPO DE EVENTO CON event.type -->
+
+    <!--abrir una nueva ventana y controlar su apariencia. focus en la nueva pantalla.-->
+    <button onclick="funcion27()">Click</button>
+    <button onclick="funcion28()">Click</button>
+    <button onclick="funcion29()">Click</button>
+    <button onclick="funcion30()">Click</button>
+    <button onclick="funcion31()">Click</button>
+    <button onclick="window.print()">Imprimir</button>
+    <button onclick="funcion32()">Cambiar tamaño</button>
+    <button onclick="window.scrollBy(0, 10)">Scroll</button>
+    <button onclick="funcion33()">Cambiar tamaño</button>
+    <br><br>
+    <p id="demo21"></p>
+    <script>
+        var nuevaVentana;
+    function funcion27(){
+        nuevaVentana = window.open("https://www.w3schools.com","_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400");
+        nuevaVentana.opener.document.getElementById("demo21").innerHTML="Ventana abierta."
+    }
+    function funcion28(){
+        nuevaVentana.focus();
+    }
+    function funcion29(){
+        if(nuevaVentana){
+            nuevaVentana.close();
+        }  
+    }
+    function funcion30(){
+        var msg = "";
+        if(!nuevaVentana){
+            msg = "No ha sido creada la ventana";
+        } else {
+            if(nuevaVentana.closed){
+                msg = "Ventana cerrada."
+            } else {
+                msg = "Ventana abierta."
+            }
+        }
+        document.getElementById("demo21").innerHTML=msg;
+    }
+    function funcion31(){
+        nuevaVentana.moveTo(300, 0);
+        nuevaVentana.focus();
+    }
+    function funcion32(){
+        nuevaVentana.resizeBy(50, 50);
+        nuevaVentana.focus();
+    }
+    function funcion33(){
+        nuevaVentana.resizeTo(500, 500);
+        nuevaVentana.focus();
+    }
+    </script>
+    <hr>
+
+    <!--contador de segundos-->
+    <button onClick="contador = setInterval(funcion34, 1000)">Iniciar</button>
+    <button onclick="clearInterval(contador)">Parar</button>
+    <p id="demo22"></p>
+    <script>
+    var z = 0;
+    function funcion34(){
+    document.getElementById("demo22").innerHTML= ++z + "<br>" + new Date().toLocaleTimeString();
+    }
+    </script>
+    <hr>
+
+
+    <!--Guardar cookies-->
+    <!--https://www.w3schools.com/js/tryit.asp?filename=tryjs_cookie_username-->
+</body>
+</html> 

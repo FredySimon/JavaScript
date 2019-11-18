@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lista de materiales del navegador</title>
 </head>
-<body>
+
+<body onload="checkCookie()">
     <!--El modelo de objetos del navegador (BOM) permite que JavaScript "hable" con el navegador. No existen estándares oficiales para el B rower O bject M odel (BOM). Dado que los navegadores modernos han implementado (casi) los mismos métodos y propiedades para la interactividad de JavaScript, a menudo se le conoce como métodos y propiedades de la lista de materiales.-->
     <h1>Lista de materiales del navegador - Browser BOM</h1>
     <hr>
-    
+
     <!--El windowobjeto es compatible con todos los navegadores. Representa la ventana del navegador. Todos los objetos, funciones y variables globales de JavaScript se convierten automáticamente en miembros del objeto de la ventana. Las variables globales son propiedades del objeto de ventana. Las funciones globales son métodos del objeto de ventana. La ventana del navegador (la ventana del navegador) NO incluye barras de herramientas ni barras de desplazamiento.-->
     <!--Se pueden usar dos propiedades para determinar el tamaño de la ventana del navegador. Ambas propiedades devuelven los tamaños en píxeles:-->
     <!--window.innerHeight - la altura interna de la ventana del navegador (en píxeles)-->
     <!--window.innerWidth - el ancho interno de la ventana del navegador (en píxeles)-->
     <p id="demo"></p>
     <script>
-    var a = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
+        var a = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
 
-    var b = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;
+        var b = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
 
-    var b = document.getElementById("demo").innerHTML= "La ventana tiene un ancho de " + a + " y un alto de " + b; 
+        var b = document.getElementById("demo").innerHTML = "La ventana tiene un ancho de " + a + " y un alto de " + b; 
     </script>
     <p>otros métodos:</p>
     <ul>
@@ -45,7 +47,7 @@
     <!--screen.pixelDepth: La screen.pixelDepthpropiedad devuelve la profundidad de píxel de la pantalla.-->
     <p id="demo1"></p>
     <script>
-    document.getElementById("demo1").innerHTML= "El ancho de la pantalla es: " + screen.width + "<br> El alto de la pantalla es: " + screen.height + "<br> El ancho de pantalla disponible es: " + screen.availWidth + "<br> El alto de pantalla disponible es: " + screen.availHeight + "<br> La profundidad del color de la pantalla es: " + screen.colorDepth + "<br> La profundidad del píxel de la pantalla es: " + screen.pixelDepth;
+        document.getElementById("demo1").innerHTML = "El ancho de la pantalla es: " + screen.width + "<br> El alto de la pantalla es: " + screen.height + "<br> El ancho de pantalla disponible es: " + screen.availWidth + "<br> El alto de pantalla disponible es: " + screen.availHeight + "<br> La profundidad del color de la pantalla es: " + screen.colorDepth + "<br> La profundidad del píxel de la pantalla es: " + screen.pixelDepth;
     </script>
     <hr>
 
@@ -59,24 +61,27 @@
     <!--La window.location.portpropiedad devuelve el número del puerto de host de Internet (de la página actual). La mayoría de los navegadores no mostrarán los números de puerto predeterminados (80 para http y 443 para https)-->
     <p id="demo2"></p>
     <script>
-    document.getElementById("demo2").innerHTML="La URL de página actual es: " + window.location.href + "<br> El hostname de la pagina es: " + window.location.hostname + "<br> La ruta y nombre de archivo de página actual es: " + window.location.pathname + "<br> El protocolo de la página actual es: " + window.location.protocol + "<br> El número de puerto de host de la página es: " + window.location.port;
+        document.getElementById("demo2").innerHTML = "La URL de página actual es: " + window.location.href + "<br> El hostname de la pagina es: " + window.location.hostname + "<br> La ruta y nombre de archivo de página actual es: " + window.location.pathname + "<br> El protocolo de la página actual es: " + window.location.protocol + "<br> El número de puerto de host de la página es: " + window.location.port;
     </script>
     <hr>
 
-    <!--window.location.assign() carga un nuevo documento-->
+    <!--window.location.assign() carga un nuevo documento. o use window.location.replace() -->
     <button onclick="window.location.assign
     ('https://www.w3schools.com')">Click</button>
     <hr>
 
     <!--El window.historyobjeto contiene el historial de los navegadores.-->
     <!--El history.back()método carga la URL anterior en la lista del historial. Esto es lo mismo que hacer clic en el botón Atrás en el navegador.-->
-    <button onclick="window.history.back()">Click</button>
-    <button onclick="window.history.forward()">Click</button>
+    <button onclick="window.history.back()"><<</button>
+    <button onclick="window.history.forward()">>></button>
+    <button onclick="window.history.go(-2)">Click</button>
+    <button onclick="document.getElementById('#H').innerHTML=history.length">Click</button>
+    <p id="#H"></p>
     <hr>
 
     <!--El window.navigatorobjeto contiene información sobre el navegador del visitante.-->
-    
-    
+
+
     <!--navigator.platform-->
 
     <!--La cookieEnabledpropiedad devuelve verdadero si las cookies están habilitadas, de lo contrario falso:-->
@@ -91,7 +96,7 @@
     <!--El javaEnabled()método devuelve verdadero si Java está habilitado-->
     <p id="demo3"></p>
     <script>
-    document.getElementById("demo3").innerHTML="cookiesEnabled es: " + navigator.cookieEnabled + "<br> El nombre de la aplicación del navegador es: " + navigator.appName + "<br> El nombre del código de la aplicación es: " + navigator.appCodeName + "<br> El nombre del producto del motor del navegador es: " + navigator.product + "<br> La versión del navegador es: " + navigator.appVersion + "<br> El encabezado de agente de usuario es: " + navigator.userAgent + "<br> El sistema operativo del navegador es: " + navigator.platform + "<br> El idioma del navegador es: " + navigator.language + "<br> El navegador esta en linea: " + navigator.onLine + "<br> Java esta habilitado: " + navigator.javaEnabled();
+        document.getElementById("demo3").innerHTML = "cookiesEnabled es: " + navigator.cookieEnabled + "<br> El nombre de la aplicación del navegador es: " + navigator.appName + "<br> El nombre del código de la aplicación es: " + navigator.appCodeName + "<br> El nombre del producto del motor del navegador es: " + navigator.product + "<br> La versión del navegador es: " + navigator.appVersion + "<br> El encabezado de agente de usuario es: " + navigator.userAgent + "<br> El sistema operativo del navegador es: " + navigator.platform + "<br> El idioma del navegador es: " + navigator.language + "<br> El navegador esta en linea: " + navigator.onLine + "<br> Java esta habilitado: " + navigator.javaEnabled();
     </script>
     <hr>
 
@@ -105,31 +110,112 @@
     <p id="demo4"></p>
     <p id="demo5"></p>
     <script>
-    function funcionConfirmar(){
-        var texto;
-        if(confirm("Acepta o Cancela")){
-            texto = "OK";
-        } else {
-            texto = "Cancelado";
+        function funcionConfirmar() {
+            var texto;
+            if (confirm("Acepta o Cancela")) {
+                texto = "OK";
+            } else {
+                texto = "Cancelado";
+            }
+            document.getElementById("demo4").innerHTML = texto;
         }
-        document.getElementById("demo4").innerHTML=texto;
-    }
-    function funcionVerificarCampo(){
-        var texto;
-        var persona = prompt("Ingresa tu nombre:", "Fredy Simón");
-        if(persona == null || persona == ""){
-            texto = "Cancelado";
-        } else {
-            texto = "Enviado.";
+        function funcionVerificarCampo() {
+            var texto;
+            var persona = prompt("Ingresa tu nombre:", "Fredy Simón");
+            if (persona == null || persona == "") {
+                texto = "Cancelado";
+            } else {
+                texto = "Enviado.";
+            }
+            document.getElementById("demo5").innerHTML = texto;
         }
-        document.getElementById("demo5").innerHTML=texto;
-    }
-    alert("Hola.\nAdios");
+        alert("Hola.\nAdios");
     </script>
     <hr>
 
-    <!--JavaScript se puede ejecutar en intervalos de tiempo. Esto se llama eventos de tiempo.-->
-    
-    
+    <!--JavaScript se puede ejecutar en intervalos de tiempo. Esto se llama eventos de tiempo. El windowobjeto permite la ejecución de código a intervalos de tiempo especificados.-->
+
+    <!--setTimeout(function, milliseconds): Ejecuta una función, después de esperar un número específico de milisegundos. El primer parámetro es una función a ejecutar. El segundo parámetro indica el número de milisegundos antes de la ejecución.-->
+    <!--El clearTimeout()método detiene la ejecución de la función especificada en setTimeout ().-->
+    <!--setInterval(function, milliseconds): Igual que setTimeout (), pero repite la ejecución de la función continuamente.-->
+    <!--El clearInterval()método detiene las ejecuciones de la función especificada en el método setInterval ().-->
+    <button onclick=" c = setTimeout(funcion, 3000)">Click</button>
+    <button onclick="clearTimeout(c)">Click</button>
+    <p id="demo6"></p>
+    <button onclick="clearInterval(d)">Click</button>
+    <script>
+        function funcion() {
+            alert('Hola');
+        }
+        var d = setInterval(hora, 1000);
+        function hora() {
+            var a = new Date();
+            document.getElementById("demo6").innerHTML = a.toLocaleTimeString();
+        }
+    </script>
+    <hr>
+
+    <!--Más ejemplos:-->
+    <button onclick="funcionTiempo()">Click</button>
+    <p id="demo7"></p>
+    <script>
+        function funcionTiempo() {
+            setTimeout(funcion1, 2000)
+            setTimeout(funcion2, 4000)
+            setTimeout(funcion3, 6000)
+        }
+        function funcion1() {
+            document.getElementById("demo7").innerHTML = "2 segundos."
+        }
+        function funcion2() {
+            document.getElementById("demo7").innerHTML = "4 segundos."
+        }
+        function funcion3() {
+            document.getElementById("demo7").innerHTML = "6 segundos."
+        }
+    </script>
+    <hr>
+
+    <!--Las cookies le permiten almacenar información del usuario en páginas web. Las cookies son datos, almacenados en pequeños archivos de texto, en su computadora. Cuando un servidor web ha enviado una página web a un navegador, la conexión se cierra y el servidor olvida todo sobre el usuario. Las cookies se inventaron para resolver el problema "cómo recordar información sobre el usuario": Cuando un usuario visita una página web, su nombre puede almacenarse en una cookie. La próxima vez que el usuario visite la página, la cookie "recordará" su nombre.-->
+    <!--JavaScript puede crear, leer y eliminar cookies con la document.cookie propiedad. devolverá todas las cookies en una cadena. Eliminar una cookie es muy simple. Simplemente configure el parámetro caduca en una fecha pasada. Si desea encontrar el valor de una cookie especificada, debe escribir una función de JavaScript que busque el valor de la cookie en la cadena de cookies.-->
+    <p id="demo8"></p>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+    </script>
+    <hr>
 </body>
+
 </html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery vs JavaScript</title>
+</head>
+<body>
+    <h1>Selectores DOM de JavaScript / jQuery</h1>
+    <hr>
+
+    <p>jQuery fue creado en 2006 por John Resig . Fue diseñado para manejar las incompatibilidades del navegador y para simplificar la manipulación del DOM HTML, el manejo de eventos, las animaciones y Ajax.</p>
+    <p>Durante más de 10 años, jQuery ha sido la biblioteca de JavaScript más popular del mundo.</p>
+    <p>Sin embargo, después de JavaScript Versión 5 (2009), la mayoría de las utilidades de jQuery se pueden resolver con unas pocas líneas de JavaScript estándar.</p>
+    <hr>
+
+    <!--Encontrar elemento HTML por ID, Obtener contenido de texto y Establecer contenido de texto-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <p id="demo">Hola.</p>
+    <p id="demo1">Adios.</p>
+    <script>
+    $(document).ready(function(){
+        var elemento = $("#demo");
+        $("#demo1").text("El texto de el parrafo 1 con id demo es: " + elemento[0].innerHTML);
+    });
+    </script>
+    <hr>
+
+    <!--Encontrar elementos HTML por nombre de etiqueta-->
+    <p id="demo2"></p>
+    <script>
+    $(document).ready(function(){
+        var elementos = $("p");
+        $("#demo2").text("El texto en el segundo parrafo es: " + elementos[1].innerHTML);
+    });
+    </script>
+    <hr>
+
+    <!--Encontrar elementos HTML por nombre de clase-->
+    <p class="parrafo">...</p>
+    <p id="demo3"></p>
+    <script>
+    $(document).ready(function(){
+        var elementos = $(".parrafo");
+        $("#demo3").text("El primer parrafo con la clase parrafo es: " + elementos[0].innerHTML);
+    });
+    </script>
+    <hr>
+
+    <!--Encontrar elementos HTML mediante selectores CSS-->
+    <p class="intro">Hello World!</p>
+    <p class="intro">Hello Sweden!</p>
+    <p class="intro">Hello Japan!</p>
+    <p id="demo4"></p>
+    <script>
+        $(document).ready(function(){
+           var elementos = $("p.intro");
+           $("#demo4").text("El primer parrafo con clase intro es: " + elementos[0].innerHTML);  
+        });
+    </script>
+    <hr>
+
+    <!--Establecer contenido de texto en JavaScript-->
+    <p id="demo5"></p>
+    <script>
+    var elemento = document.getElementById("demo5");
+    elemento.textContent = "Hola.";
+    </script>
+    <hr>
+
+    <!--Establecer contenido HTML-->
+    <p id="demo6"></p>
+    <script>
+          $(document).ready(function(){
+              var elemento = $("#demo6");
+              elemento.html("<h2>Hola</h2>");
+          });
+    </script>
+    <hr>
+
+    <!--Obtener contenido HTML-->
+    <div class="demo7">
+        <h2>...</h2>
+    </div>
+    <div class="demo8">
+        <h2>Hola</h2>
+    </div>
+    <script>
+    $(document).ready(function(){
+        var contenido = $("#demo8").html();
+        $("#demo7").html(contenido);
+    });
+    </script>
+    <hr>
+
+    <!--Ocultar elementos HTML-->
+    <p id="demo9">Elemento a ocultar.</p>
+    <button onclick="ocultar()">Click</button>
+    <script>
+    function ocultar(){
+        $(document).ready(function(){
+            var elemento = $("#demo9");
+            elemento.hide();
+        });
+    }
+    </script>
+    <hr>
+
+    <!--Mostrando elementos HTML-->
+    <p id="demo10" style="display: none;">Elemento.</p>
+    <script>
+    $(document).ready(function() {
+        var elemento = $("#demo10");
+        elemento.show();
+    })
+    </script>
+    <hr>
+
+    <!--Estilo de elementos HTML-->
+    <p id="demo11">Texto</p>
+    <script>
+    $(document).ready(function(){
+        var elemento = $('#demo11');
+        elemento.css("font-size","35px");
+    });
+    </script>
+    <hr>
+
+    <!--Eliminar elementos-->
+    <P id="demo12">Eliminar.</P>
+    <button onclick="eliminar()">Click</button>
+    <script>
+    function eliminar(){
+        $(document).ready(function(){
+            $('#demo12').remove();
+        });
+    }
+    </script>
+    <hr>
+
+    <!--Obtener elemento primario-->
+    <p id="demo13">Obtener elemento primario.</p>
+    <button onclick="obtenerEP()">Click</button>
+    <script>
+    function obtenerEP(){
+        $(document).ready(function(){
+            var elemento = $("#demo13").parent();
+            $('#demo13').text(elemento.prop("nodeName"));
+        })
+    }
+    </script>
+    <hr>
+
+    <!---->
+</body>
+</html>

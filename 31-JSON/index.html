@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JavaScript JSON</title>
 </head>
+
 <body>
     <h1>JSON</h1>
     <hr>
-    
+
     <!--JSON es un formato para almacenar y transportar datos. JSON se usa a menudo cuando los datos se envían desde un servidor a una página web.-->
     <p><b>JSON Significa:</b> Java Script Object Notation</p>
     <p>JSON es un formato de intercambio de datos ligero.</p>
     <p>JSON es independiente del idioma.</p>
     <p>JSON es "autodescriptivo" y fácil de entender.</p>
-    <p>La sintaxis JSON se deriva de la sintaxis de notación de objetos JavaScript, pero el formato JSON es solo texto. El código para leer y generar datos JSON se puede escribir en cualquier lenguaje de programación.</p>
+    <p>La sintaxis JSON se deriva de la sintaxis de notación de objetos JavaScript, pero el formato JSON es solo texto.
+        El código para leer y generar datos JSON se puede escribir en cualquier lenguaje de programación.</p>
     <hr>
 
-    <!--JSON define un objeto-->
+    <!--JSON define un objeto, una cuerda, un número, un objeto, (objeto JSON), una matriz, un booleano, nulo-->
     <script>
-    {'{"empleados":[' + 
-        '{"nombre":"John", "apellido":"Doe"}' +
-        '{"nombre":"Anna", "apellido":"Smith"}' +
-        '{"nombre":"Peter", "apellido":"Jones"}]}'
-    }
+        {
+            '{"empleados":[' +
+                '{"nombre":"John", "apellido":"Doe", "edad":30}' +
+                '{"nombre":"Anna", "apellido":"Smith"}' +
+                '{"nombre":"Peter", "apellido":"Jones"}]}'
+        }
     </script>
 
     <!--l formato JSON es sintácticamente idéntico al código para crear objetos JavaScript. Debido a esta similitud, un programa JavaScript puede convertir fácilmente datos JSON en objetos JavaScript nativos.-->
@@ -41,12 +45,401 @@
     <!--Un uso común de JSON es leer datos de un servidor web y mostrar los datos en una página web. Para simplificar, esto se puede demostrar usando una cadena como entrada. Primero, cree una cadena de JavaScript que contenga la sintaxis JSON. Luego, use la función incorporada de JavaScript JSON.parse()para convertir la cadena en un objeto JavaScript. -->
     <p id="demo"></p>
     <script>
-        var texto = '{"empleados":[' + '{"nombre":"John", "apelldio":"Doe"},' + '{"nombre":"Anna", "apellido":"Smith"},' + '{"nombre":"Peter", "apellido":"Jones"}]}';
+        var texto = '{"empleados":[' + '{"nombre":"John", "apellido":"Doe"},' + '{"nombre":"Anna", "apellido":"Smith", "edad":30},' + '{"nombre":"Peter", "apellido":"Jones"}]}';
         var objeto = JSON.parse(texto);
-        document.getElementById("demo").innerHTML = objeto.empleados[1].nombre + ", " + objeto.empleados[2].apellido;
+        document.getElementById("demo").innerHTML = objeto.empleados[1].nombre + ", " + objeto.empleados[1].apellido + ", " + objeto.empleados[1].edad + "<br>" + objeto.empleados[2].nombre + ", " + objeto.empleados[2].apellido + "<br>" + objeto.empleados[0].nombre + ", " + objeto.empleados[0].apellido;
+    </script>
+    <hr>
+
+    <!--Si tiene datos almacenados en un objeto JavaScript, puede convertir el objeto en JSON y enviarlo a un servidor.-->
+    <h2>Convierta un objeto JavaScript en una cadena JSON, y enviarlo al servidor.</h2>
+    <button onclick="funcion()">Click</button>
+    <script>
+        function funcion() {
+            var myObj = { name: "John", age: 31, city: "New York" };
+            var myJSON = JSON.stringify(myObj);
+            window.location = "demo_json.php?x=" + myJSON;
+        }
+    </script>
+    <hr>
+
+    <!--localstorage:-->
+    <p id="demo1"></p>
+    <button onclick="funcion1()">Click</button>
+    <script>
+        function funcion1() {
+            var myObj, myJSON, text, obj;
+            myObj = { name: "John", age: 31, city: "New York" };
+            myJSON = JSON.stringify(myObj);
+            localStorage.setItem("JSON", myJSON);
+            text = localStorage.getItem("JSON");
+            obj = JSON.parse(text);
+            document.getElementById("demo1").innerHTML = obj.name;
+        }
+    </script>
+    <hr>
+
+    <!--El tipo de archivo para archivos JSON es ".json". El tipo MIME para el texto JSON es "application / json".-->
+    <!-- Ejemplo XML:
+        <employees>
+            <employee>
+                <firstName>John</firstName> <lastName>Doe</lastName>
+            </employee>
+            <employee>
+                <firstName>Anna</firstName> <lastName>Smith</lastName>
+            </employee>
+            <employee>
+                <firstName>Peter</firstName> <lastName>Jones</lastName>
+            </employee>
+        </employees>
+    -->
+
+    <!--Tanto JSON como XML se pueden recuperar con un XMLHttpRequest-->
+
+    <!-- XML debe analizarse con un analizador XML. JSON puede ser analizado por una función estándar de JavaScript.-->
+
+    <!--Puede solicitar JSON desde el servidor utilizando una solicitud AJAX.-->
+    <p id="demo2"></p>
+    <button onclick="funcion2()">Click</button>
+    <script>
+        function funcion2() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("demo2").innerHTML = myObj.name;
+                }
+            };
+            xmlhttp.open("GET", "json_demo.txt", true);
+            xmlhttp.send();
+        }
+    </script>
+    <p>Archivo <a href="https://www.w3schools.com/js/json_demo.txt" target="_blank">JSON</a></p>
+    <hr>
+
+    <!--Cuando se utiliza JSON.parse()en un JSON derivado de una matriz, el método devolverá una matriz de JavaScript, en lugar de un objeto de JavaScript.-->
+    <p id="demo3"></p>
+    <button onclick="funcion3()">Click</button>
+    <script>
+        function funcion3() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myArr = JSON.parse(this.responseText);
+                    document.getElementById("demo3").innerHTML = myArr[0];
+                }
+            };
+            xmlhttp.open("GET", "json_demo_array.txt", true);
+            xmlhttp.send();
+        }
+    </script>
+    <p>Archivo <a href="https://www.w3schools.com/js/json_demo_array.txt" target="_blank">JSON Array</a></p>
+    <hr>
+
+    <!--Los objetos de fecha no están permitidos en JSON. Si necesita incluir una fecha, escríbala como una cadena. Puede volver a convertirlo en un objeto de fecha más tarde. -->
+    <p id="demo4"></p>
+    <script>
+        var texto1 = '{"nombre":"Fredy", "cumpleaños":"2000-04-08", "ciudad":"Guatemala"}';
+        var obj = JSON.parse(texto1);
+        obj.cumpleaños = new Date(obj.cumpleaños);
+        document.getElementById("demo4").innerHTML = obj.nombre + ", " + obj.cumpleaños;
+    </script>
+    <hr>
+
+    <!--El parámetro reviver es una función que verifica cada propiedad, antes de devolver el valor.-->
+    <p id="demo5"></p>
+    <script>
+        var obj1 = JSON.parse(texto1, function (key, value) {
+            if (key == "cumpleaños") {
+                return new Date(value);
+            } else {
+                return value;
+            }
+        });
+        document.getElementById("demo5").innerHTML = obj1.nombre + ", " + obj1.cumpleaños;
+    </script>
+    <hr>
+
+    <!--Las funciones no están permitidas en JSON. Si necesita incluir una función, escríbala como una cadena. Puede volver a convertirlo en una función más tarde. -->
+    <p id="demo6"></p>
+    <script>
+        var texto2 = '{"nombre":"John", "edad":"function(){return 30;}", "ciudad":"New York"}';
+        var obj2 = JSON.parse(texto2);
+        obj2.edad = eval("(" + obj2.edad + ")");
+        document.getElementById("demo6").innerHTML = obj2.edad(); 
+    </script>
+    <hr>
+
+    <!--También es posible stringify matrices de JavaScript-->
+    <p id="demo7"></p>
+    <script>
+        var arr = ["John", "Peter", "Sally", "Jane"];
+        var myJSON = JSON.stringify(arr);
+        document.getElementById("demo7").innerHTML = myJSON;
+    </script>
+    <hr>
+
+    <!--En JSON, los objetos de fecha no están permitidos. La JSON.stringify()función convertirá cualquier fecha en cadenas.-->
+    <p id="demo8"></p>
+    <script>
+        var obj3 = { hoy: new Date() };
+        var myJSON1 = JSON.stringify(obj3);
+        document.getElementById("demo8").innerHTML = myJSON1;
+    </script>
+    <hr>
+
+    <!--En JSON, las funciones no están permitidas como valores de objeto. La JSON.stringify()función eliminará cualquier función de un objeto JavaScript, tanto la clave como el valor. -->
+    <p id="demo9"></p>
+    <script>
+        var obj4 = { nombre: "Fredy", edad: 19, ciudad: function () { return "Guatemala"; } };
+        var myJSON2 = JSON.stringify(obj4);
+        document.getElementById("demo9").innerHTML = myJSON2;
+    </script>
+    <hr>
+
+    <!--Esto se puede omitir si convierte sus funciones en cadenas antes de ejecutar la JSON.stringify()función.-->
+    <p id="demo10"></p>
+    <script>
+        obj4.ciudad = obj4.ciudad.toString();
+        var myJSON3 = JSON.stringify(obj4);
+        document.getElementById("demo10").innerHTML = myJSON3;
+    </script>
+    <hr>
+
+    <!--También puede acceder a los valores de los objetos mediante la notación de corchetes ([]).-->
+    <p id="demo11"></p>
+    <script>
+        document.getElementById("demo11").innerHTML = obj4["nombre"];
+    </script>
+    <hr>
+
+    <!--Puede recorrer las propiedades del objeto utilizando el ciclo for-in. En un bucle for-in, use la notación de paréntesis para acceder a los valores de propiedad -->
+    <p id="demo12"></p>
+    <script>
+        var a;
+        for (a in obj4) {
+            document.getElementById("demo12").innerHTML += a + "<br>"
+        }
+        for (a in obj4) {
+            document.getElementById("demo12").innerHTML += obj4[a] + "<br>"
+        }
+    </script>
+    <hr>
+
+    <!--Los valores en un objeto JSON pueden ser otro objeto JSON. Puede acceder a objetos JSON anidados utilizando la notación de puntos o la notación de corchetes. Puede usar la notación de puntos para modificar cualquier valor en un objeto JSON. También puede usar la notación de corchetes para modificar un valor en un objeto JSON. Use la deletepalabra clave para eliminar propiedades de un objeto JSON-->
+    <p id="demo13"></p>
+    <script>
+        var obj5 = {
+            "nombre": "John",
+            "edad": 30,
+            "carros": {
+                "carro1": "Fiat",
+                "carro2": "BMW",
+                "carro3": "Ford",
+                "carro4": "Fiat",
+            }
+        }
+        obj5.carros.carro1 = "Mercedes";
+        delete obj5.carros.carro4;
+        document.getElementById("demo13").innerHTML = obj5.carros.carro1 + "<br>" + obj5.carros["carro2"] + "<br>" + obj5.carros["carro4"];
+    </script>
+    <hr>
+
+    <!--Las matrices pueden ser valores de una propiedad de objeto. Accede a los valores de la matriz utilizando el número de índice. Use el número de índice para modificar una matriz. Use la deletepalabra clave para eliminar elementos de una matriz. -->
+    <p id="demo14"></p>
+    <script>
+        obj5.motos = ["BMW", "Vintage", "Harley Davidson"];
+        obj5.motos[1] = "Yamaha";
+        document.getElementById("demo14").innerHTML = obj5["motos"] + "<br>" + obj5.motos[2];
+    </script>
+    <hr>
+
+    <!--Puede acceder a los valores de la matriz utilizando un bucle for-in. O puedes usar un forbucle-->
+    <p id="demo15"></p>
+    <script>
+        var b;
+        var c = "";
+        for (b in obj5.motos) {
+            c += obj5.motos[b] + "<br>";
+        }
+        document.getElementById("demo15").innerHTML = c;
+    </script>
+    <hr>
+
+    <!--Los valores en una matriz también pueden ser otra matriz, o incluso otro objeto JSON. Para acceder a las matrices dentro de las matrices, use un bucle for-in para cada matriz. -->
+    <p id="demo16"></p>
+    <script>
+        var obj6 = {
+            "name": "John",
+            "age": 30,
+            "cars": [
+                { "name": "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
+                { "name": "BMW", "models": ["320", "X3", "X5"] },
+                { "name": "Fiat", "models": ["500", "Panda"] }
+            ]
+        };
+        var d;
+        var e;
+        var f = "";
+        for (d in obj6.cars) {
+            f += "<h2>" + obj6.cars[d].name + "</h2>";
+            for (e in obj6.cars[d].models) {
+                f += obj6.cars[d].models[e] + "<br>";
+            }
+        }
+        document.getElementById("demo16").innerHTML = f;
+    </script>
+    <hr>
+
+    <!--Los objetos en PHP se pueden convertir a JSON utilizando la función PHP json_encode (). Las matrices en PHP también se convertirán en JSON cuando se use la función PHP-->
+    <!--
+        <?php
+        $myObj->name = "John";
+        $myObj->age = 30;
+        $myObj->city = "New York";
+        $myObj->myArr = array("John", "Mary", "Peter", "Sally");
+
+        $myJSON = json_encode($myObj);
+
+        echo $myJSON;
+        ?>
+    -->
+
+    <!--PHP es un lenguaje de programación del lado del servidor, y debe usarse para operaciones que solo puede realizar un servidor, como acceder a una base de datos. Imagine que tiene una base de datos en el servidor, que contiene clientes, productos y proveedores.-->
+
+    <!--Desea realizar una solicitud al servidor donde solicita los primeros 10 registros en la tabla "clientes".-->
+    <!--
+        <?php
+        header("Content-Type: application/json; charset=UTF-8");
+        $obj = json_decode($_GET["x"], false);
+
+        $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+        $stmt = $conn->prepare("SELECT name FROM ? LIMIT ?");
+        $stmt->bind_param("ss", $obj->table, $obj->limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $outp = $result->fetch_all(MYSQLI_ASSOC);
+
+        echo json_encode($outp);
+        ?>
+    -->
+
+    <!--Método PHP = POST: Para enviar solicitudes AJAX utilizando el POSTmétodo, especifique el método y el encabezado correcto. Los datos enviados al servidor ahora deben ser un argumento para el send()método.-->
+    <p id="demo17"></p>
+    <button onclick="funcion4()">Click</button>
+    <script>
+        function funcion4() {
+            var obj, dbParam, xmlhttp, myObj, x, txt = "";
+            obj = { "table": "customers", "limit": 10 };
+            dbParam = JSON.stringify(obj);
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+                    for (x in myObj) {
+                        txt += myObj[x].name + "<br>";
+                    }
+                    document.getElementById("demo17").innerHTML = txt;
+                }
+            };
+            xmlhttp.open("POST", "json_demo_db_post.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencided");
+            xmlhttp.send("x=" + dbParam);
+        }
     </script>
     <hr>
 
     <!---->
+    <p id="demo18">Tabla con datos AJAX en formato JSON.</p>
+    <script>
+        (function () {
+            var obj, dbParam, xmlhttp, myObj, x, txt = "";
+            obj = { table: "customers", limit: 20 };
+            dbParam = JSON.stringify(obj);
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+                    txt += "<table border='1'>"
+                    for (x in myObj) {
+                        txt += "<tr><td>" + myObj[x].name + "</td></tr>";
+                    }
+                    txt += "</table>"
+                    document.getElementById("demo18").innerHTML = txt;
+                }
+            };
+            xmlhttp.open("POST", "json_demo_db_post.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("x=" + dbParam);
+        }())
+    </script>
+    <hr>
+
+    <!--Tabla HTML Dinámica-->
+    <select id="demo19" onchange="funcionCambio(this.value)">
+        <option value="">Seleciona una opción:</option>
+        <option value="customers">Customers</option>
+        <option value="products">Products</option>
+        <option value="suppliers">Suppliers</option>
+    </select>
+    <script>
+        function funcionCambio(sel) {
+            console.log(sel);
+        }
+    </script>
+    <hr>
+
+    <!--Lista desplegable de HTML: Haga una lista desplegable HTML con los datos recibidos como JSON-->
+    <p id="demo20"></p>
+    <script>
+        (function () {
+            var obj, dbParam, xmlhttp, myObj, x, txt = "";
+            obj = { table: "customers", limit: 20 };
+            dbParam = JSON.stringify(obj);
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myObj = JSON.parse(this.responseText);
+                    txt += "<select>"
+                    for (x in myObj) {
+                        txt += "<option>" + myObj[x].name;
+                    }
+                    txt += "</select>"
+                    document.getElementById("demo20").innerHTML = txt;
+                }
+            };
+            xmlhttp.open("POST", "json_demo_db_post.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("x=" + dbParam);
+        }())
+    </script>
+    <hr>
+
+    <!--JSONP es un método para enviar datos JSON sin preocuparse por problemas entre dominios. JSONP no usa el XMLHttpRequestobjeto. JSONP usa la <script>etiqueta en su lugar. JSONP significa JSON con relleno. El archivo en el servidor envuelve el resultado dentro de una llamada de función. El resultado devuelve una llamada a una función llamada "myFunc" con los datos JSON como parámetro. Asegúrese de que la función exista en el cliente.-->
+    <p id="demo21"></p>
+    <script>
+    function funcion5(myObj){
+        document.getElementById("demo21").innerHTML = myObj.name;
+    }
+    </script>
+    <script src="demo_jsonp.php"></script>
+    <hr>
+
+    <!--Cuando no tiene control sobre el archivo del servidor, ¿cómo consigue que el archivo del servidor llame a la función correcta? A veces, el archivo del servidor ofrece una función de devolución de llamada como parámetro.-->
+    <button onclick="click()">Click</button>
+    <p id="demo22"></p>
+    <script>
+    function click() {
+       var s = document.createElement("script");
+       s.src = "demo_jsop2.php?callback=myDisplayFunction";
+       document.body.appendChild(s); 
+    }
+    function myDisplayFunction(myObj) {
+        document.getElementById("demo22").innerHTML = myObj.name;
+    }
+    </script>
+    <hr>
+
 </body>
+
 </html>
